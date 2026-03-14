@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- v-260314-1506-kst -->
+<!-- v-260314-1530-kst -->
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -131,28 +131,6 @@
         /* ================================================================
            홈 피드 화면
            ================================================================ */
-        .feed-tabs {
-            display: flex;
-            padding: 0 20px;
-            gap: 16px;
-            border-bottom: 1px solid #f0f0f0;
-        }
-        .feed-tab {
-            padding: 10px 0;
-            font-size: 14px;
-            font-weight: 600;
-            color: #8e8e93;
-            border: none;
-            background: none;
-            cursor: pointer;
-            border-bottom: 2px solid transparent;
-            transition: all 0.2s;
-        }
-        .feed-tab.active {
-            color: #ff6b35;
-            border-bottom-color: #ff6b35;
-        }
-
         /* 피드 카드 */
         .feed-list { padding: 16px 20px 100px; display: flex; flex-direction: column; gap: 20px; }
         .feed-card {
@@ -1143,11 +1121,6 @@
                 내 피드
                 <small>나와 입맛이 비슷한 미식가들의 마킹</small>
             </div>
-            <div class="feed-tabs">
-                <button class="feed-tab active" onclick="switchFeedTab(this)">입맛 매칭</button>
-                <button class="feed-tab" onclick="switchFeedTab(this)">최신</button>
-                <button class="feed-tab" onclick="switchFeedTab(this)">인기</button>
-            </div>
             <div class="feed-list">
 
                 <!-- 피드 카드 1 -->
@@ -1808,12 +1781,6 @@
         }
 
         currentScreen = name;
-    }
-
-    /* ===== 피드 탭 전환 ===== */
-    function switchFeedTab(el) {
-        el.parentElement.querySelectorAll('.feed-tab').forEach(t => t.classList.remove('active'));
-        el.classList.add('active');
     }
 
     /* ===== 필터 칩 토글 ===== */
