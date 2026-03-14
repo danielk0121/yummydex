@@ -335,7 +335,13 @@
         .comment-user {
             font-weight: 600;
             color: #1a1a1a;
-            margin-right: 5px;
+            margin-right: 4px;
+        }
+        .comment-country {
+            font-size: 10px;
+            margin-right: 6px;
+            vertical-align: middle;
+            opacity: 0.8;
         }
         .comment-time {
             font-size: 11px;
