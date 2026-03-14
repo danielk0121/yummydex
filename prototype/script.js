@@ -20,11 +20,11 @@ s.classList.remove('active', 'slide-left');
 });
 document.getElementById(screens[name]).classList.add('active');
 
-// 네비게이션 활성 상태
-document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+// 네비게이션 활성 상태 (top-nav 내 nav-item 선택)
+document.querySelectorAll('.top-nav .nav-item').forEach(n => n.classList.remove('active'));
 const navMap = { home: 0, explore: 1, detective: 3, profile: 4 };
 if (navMap[name] !== undefined) {
-document.querySelectorAll('.nav-item')[navMap[name]].classList.add('active');
+document.querySelectorAll('.top-nav .nav-item')[navMap[name]].classList.add('active');
 }
 
 currentScreen = name;

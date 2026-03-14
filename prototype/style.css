@@ -58,18 +58,19 @@
             opacity: 0;
         }
 
-        /* ===== 하단 네비게이션 ===== */
-        .bottom-nav {
-            height: calc(64px + env(safe-area-inset-bottom));
+        /* ===== 상단 내비게이션 (최상단 탭으로 이동) ===== */
+        .top-nav {
+            height: calc(64px + env(safe-area-inset-top));
             display: flex;
             align-items: center;
             justify-content: space-around;
             background: #fff;
-            border-top: 1px solid #e5e5e5;
-            padding-bottom: env(safe-area-inset-bottom);
+            border-bottom: 1px solid #e5e5e5;
+            padding-top: env(safe-area-inset-top);
             flex-shrink: 0;
-            z-index: 100;
+            z-index: 1000;
         }
+
         .nav-item {
             display: flex;
             flex-direction: column;
@@ -87,14 +88,14 @@
         .nav-item .nav-icon { font-size: 24px; line-height: 1; }
         .nav-item .nav-label { font-weight: 500; }
 
-        /* ===== 맛 표현 버튼 (중앙) ===== */
+        /* ===== 맛 표현 버튼 (상단 이동용 조정) ===== */
         .mark-btn-wrap {
             position: relative;
-            top: -12px;
+            top: 10px;
         }
         .mark-btn {
-            width: 56px;
-            height: 56px;
+            width: 52px;
+            height: 52px;
             border-radius: 50%;
             background: linear-gradient(135deg, #ff6b35, #ff3d71);
             border: 4px solid #fff;
@@ -102,7 +103,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
+            font-size: 24px;
             color: #fff;
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
@@ -112,12 +113,15 @@
             box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
         }
 
-        /* ===== 공통 헤더 ===== */
+        /* ===== 공통 헤더 (국기 이모지 버그 수정) ===== */
         .screen-header {
             padding: 16px 20px 12px;
             font-size: 22px;
             font-weight: 800;
             color: #1d1d1f;
+            background: #fff;
+            position: relative;
+            z-index: 10;
         }
         .screen-header small {
             display: block;
