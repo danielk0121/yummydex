@@ -391,6 +391,38 @@
             display: block;
         }
 
+        /* 다른 시선 요약 (댓글 분석) */
+        .related-taste-summary {
+            margin-top: 10px;
+            padding: 8px 10px;
+            background: #fff;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+        .related-taste-summary-title {
+            font-size: 10px;
+            font-weight: 700;
+            color: #ff6b35;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .related-taste-summary-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+        .mini-taste-tag {
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            background: #fdf8f5;
+            color: #ff6b35;
+            font-weight: 600;
+            border: 1px solid #ffefe8;
+        }
+
         /* 댓글 섹션 */
         .comments-section {
             margin-top: 12px;
