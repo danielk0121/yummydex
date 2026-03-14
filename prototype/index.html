@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- v-260314-1618-kst -->
+<!-- v-260314-1629-kst -->
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -127,6 +127,17 @@
             color: #8e8e93;
             margin-top: 2px;
         }
+        
+        /* 개발자 정보 */
+        .dev-badge {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            text-align: right;
+            pointer-events: none;
+        }
+        .dev-badge .dev-name { font-size: 10px; font-weight: 700; color: #ff6b35; opacity: 0.8; margin-bottom: 2px; }
+        .dev-badge .dev-ver { font-size: 9px; color: #999; font-family: monospace; }
 
         /* ================================================================
            홈 피드 화면
@@ -1093,9 +1104,13 @@
 
         <!-- ========== 1. 홈 피드 ========== -->
         <div class="screen active" id="screen-home">
-            <div class="screen-header">
-                야미덱스 YummyDex
+            <div class="screen-header" style="position:relative;">
+                내 피드
                 <small>나와 입맛이 비슷한 미식가들의 마킹</small>
+                <div class="dev-badge">
+                    <div class="dev-name">danielk0121</div>
+                    <div class="dev-ver">v-260314-1629</div>
+                </div>
             </div>
             <div class="feed-list">
 
