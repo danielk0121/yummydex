@@ -975,6 +975,7 @@
             align-items: flex-start;
             gap: 12px;
             margin-bottom: 12px;
+        }
         .detective-card-img {
             width: 80px;
             height: 80px;
