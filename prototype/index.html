@@ -30,21 +30,6 @@
             flex-direction: column;
         }
 
-        /* ===== 상태바 ===== */
-        .status-bar {
-            height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 20px;
-            font-size: 14px;
-            font-weight: 600;
-            background: #fff;
-            flex-shrink: 0;
-        }
-        .status-bar .time { font-weight: 700; }
-        .status-bar .icons { display: flex; gap: 6px; font-size: 12px; }
-
         /* ===== 화면 컨테이너 ===== */
         .screens-container {
             flex: 1;
@@ -944,13 +929,6 @@
 <body>
 
 <div class="app-frame">
-    <!-- 상태바 -->
-    <div class="status-bar">
-        <span class="time">14:25</span>
-        <span style="font-size:15px; font-weight:800; color:#ff6b35;">야미덱스</span>
-        <span class="icons">📶 🔋</span>
-    </div>
-
     <!-- 화면 컨테이너 -->
     <div class="screens-container">
 
@@ -1591,10 +1569,6 @@
         setTimeout(() => toast.classList.remove('show'), 2500);
     }
 
-    /* ===== 알림 뱃지 (헤더 우측) ===== */
-    document.querySelector('.status-bar .icons').addEventListener('click', () => {
-        switchScreen('notif');
-    });
 </script>
 
 </body>
