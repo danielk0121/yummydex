@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- v-260314-1655-kst -->
+<!-- v-260314-1705-kst -->
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -928,12 +928,18 @@
             align-items: flex-start;
             gap: 12px;
             margin-bottom: 12px;
-        }
         .detective-card-img {
-            width: 64px; height: 64px;
+            width: 80px;
+            height: 80px;
             border-radius: 12px;
             overflow: hidden;
             flex-shrink: 0;
+            background: #f8f8f8;
+        }
+        .detective-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
         .detective-card-img .food-placeholder { font-size: 32px; border-radius: 12px; }
         .detective-card-text h4 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
@@ -1066,6 +1072,12 @@
             border-radius: 8px;
             overflow: hidden;
             position: relative;
+            background: #f8f8f8;
+        }
+        .recent-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
         .recent-item .food-placeholder { font-size: 32px; }
 
