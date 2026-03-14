@@ -12,7 +12,7 @@ let currentScreen = 'home';
 function switchScreen(name) {
 if (name === currentScreen) return;
 
-// 마킹 화면 초기화
+// 맛 표현 화면 초기화
 if (name === 'mark') resetMarking();
 
 document.querySelectorAll('.screen').forEach(s => {
@@ -120,7 +120,7 @@ card.style.display = 'none';
 });
 }
 
-/* ===== 마킹 플로우 ===== */
+/* ===== 맛 표현 플로우 ===== */
 let markingState = 'camera'; // camera → marking → taste → location
 let markingMap = null;
 let capturedLocation = null;
@@ -277,8 +277,8 @@ finishMarking(true);
 
 function finishMarking(withLocation) {
 const msg = withLocation
-? '✨ 마킹 완료! 위치가 지도에 저장되었어요 📍'
-: '✨ 마킹 완료! 당신의 미식 도감에 추가되었어요';
+? '✨ 기록 완료! 위치가 지도에 저장되었어요 📍'
+: '✨ 기록 완료! 당신의 미식 도감에 추가되었어요';
 showToast(msg);
 setTimeout(() => switchScreen('home'), 1500);
 }

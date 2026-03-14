@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- v-260314-1840-kst -->
+<!-- v-260314-1850-kst -->
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -226,7 +226,7 @@
                         </div>
                         <!-- 입맛 다른 유저 의견 표시 예시 -->
                         <div class="match-indicator" style="color:#e84057;">
-                            ⚠️ 입맛이 58% 다른 유저의 마킹이에요
+                            ⚠️ 입맛이 58% 다른 유저의 맛 표현이에요
                             <div class="match-bar"><div class="match-bar-fill" style="width:58%; background: linear-gradient(90deg, #ffb347, #e84057);"></div></div>
                         </div>
                         <div class="comments-section">
@@ -378,12 +378,12 @@
             </div>
         </div>
 
-        <!-- ========== 3. 마킹(촬영) 화면 ========== -->
+        <!-- ========== 3. 맛 표현(촬영) 화면 ========== -->
         <div class="screen marking-screen" id="screen-mark">
-            <!-- 마킹 단계 표시 -->
+            <!-- 맛 표현 단계 표시 -->
             <div class="marking-steps">
                 <span class="marking-step current" id="step1">① 찍기</span>
-                <span class="marking-step" id="step2">② 마킹</span>
+                <span class="marking-step" id="step2">② 맛 표현</span>
                 <span class="marking-step" id="step3">③ 맛 뱉기</span>
                 <span class="marking-step" id="step4">④ 위치</span>
             </div>
@@ -401,7 +401,7 @@
                 <button class="cam-option">🔄</button>
             </div>
 
-            <!-- 마킹 모드 -->
+            <!-- 맛 표현 모드 -->
             <div class="marking-overlay" id="markingMode">
                 <div class="marking-image-area" id="markingArea">
                     <img src="../docs/sample/food-19.jpg" alt="Photo" style="width:100%; height:100%; object-fit:cover;">
@@ -429,7 +429,7 @@
                         </div>
                         <input type="range" class="intensity-slider" min="1" max="5" value="3" oninput="updateIntensity(this.value)">
                     </div>
-                    <button class="upload-btn" onclick="completeUpload()">마킹 완료! ✨</button>
+                    <button class="upload-btn" onclick="completeUpload()">기록 완료! ✨</button>
                 </div>
 
                 <!-- 위치 기록 패널 -->
@@ -523,7 +523,7 @@
                 <div class="profile-stats">
                     <div class="profile-stat">
                         <div class="stat-num">142</div>
-                        <div class="stat-label">마킹</div>
+                        <div class="stat-label">맛 표현</div>
                     </div>
                     <div class="profile-stat">
                         <div class="stat-num">87</div>
@@ -584,9 +584,9 @@
                 </div>
             </div>
 
-            <!-- 최근 마킹 -->
+            <!-- 최근 맛 기록 -->
             <div class="recent-section">
-                <h4>📌 최근 마킹</h4>
+                <h4>📌 최근 맛 기록</h4>
                 <div class="recent-grid">
                     <div class="recent-item">
                         <img src="../docs/sample/food-10.jpg" alt="Recent">
@@ -620,7 +620,7 @@
                 <div class="notif-item unread">
                     <div class="notif-icon match">🤝</div>
                     <div class="notif-body">
-                        <div class="notif-text"><strong>입맛 87% 일치!</strong> 당신과 입맛이 비슷한 5명이 을지로 골목 마킹에 관심을 보이고 있어요!</div>
+                        <div class="notif-text"><strong>입맛 87% 일치!</strong> 당신과 입맛이 비슷한 5명이 을지로 골목 맛 표현에 관심을 보이고 있어요!</div>
                         <div class="notif-time">10분 전</div>
                         <button class="notif-action-btn">위치 알려주기 📍</button>
                     </div>
@@ -628,7 +628,7 @@
                 <div class="notif-item unread">
                     <div class="notif-icon reaction">🔄</div>
                     <div class="notif-body">
-                        <div class="notif-text"><strong>단짠러버</strong>님이 당신의 마킹에 '나랑 똑같아요' 리액션을 남겼어요</div>
+                        <div class="notif-text"><strong>단짠러버</strong>님이 당신의 맛 표현에 '나랑 똑같아요' 리액션을 남겼어요</div>
                         <div class="notif-time">1시간 전</div>
                     </div>
                 </div>
