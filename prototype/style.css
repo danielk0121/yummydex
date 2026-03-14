@@ -41,6 +41,9 @@
             opacity: 0;
             background: #fff;
             -webkit-overflow-scrolling: touch;
+            /* 하드웨어 가속 및 렌더링 격리 */
+            isolation: isolate;
+            contain: paint;
             
             /* 스크롤바 숨김 */
             -ms-overflow-style: none; /* IE, Edge */
@@ -61,9 +64,9 @@
         /* ===== 상단 내비게이션 (최상단 탭으로 이동) ===== */
         .top-nav {
             height: calc(64px + env(safe-area-inset-top));
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
             align-items: center;
-            justify-content: space-around;
             background: #fff;
             border-bottom: 1px solid #e5e5e5;
             padding-top: env(safe-area-inset-top);
@@ -90,6 +93,9 @@
 
         /* ===== 맛 표현 버튼 (상단 이동용 조정) ===== */
         .mark-btn-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             position: relative;
             top: 10px;
         }
@@ -113,7 +119,7 @@
             box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
         }
 
-        /* ===== 공통 헤더 (국기 이모지 버그 수정) ===== */
+        /* ===== 공통 헤더 (중앙 정렬 및 버그 수정) ===== */
         .screen-header {
             padding: 16px 20px 12px;
             font-size: 22px;
@@ -121,7 +127,9 @@
             color: #1d1d1f;
             background: #fff;
             position: relative;
-            z-index: 10;
+            z-index: 50;
+            text-align: center;
+            isolation: isolate;
         }
         .screen-header small {
             display: block;
@@ -129,13 +137,14 @@
             font-weight: 400;
             color: #8e8e93;
             margin-top: 2px;
+            text-align: center;
         }
         
-        /* 개발자 정보 */
+        /* 개발자 정보 (중앙 정렬에 맞춰 위치 조정) */
         .dev-badge {
             position: absolute;
-            top: 16px;
-            right: 20px;
+            top: 8px;
+            right: 12px;
             text-align: right;
             pointer-events: none;
         }
