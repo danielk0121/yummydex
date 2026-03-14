@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- v-260314-1540-kst -->
+<!-- v-260314-1555-kst -->
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -212,29 +212,6 @@
             justify-content: center;
             font-size: 64px;
             background: linear-gradient(135deg, #ffecd2, #fcb69f);
-        }
-        .marking-dot {
-            position: absolute;
-            width: 40px; height: 40px;
-            border: 3px solid #ff6b35;
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            animation: pulse-ring 2s ease-out infinite;
-            pointer-events: none;
-        }
-        .marking-dot::after {
-            content: '';
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 8px; height: 8px;
-            background: #ff6b35;
-            border-radius: 50%;
-        }
-        @keyframes pulse-ring {
-            0% { box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(255, 107, 53, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 107, 53, 0); }
         }
 
         /* 맛 태그 */
@@ -482,29 +459,6 @@
             font-weight: 500;
             backdrop-filter: blur(10px);
             white-space: nowrap;
-        }
-        .user-mark {
-            position: absolute;
-            width: 48px; height: 48px;
-            border: 3px solid #ff6b35;
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            display: none;
-            animation: mark-appear 0.3s ease-out;
-            pointer-events: none;
-        }
-        .user-mark::after {
-            content: '';
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 10px; height: 10px;
-            background: #ff6b35;
-            border-radius: 50%;
-        }
-        @keyframes mark-appear {
-            from { transform: translate(-50%, -50%) scale(0); opacity: 0; }
-            to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
         }
 
         /* ===== 맛 태그 선택 패널 ===== */
@@ -1066,12 +1020,6 @@
             position: relative;
         }
         .recent-item .food-placeholder { font-size: 32px; }
-        .recent-item .marking-dot {
-            width: 24px; height: 24px;
-        }
-        .recent-item .marking-dot::after {
-            width: 5px; height: 5px;
-        }
 
         /* ================================================================
            알림 화면 (푸시 알림 유도 UX)
@@ -1157,7 +1105,7 @@
                     </div>
                     <div class="feed-image-wrap">
                         <img src="../docs/sample/food-01.jpg" alt="Food">
-                        <div class="marking-dot" style="top: 45%; left: 55%;"></div>
+
                     </div>
                     <div class="feed-tags">
                         <span class="taste-tag crispy">🔥 바삭</span>
@@ -1222,7 +1170,6 @@
                     </div>
                     <div class="feed-image-wrap">
                         <img src="../docs/sample/food-02.jpg" alt="Dessert">
-                        <div class="marking-dot" style="top: 40%; left: 48%;"></div>
                     </div>
                     <div class="feed-tags">
                         <span class="taste-tag sweet">🍯 달콤</span>
@@ -1287,7 +1234,6 @@
                     </div>
                     <div class="feed-image-wrap">
                         <img src="../docs/sample/food-03.jpg" alt="Spicy Food">
-                        <div class="marking-dot" style="top: 50%; left: 40%;"></div>
                     </div>
                     <div class="feed-tags">
                         <span class="taste-tag spicy">🌶️ 매움</span>
@@ -1363,7 +1309,6 @@
                 <div class="explore-card">
                     <div class="explore-card-img">
                         <img src="../docs/sample/food-04.jpg" alt="Food">
-                        <div class="marking-dot" style="top: 50%; left: 55%;"></div>
                     </div>
                     <div class="explore-card-info">
                         <div class="card-title">오마카세 참치 뱃살</div>
@@ -1376,7 +1321,6 @@
                 <div class="explore-card">
                     <div class="explore-card-img">
                         <img src="../docs/sample/food-05.jpg" alt="Food">
-                        <div class="marking-dot" style="top: 45%; left: 50%;"></div>
                     </div>
                     <div class="explore-card-info">
                         <div class="card-title">화덕 피자 크러스트</div>
@@ -1389,7 +1333,6 @@
                 <div class="explore-card">
                     <div class="explore-card-img">
                         <img src="../docs/sample/food-06.jpg" alt="Food">
-                        <div class="marking-dot" style="top: 40%; left: 48%;"></div>
                     </div>
                     <div class="explore-card-info">
                         <div class="card-title">크로플 크림</div>
@@ -1402,7 +1345,6 @@
                 <div class="explore-card">
                     <div class="explore-card-img">
                         <img src="../docs/sample/food-07.jpg" alt="Food">
-                        <div class="marking-dot" style="top: 55%; left: 45%;"></div>
                     </div>
                     <div class="explore-card-info">
                         <div class="card-title">부대찌개 소시지</div>
@@ -1415,7 +1357,6 @@
                 <div class="explore-card">
                     <div class="explore-card-img">
                         <img src="../docs/sample/food-08.jpg" alt="Food">
-                        <div class="marking-dot" style="top: 48%; left: 52%;"></div>
                     </div>
                     <div class="explore-card-info">
                         <div class="card-title">한우 꽃등심 마블링</div>
@@ -1428,7 +1369,6 @@
                 <div class="explore-card">
                     <div class="explore-card-img">
                         <img src="../docs/sample/food-09.jpg" alt="Food">
-                        <div class="marking-dot" style="top: 50%; left: 50%;"></div>
                     </div>
                     <div class="explore-card-info">
                         <div class="card-title">라멘 차슈</div>
@@ -1466,10 +1406,9 @@
 
             <!-- 마킹 모드 -->
             <div class="marking-overlay" id="markingMode">
-                <div class="marking-image-area" id="markingArea" onclick="placeMarking(event)">
+                <div class="marking-image-area" id="markingArea">
                     <img src="../docs/sample/food-19.jpg" alt="Photo" style="width:100%; height:100%; object-fit:cover;">
-                    <div class="user-mark" id="userMark"></div>
-                    <div class="marking-guide" id="markingGuide">👆 가장 감동한 부위를 터치하세요!</div>
+                    <div class="marking-guide" id="markingGuide">📸 미식 포인트를 확인했어요!</div>
                 </div>
                 <div class="taste-panel" id="tastePanel">
                     <div class="taste-panel-header">
@@ -1654,27 +1593,21 @@
                 <div class="recent-grid">
                     <div class="recent-item">
                         <img src="../docs/sample/food-10.jpg" alt="Recent">
-                        <div class="marking-dot" style="top:40%; left:55%;"></div>
                     </div>
                     <div class="recent-item">
                         <img src="../docs/sample/food-11.jpg" alt="Recent">
-                        <div class="marking-dot" style="top:50%; left:45%;"></div>
                     </div>
                     <div class="recent-item">
                         <img src="../docs/sample/food-12.jpg" alt="Recent">
-                        <div class="marking-dot" style="top:45%; left:50%;"></div>
                     </div>
                     <div class="recent-item">
                         <img src="../docs/sample/food-13.jpg" alt="Recent">
-                        <div class="marking-dot" style="top:48%; left:52%;"></div>
                     </div>
                     <div class="recent-item">
                         <img src="../docs/sample/food-14.jpg" alt="Recent">
-                        <div class="marking-dot" style="top:52%; left:48%;"></div>
                     </div>
                     <div class="recent-item">
                         <img src="../docs/sample/food-15.jpg" alt="Recent">
-                        <div class="marking-dot" style="top:42%; left:55%;"></div>
                     </div>
                 </div>
             </div>
@@ -1741,7 +1674,7 @@
         </button>
         <div class="mark-btn-wrap">
             <button class="mark-btn" onclick="switchScreen('mark')">
-                <span></span>
+                <span>📌</span>
             </button>
         </div>
         <button class="nav-item" onclick="switchScreen('detective')">
@@ -1830,8 +1763,7 @@
         document.getElementById('markingMode').classList.remove('show');
         document.getElementById('tastePanel').classList.remove('show');
         document.getElementById('locationPanel').classList.remove('show');
-        document.getElementById('userMark').style.display = 'none';
-        document.getElementById('markingGuide').textContent = '👆 가장 감동한 부위를 터치하세요!';
+        document.getElementById('markingGuide').textContent = '📸 미식 포인트를 확인했어요!';
         // 로딩 오버레이 초기화
         const loadingEl = document.getElementById('mapLoadingOverlay');
         if (loadingEl) loadingEl.style.display = 'flex';
@@ -1845,34 +1777,12 @@
     }
 
     function takePhoto() {
-        markingState = 'marking';
+        markingState = 'taste';
         document.getElementById('cameraMode').style.display = 'none';
         document.getElementById('cameraControls').style.display = 'none';
         document.getElementById('markingMode').classList.add('show');
-        updateSteps('step2');
-    }
-
-    function placeMarking(e) {
-        if (markingState !== 'marking') return;
-        const rect = e.currentTarget.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        const mark = document.getElementById('userMark');
-        mark.style.left = x + 'px';
-        mark.style.top = y + 'px';
-        mark.style.display = 'block';
-        mark.style.animation = 'none';
-        mark.offsetHeight;
-        mark.style.animation = 'mark-appear 0.3s ease-out';
-
-        document.getElementById('markingGuide').textContent = '잘 찍었어요! 아래에서 맛을 기록하세요 👇';
-
-        setTimeout(() => {
-            markingState = 'taste';
-            document.getElementById('tastePanel').classList.add('show');
-            updateSteps('step3');
-        }, 500);
+        document.getElementById('tastePanel').classList.add('show');
+        updateSteps('step3');
     }
 
     function updateSteps(current) {
