@@ -190,14 +190,6 @@
         .feed-user-info { flex: 1; }
         .feed-username { font-size: 14px; font-weight: 700; }
         .feed-time { font-size: 11px; color: #8e8e93; }
-        .feed-sync-badge {
-            font-size: 11px;
-            background: #fff3ed;
-            color: #ff6b35;
-            padding: 3px 8px;
-            border-radius: 10px;
-            font-weight: 600;
-        }
 
         /* 음식 이미지 + 맛 표현 */
         .feed-image-wrap {
