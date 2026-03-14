@@ -1,0 +1,1186 @@
+        /* ===== 리셋 & 기본 ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
+            background: #f5f5f7;
+            color: #1d1d1f;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        /* ===== 모바일 프레임 ===== */
+        .app-frame {
+            width: 100%;
+            max-width: 430px;
+            height: 100vh;
+            margin: 0 auto;
+            background: #fff;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ===== 화면 컨테이너 ===== */
+        .screens-container {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+        }
+        .screen {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            overflow-y: auto;
+            overflow-x: hidden;
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease;
+            transform: translateX(100%);
+            opacity: 0;
+            background: #fff;
+            -webkit-overflow-scrolling: touch;
+            
+            /* 스크롤바 숨김 */
+            -ms-overflow-style: none; /* IE, Edge */
+            scrollbar-width: none; /* Firefox */
+        }
+        .screen::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+        .screen.active {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        .screen.slide-left {
+            transform: translateX(-30%);
+            opacity: 0;
+        }
+
+        /* ===== 하단 네비게이션 ===== */
+        .bottom-nav {
+            height: 80px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-around;
+            background: #fff;
+            border-top: 1px solid #e5e5e5;
+            padding-top: 8px;
+            flex-shrink: 0;
+            z-index: 100;
+        }
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            font-size: 10px;
+            color: #8e8e93;
+            cursor: pointer;
+            transition: color 0.2s;
+            border: none;
+            background: none;
+            padding: 4px 12px;
+        }
+        .nav-item.active { color: #ff6b35; }
+        .nav-item .nav-icon { font-size: 24px; line-height: 1; }
+        .nav-item .nav-label { font-weight: 500; }
+
+        /* ===== 마킹 버튼 (중앙) ===== */
+        .mark-btn-wrap {
+            position: relative;
+            top: -16px;
+        }
+        .mark-btn {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff6b35, #ff3d71);
+            border: 4px solid #fff;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: #fff;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .mark-btn:active {
+            transform: scale(0.92);
+            box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+        }
+
+        /* ===== 공통 헤더 ===== */
+        .screen-header {
+            padding: 16px 20px 12px;
+            font-size: 22px;
+            font-weight: 800;
+            color: #1d1d1f;
+        }
+        .screen-header small {
+            display: block;
+            font-size: 13px;
+            font-weight: 400;
+            color: #8e8e93;
+            margin-top: 2px;
+        }
+        
+        /* 개발자 정보 */
+        .dev-badge {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            text-align: right;
+            pointer-events: none;
+        }
+        .dev-badge .dev-name { font-size: 10px; font-weight: 700; color: #ff6b35; opacity: 0.8; margin-bottom: 2px; }
+        .dev-badge .dev-ver { font-size: 9px; color: #999; font-family: monospace; }
+
+        /* ================================================================
+           홈 피드 화면
+           ================================================================ */
+        .feed-tabs {
+            display: flex;
+            padding: 0 20px;
+            gap: 16px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .feed-tab {
+            padding: 10px 0;
+            font-size: 14px;
+            font-weight: 600;
+            color: #8e8e93;
+            border: none;
+            background: none;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+        }
+        .feed-tab.active {
+            color: #ff6b35;
+            border-bottom-color: #ff6b35;
+        }
+
+        /* 피드 카드 */
+        .feed-list { padding: 16px 20px 100px; display: flex; flex-direction: column; gap: 20px; }
+        .feed-card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            overflow: hidden;
+            border: 1px solid #f0f0f0;
+        }
+        .feed-card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 16px;
+        }
+        .feed-avatar {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff6b35, #ffb347);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #fff;
+            flex-shrink: 0;
+        }
+        .feed-user-info { flex: 1; }
+        .feed-username { font-size: 14px; font-weight: 700; }
+        .feed-time { font-size: 11px; color: #8e8e93; }
+        .feed-sync-badge {
+            font-size: 11px;
+            background: #fff3ed;
+            color: #ff6b35;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+
+        /* 음식 이미지 + 마킹 */
+        .feed-image-wrap {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4/3;
+            background: #f5f5f5;
+            overflow: hidden;
+        }
+        .feed-image-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .food-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 64px;
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+        }
+
+        /* 맛 태그 */
+        .feed-tags {
+            padding: 10px 16px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .taste-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+        }
+        .taste-tag.sweet { background: #fff0f0; color: #e84057; }
+        .taste-tag.salty { background: #f0f4ff; color: #4a6cf7; }
+        .taste-tag.crispy { background: #fff8ed; color: #e8930c; }
+        .taste-tag.spicy { background: #fff0ed; color: #ff4500; }
+        .taste-tag.savory { background: #f0fdf4; color: #16a34a; }
+        .taste-tag.rich { background: #fdf4ff; color: #a855f7; }
+        .taste-tag.mild { background: #f0fdfa; color: #0d9488; }
+        .taste-tag.chewy { background: #fefce8; color: #ca8a04; }
+
+        /* 피드 위치 정보 */
+        .feed-location-bar {
+            padding: 4px 16px 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .feed-location-text {
+            font-size: 11px;
+            color: #8e8e93;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .feed-location-btn {
+            font-size: 11px;
+            font-weight: 700;
+            color: #ff6b35;
+            background: #fff3ed;
+            padding: 4px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            border: none;
+        }
+
+        /* 피드 하단 리액션 */
+        .feed-footer {
+            padding: 10px 16px 14px;
+            border-top: 1px solid #f5f5f5;
+        }
+        .feed-comment {
+            font-size: 13px;
+            color: #3a3a3c;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+        .reaction-btns {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .reaction-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            border: 1px solid #e5e5e5;
+            background: #fff;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: #636366;
+        }
+        .reaction-btn:hover { background: #fff3ed; border-color: #ff6b35; color: #ff6b35; }
+        .reaction-btn.reacted { background: #ff6b35; color: #fff; border-color: #ff6b35; }
+        .reaction-btn .r-icon { font-size: 14px; }
+        .reaction-btn .r-count { font-weight: 600; }
+
+        /* 댓글 섹션 */
+        .comments-section {
+            margin-top: 12px;
+            border-top: 1px solid #f5f5f5;
+            padding-top: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .comment-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+        .comment-avatar {
+            font-size: 18px;
+            flex-shrink: 0;
+            line-height: 1;
+        }
+        .comment-body {
+            font-size: 12px;
+            color: #3a3a3c;
+            line-height: 1.5;
+        }
+        .comment-user {
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-right: 5px;
+        }
+        .comment-time {
+            font-size: 11px;
+            color: #999;
+            margin-left: 5px;
+        }
+        .comments-more {
+            font-size: 12px;
+            color: #ff6b35;
+            font-weight: 500;
+            cursor: pointer;
+            padding-top: 2px;
+        }
+
+        /* 입맛 매칭도 배지 */
+        .match-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 11px;
+            color: #8e8e93;
+            margin-top: 8px;
+        }
+        .match-bar {
+            width: 60px; height: 4px;
+            background: #e5e5e5;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .match-bar-fill {
+            height: 100%;
+            border-radius: 2px;
+            background: linear-gradient(90deg, #ff6b35, #ff3d71);
+        }
+
+        /* ================================================================
+           마킹(촬영) 화면
+           ================================================================ */
+        .marking-screen {
+            background: #000;
+            display: flex;
+            flex-direction: column;
+        }
+        .camera-area {
+            flex: 1;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .camera-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #2c2c2e, #1c1c1e);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            gap: 12px;
+        }
+        .camera-placeholder .cam-icon { font-size: 64px; opacity: 0.6; }
+        .camera-placeholder .cam-text { font-size: 14px; opacity: 0.5; }
+
+        /* 마킹 단계 안내 */
+        .marking-steps {
+            position: absolute;
+            top: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+        .marking-step {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.5);
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+        }
+        .marking-step.current {
+            color: #fff;
+            background: rgba(255, 107, 53, 0.8);
+        }
+        .marking-step.done {
+            color: rgba(255,255,255,0.7);
+            background: rgba(255,255,255,0.15);
+        }
+
+        .camera-controls {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            background: rgba(0,0,0,0.8);
+        }
+        .shutter-btn {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            background: #fff;
+            border: 4px solid rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: transform 0.15s;
+        }
+        .shutter-btn:active { transform: scale(0.9); }
+        .cam-option {
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            border: none;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 마킹 후 화면 */
+        .marking-overlay {
+            display: none;
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            flex-direction: column;
+        }
+        .marking-overlay.show { display: flex; }
+
+        .marking-image-area {
+            flex: 1;
+            position: relative;
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: crosshair;
+        }
+        .marking-image-area .food-emoji { font-size: 120px; }
+        .marking-guide {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.6);
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+            white-space: nowrap;
+        }
+
+        /* ===== 맛 태그 선택 패널 ===== */
+        .taste-panel {
+            display: none;
+            background: #fff;
+            border-radius: 24px 24px 0 0;
+            padding: 20px;
+            flex-direction: column;
+            gap: 16px;
+            animation: slide-up 0.35s ease-out;
+        }
+        .taste-panel.show { display: flex; }
+        @keyframes slide-up {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+        .taste-panel-header {
+            text-align: center;
+        }
+        .taste-panel-header h3 {
+            font-size: 18px;
+            font-weight: 800;
+        }
+        .taste-panel-header p {
+            font-size: 12px;
+            color: #8e8e93;
+            margin-top: 4px;
+        }
+        .taste-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+        }
+        .taste-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            padding: 14px 8px;
+            border-radius: 16px;
+            border: 2px solid #f0f0f0;
+            background: #fff;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 12px;
+            font-weight: 600;
+            color: #636366;
+        }
+        .taste-option:hover { border-color: #ffd4c0; }
+        .taste-option.selected {
+            border-color: #ff6b35;
+            background: #fff8f5;
+            color: #ff6b35;
+        }
+        .taste-option .t-emoji { font-size: 28px; }
+
+        /* 강도 슬라이더 */
+        .intensity-section { display: flex; flex-direction: column; gap: 8px; }
+        .intensity-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            font-weight: 600;
+            color: #636366;
+        }
+        .intensity-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: linear-gradient(90deg, #ffd4c0, #ff6b35);
+            outline: none;
+        }
+        .intensity-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 24px; height: 24px;
+            border-radius: 50%;
+            background: #ff6b35;
+            border: 3px solid #fff;
+            box-shadow: 0 2px 8px rgba(255,107,53,0.3);
+            cursor: pointer;
+        }
+
+        .upload-btn {
+            width: 100%;
+            padding: 16px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #ff6b35, #ff3d71);
+            color: #fff;
+            font-size: 16px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        .upload-btn:active { opacity: 0.85; }
+
+        /* ===== 위치 기록 패널 ===== */
+        .location-panel {
+            display: none;
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            flex-direction: column;
+            background: #fff;
+            z-index: 30;
+            animation: slide-up 0.35s ease-out;
+        }
+        .location-panel.show { display: flex; }
+        .location-panel-header {
+            padding: 20px 20px 14px;
+            border-bottom: 1px solid #f0f0f0;
+            text-align: center;
+        }
+        .location-panel-header h3 { font-size: 18px; font-weight: 800; }
+        .location-panel-header p { font-size: 12px; color: #8e8e93; margin-top: 4px; }
+        .location-map-wrap {
+            flex: 1;
+            position: relative;
+            min-height: 0;
+            overflow: hidden;
+            background: #e8f4fd;
+        }
+        #markingMap { width: 100%; height: 100%; }
+        .map-loading-overlay {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(232, 244, 253, 0.92);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            z-index: 10;
+        }
+        .map-loading-icon { font-size: 40px; animation: pulse-icon 1s ease-in-out infinite; }
+        .map-loading-text { font-size: 13px; color: #555; font-weight: 600; }
+        @keyframes pulse-icon {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+        .location-info-bar {
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #f8f8f8;
+            border-top: 1px solid #eee;
+        }
+        .location-info-icon { font-size: 22px; }
+        .location-info-text { flex: 1; }
+        .location-info-name { font-size: 14px; font-weight: 700; color: #1d1d1f; }
+        .location-info-coords { font-size: 11px; color: #8e8e93; margin-top: 2px; }
+        .location-action-btns {
+            display: flex;
+            gap: 10px;
+            padding: 14px 20px;
+            background: #fff;
+        }
+        .btn-location-skip {
+            flex: 1;
+            padding: 14px;
+            border: 1.5px solid #e0e0e0;
+            border-radius: 12px;
+            background: #fff;
+            font-size: 14px;
+            color: #8e8e93;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .btn-location-confirm {
+            flex: 2;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #ff6b35, #ff3d71);
+            color: #fff;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        /* ===== 피드 카드 위치 정보 (하단 배치용) ===== */
+        .feed-location {
+            margin-top: 12px;
+            padding-top: 10px;
+            border-top: 1px dotted #f0f0f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .feed-location-text {
+            font-size: 11px;
+            color: #8e8e93;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .feed-map-btn {
+            font-size: 11px;
+            color: #ff6b35;
+            font-weight: 700;
+            background: #fff3ed;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        /* ===== 위치 지도 모달 ===== */
+        .map-modal {
+            display: none;
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.65);
+            z-index: 200;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+        .map-modal.show { display: flex; }
+        .map-modal-card {
+            background: #fff;
+            border-radius: 24px 24px 0 0;
+            overflow: hidden;
+            animation: slide-up 0.3s ease-out;
+        }
+        .map-modal-header {
+            padding: 16px 20px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .map-modal-title { font-size: 16px; font-weight: 700; }
+        .map-modal-close {
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            background: #f5f5f7;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #feedMap { width: 100%; height: 280px; }
+        .map-modal-footer {
+            padding: 14px 20px;
+            font-size: 13px;
+            color: #636366;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* ===== 업로드 완료 토스트 ===== */
+        .toast {
+            display: none;
+            position: fixed;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1d1d1f;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 14px;
+            font-size: 14px;
+            font-weight: 600;
+            z-index: 999;
+            animation: toast-in 0.3s ease-out;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        }
+        .toast.show { display: flex; align-items: center; gap: 8px; }
+        @keyframes toast-in {
+            from { transform: translateX(-50%) translateY(-20px); opacity: 0; }
+            to { transform: translateX(-50%) translateY(0); opacity: 1; }
+        }
+
+        /* ================================================================
+           탐색 화면
+           ================================================================ */
+        .explore-screen { background: #f5f5f7; }
+        .search-bar-wrap {
+            padding: 12px 20px;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background: #fff;
+            z-index: 10;
+        }
+        .search-input-box {
+            position: relative;
+            flex: 1;
+        }
+        .search-bar {
+            width: 100%;
+            padding: 12px 16px 12px 40px;
+            border-radius: 12px;
+            border: none;
+            background: #f2f2f7;
+            font-size: 15px;
+            outline: none;
+            color: #1d1d1f;
+        }
+        .search-bar::placeholder { color: #8e8e93; }
+        .search-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+            color: #8e8e93;
+        }
+        .search-add-btn {
+            padding: 12px 16px;
+            background: #ff6b35;
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .search-add-btn:active { opacity: 0.8; }
+
+        /* 검색 태그 영역 */
+        .active-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 0 20px 8px;
+            background: #fff;
+        }
+        .search-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: #fff3ed;
+            color: #ff6b35;
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px solid #ff6b35;
+        }
+        .search-tag .remove-tag {
+            font-size: 14px;
+            margin-left: 4px;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        /* 맛 필터 칩 */
+        .filter-chips {
+            display: flex;
+            gap: 8px;
+            padding: 8px 20px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .filter-chips::-webkit-scrollbar { display: none; }
+        .filter-chip {
+            flex-shrink: 0;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1.5px solid #e5e5e5;
+            background: #fff;
+            color: #636366;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .filter-chip.active {
+            border-color: #ff6b35;
+            background: #fff3ed;
+            color: #ff6b35;
+        }
+
+        /* 탐색 결과 그리드 */
+        .explore-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            padding: 12px 20px 100px;
+        }
+        .explore-card {
+            border-radius: 16px;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .explore-card:active { transform: scale(0.97); }
+        .explore-card-img {
+            aspect-ratio: 1;
+            position: relative;
+            overflow: hidden;
+        }
+        .explore-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #f0f0f0;
+        }
+        .explore-card-img .food-placeholder {
+            font-size: 48px;
+        }
+        .explore-card-info {
+            padding: 10px 12px;
+        }
+        .explore-card-info .card-title {
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+        .explore-card-info .card-restaurant {
+            font-size: 11px;
+            font-weight: 600;
+            color: #ff6b35;
+            margin-bottom: 1px;
+        }
+        .explore-card-info .card-loc {
+            font-size: 10px;
+            color: #8e8e93;
+            margin-bottom: 6px;
+        }
+        .explore-card-info .card-tags {
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+        .explore-card-info .mini-tag {
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        /* ================================================================
+           미식 탐정 화면
+           ================================================================ */
+        .detective-screen { background: #f5f5f7; }
+        .detective-banner {
+            margin: 16px 20px;
+            padding: 20px;
+            background: linear-gradient(135deg, #1d1d1f, #3a3a3c);
+            border-radius: 20px;
+            color: #fff;
+        }
+        .detective-banner h3 { font-size: 18px; font-weight: 800; margin-bottom: 6px; }
+        .detective-banner p { font-size: 13px; opacity: 0.7; line-height: 1.5; }
+        .detective-ask-btn {
+            margin-top: 12px;
+            padding: 10px 20px;
+            border-radius: 12px;
+            background: #ff6b35;
+            color: #fff;
+            border: none;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .detective-list { padding: 0 20px 100px; display: flex; flex-direction: column; gap: 12px; }
+        .detective-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .detective-card-top {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+        .detective-card-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: #f8f8f8;
+        }
+        .detective-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .detective-card-img .food-placeholder { font-size: 32px; border-radius: 12px; }
+        .detective-card-text h4 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+        .detective-card-text p { font-size: 12px; color: #8e8e93; line-height: 1.4; }
+        .detective-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+        .detective-badge.open { background: #f0fdf4; color: #16a34a; }
+        .detective-badge.solved { background: #fff3ed; color: #ff6b35; }
+        .detective-answers {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: #8e8e93;
+            margin-top: 8px;
+        }
+
+        /* ================================================================
+           프로필 / 미식 MBTI 화면
+           ================================================================ */
+        .profile-screen { background: #f5f5f7; }
+        .profile-header {
+            background: #fff;
+            padding: 24px 20px 20px;
+            text-align: center;
+            border-radius: 0 0 24px 24px;
+        }
+        .profile-avatar {
+            width: 80px; height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff6b35, #ff3d71);
+            margin: 0 auto 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            color: #fff;
+        }
+        .profile-name { font-size: 20px; font-weight: 800; }
+        .profile-handle { font-size: 13px; color: #8e8e93; margin-top: 2px; }
+
+        .profile-stats {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-top: 16px;
+        }
+        .profile-stat {
+            text-align: center;
+        }
+        .profile-stat .stat-num { font-size: 20px; font-weight: 800; color: #ff6b35; }
+        .profile-stat .stat-label { font-size: 11px; color: #8e8e93; margin-top: 2px; }
+
+        /* 미식 MBTI 카드 */
+        .mbti-card {
+            margin: 16px 20px;
+            padding: 24px 20px;
+            background: linear-gradient(135deg, #ff6b35, #ff3d71);
+            border-radius: 20px;
+            color: #fff;
+            text-align: center;
+        }
+        .mbti-card .mbti-label { font-size: 12px; opacity: 0.8; font-weight: 600; }
+        .mbti-card .mbti-type {
+            font-size: 32px;
+            font-weight: 900;
+            margin: 8px 0 4px;
+            letter-spacing: 2px;
+        }
+        .mbti-card .mbti-desc { font-size: 14px; font-weight: 500; opacity: 0.9; }
+        .mbti-card .mbti-detail {
+            font-size: 12px;
+            opacity: 0.7;
+            margin-top: 8px;
+            line-height: 1.5;
+        }
+
+        /* 맛 레이더 차트 (CSS) */
+        .taste-radar {
+            margin: 0 20px;
+            background: #fff;
+            border-radius: 20px;
+            padding: 20px;
+        }
+        .taste-radar h4 { font-size: 15px; font-weight: 700; margin-bottom: 16px; }
+        .radar-bars { display: flex; flex-direction: column; gap: 10px; }
+        .radar-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .radar-label { width: 48px; font-size: 12px; font-weight: 600; color: #636366; text-align: right; }
+        .radar-track {
+            flex: 1;
+            height: 10px;
+            background: #f0f0f0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .radar-fill {
+            height: 100%;
+            border-radius: 5px;
+            transition: width 0.6s ease-out;
+        }
+        .radar-val { width: 32px; font-size: 12px; font-weight: 700; color: #1d1d1f; }
+
+        /* 최근 마킹 */
+        .recent-section {
+            margin: 16px 20px 100px;
+        }
+        .recent-section h4 {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .recent-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4px;
+        }
+        .recent-item {
+            aspect-ratio: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            background: #f8f8f8;
+        }
+        .recent-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .recent-item .food-placeholder { font-size: 32px; }
+
+        /* ================================================================
+           알림 화면 (푸시 알림 유도 UX)
+           ================================================================ */
+        .notification-screen { background: #f5f5f7; }
+        .notif-list {
+            padding: 8px 20px 100px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .notif-item {
+            background: #fff;
+            border-radius: 14px;
+            padding: 14px 16px;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .notif-item:hover { background: #fff8f5; }
+        .notif-item.unread { background: #fff8f5; }
+        .notif-icon {
+            width: 40px; height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .notif-icon.match { background: #fff0ed; }
+        .notif-icon.detective { background: #f0fdf4; }
+        .notif-icon.reaction { background: #f0f4ff; }
+        .notif-icon.system { background: #fefce8; }
+        .notif-body { flex: 1; }
+        .notif-body .notif-text { font-size: 13px; line-height: 1.5; color: #3a3a3c; }
+        .notif-body .notif-text strong { color: #1d1d1f; }
+        .notif-body .notif-time { font-size: 11px; color: #8e8e93; margin-top: 4px; }
+        .notif-action-btn {
+            margin-top: 8px;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            border: 1.5px solid #ff6b35;
+            background: #fff;
+            color: #ff6b35;
+            cursor: pointer;
+        }
+        .notif-action-btn:hover { background: #ff6b35; color: #fff; }
+
+        /* ================================================================
+           유틸리티
+           ================================================================ */
+        .hidden { display: none !important; }
