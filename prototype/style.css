@@ -37,7 +37,7 @@
             overflow-y: auto;
             overflow-x: hidden;
             transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease;
-            transform: translateX(100%);
+            transform: translateX(100%) translateZ(0);
             opacity: 0;
             background: #fff;
             -webkit-overflow-scrolling: touch;
@@ -50,11 +50,11 @@
             display: none; /* Chrome, Safari, Opera */
         }
         .screen.active {
-            transform: translateX(0);
+            transform: translateX(0) translateZ(0);
             opacity: 1;
         }
         .screen.slide-left {
-            transform: translateX(-30%);
+            transform: translateX(-30%) translateZ(0);
             opacity: 0;
         }
 
@@ -460,7 +460,7 @@
         .comment-country {
             font-size: 10px;
             margin-right: 6px;
-            vertical-align: middle;
+            display: inline-block;
             opacity: 0.8;
         }
         .comment-time {
