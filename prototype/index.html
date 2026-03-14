@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- v-260314-1645-kst -->
+<!-- v-260314-1650-kst -->
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -49,6 +49,13 @@
             opacity: 0;
             background: #fff;
             -webkit-overflow-scrolling: touch;
+            
+            /* 스크롤바 숨김 */
+            -ms-overflow-style: none; /* IE, Edge */
+            scrollbar-width: none; /* Firefox */
+        }
+        .screen::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
         }
         .screen.active {
             transform: translateX(0);
