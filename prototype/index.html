@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- v-260314-1629-kst -->
+<!-- v-260314-1645-kst -->
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -251,6 +251,31 @@
         .taste-tag.rich { background: #fdf4ff; color: #a855f7; }
         .taste-tag.mild { background: #f0fdfa; color: #0d9488; }
         .taste-tag.chewy { background: #fefce8; color: #ca8a04; }
+
+        /* 피드 위치 정보 */
+        .feed-location-bar {
+            padding: 4px 16px 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .feed-location-text {
+            font-size: 11px;
+            color: #8e8e93;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .feed-location-btn {
+            font-size: 11px;
+            font-weight: 700;
+            color: #ff6b35;
+            background: #fff3ed;
+            padding: 4px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            border: none;
+        }
 
         /* 피드 하단 리액션 */
         .feed-footer {
@@ -654,31 +679,30 @@
             cursor: pointer;
         }
 
-        /* ===== 피드 카드 위치 버튼 ===== */
+        /* ===== 피드 카드 위치 정보 (하단 배치용) ===== */
         .feed-location {
+            margin-top: 12px;
+            padding-top: 10px;
+            border-top: 1px dotted #f0f0f0;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 8px;
-            padding: 0 16px 10px;
         }
-        .feed-location-tag {
+        .feed-location-text {
+            font-size: 11px;
+            color: #8e8e93;
             display: flex;
             align-items: center;
             gap: 4px;
-            font-size: 12px;
-            color: #636366;
-            background: #f5f5f7;
-            padding: 5px 10px;
-            border-radius: 20px;
         }
         .feed-map-btn {
             font-size: 11px;
             color: #ff6b35;
             font-weight: 700;
-            background: #fff8f5;
-            border: 1px solid #ffd4c0;
-            border-radius: 20px;
+            background: #fff3ed;
+            border: none;
             padding: 5px 12px;
+            border-radius: 8px;
             cursor: pointer;
         }
 
@@ -1133,16 +1157,16 @@
                         <span class="taste-tag salty">🧂 짭조름</span>
                         <span class="taste-tag savory">🌿 고소</span>
                     </div>
-                    <div class="feed-location">
-                        <span class="feed-location-tag">📍 을지로 골목</span>
-                        <button class="feed-map-btn" onclick="showFeedMap('을지로 골목 삼겹살', 37.5668, 126.9921)">지도 보기 🗺️</button>
-                    </div>
                     <div class="feed-footer">
                         <div class="feed-comment">겉은 바삭, 속은 촉촉한 이 경계면이 미쳤어요. 여기 껍데기가 진짜 예술...</div>
                         <div class="reaction-btns">
                             <button class="reaction-btn reacted"><span class="r-icon">🤝</span> 리스펙 <span class="r-count">24</span></button>
                             <button class="reaction-btn"><span class="r-icon">🔄</span> 나랑 똑같아요 <span class="r-count">12</span></button>
                             <button class="reaction-btn"><span class="r-icon">✨</span> 오 신기해요 <span class="r-count">5</span></button>
+                        </div>
+                        <div class="feed-location">
+                            <span class="feed-location-text">📍 을지로 골목</span>
+                            <button class="feed-map-btn" onclick="showFeedMap('을지로 골목 삼겹살', 37.5668, 126.9921)">지도 보기 🗺️</button>
                         </div>
                         <div class="match-indicator">
                             입맛 싱크로율
@@ -1197,16 +1221,16 @@
                         <span class="taste-tag rich">🧈 진함</span>
                         <span class="taste-tag mild">☁️ 부드러움</span>
                     </div>
-                    <div class="feed-location">
-                        <span class="feed-location-tag">📍 성수동</span>
-                        <button class="feed-map-btn" onclick="showFeedMap('성수동 디저트 카페', 37.5446, 127.0558)">지도 보기 🗺️</button>
-                    </div>
                     <div class="feed-footer">
                         <div class="feed-comment">이 크림층과 시트 사이의 밸런스... 단짠 밸런스 90%! 치팅 지수 상위 5% 💪</div>
                         <div class="reaction-btns">
                             <button class="reaction-btn"><span class="r-icon">🤝</span> 리스펙 <span class="r-count">18</span></button>
                             <button class="reaction-btn reacted"><span class="r-icon">🔄</span> 나랑 똑같아요 <span class="r-count">31</span></button>
                             <button class="reaction-btn"><span class="r-icon">😮</span> 나랑은 달라요 <span class="r-count">3</span></button>
+                        </div>
+                        <div class="feed-location">
+                            <span class="feed-location-text">📍 성수동</span>
+                            <button class="feed-map-btn" onclick="showFeedMap('성수동 디저트 카페', 37.5446, 127.0558)">지도 보기 🗺️</button>
                         </div>
                         <div class="match-indicator">
                             입맛 싱크로율
@@ -1267,6 +1291,10 @@
                             <button class="reaction-btn"><span class="r-icon">🤝</span> 리스펙 <span class="r-count">9</span></button>
                             <button class="reaction-btn"><span class="r-icon">✨</span> 오 신기해요 <span class="r-count">15</span></button>
                             <button class="reaction-btn"><span class="r-icon">😮</span> 나랑은 달라요 <span class="r-count">7</span></button>
+                        </div>
+                        <div class="feed-location">
+                            <span class="feed-location-text">📍 건대입구</span>
+                            <button class="feed-map-btn" onclick="showFeedMap('건대입구 떡볶이', 37.5411, 127.0681)">지도 보기 🗺️</button>
                         </div>
                         <!-- 입맛 다른 유저 의견 표시 예시 -->
                         <div class="match-indicator" style="color:#e84057;">
