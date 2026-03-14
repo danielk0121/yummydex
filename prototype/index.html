@@ -298,6 +298,48 @@
         .reaction-btn .r-icon { font-size: 14px; }
         .reaction-btn .r-count { font-weight: 600; }
 
+        /* 댓글 섹션 */
+        .comments-section {
+            margin-top: 12px;
+            border-top: 1px solid #f5f5f5;
+            padding-top: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .comment-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+        .comment-avatar {
+            font-size: 18px;
+            flex-shrink: 0;
+            line-height: 1;
+        }
+        .comment-body {
+            font-size: 12px;
+            color: #3a3a3c;
+            line-height: 1.5;
+        }
+        .comment-user {
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-right: 5px;
+        }
+        .comment-time {
+            font-size: 11px;
+            color: #999;
+            margin-left: 5px;
+        }
+        .comments-more {
+            font-size: 12px;
+            color: #ff6b35;
+            font-weight: 500;
+            cursor: pointer;
+            padding-top: 2px;
+        }
+
         /* 입맛 매칭도 배지 */
         .match-indicator {
             display: inline-flex;
@@ -1143,6 +1185,33 @@
                             <div class="match-bar"><div class="match-bar-fill" style="width:87%"></div></div>
                             87%
                         </div>
+                        <div class="comments-section">
+                            <div class="comment-item">
+                                <span class="comment-avatar">🍔</span>
+                                <div class="comment-body">
+                                    <span class="comment-user">버거마니아</span>
+                                    저도 이집 갔는데 껍데기 식감 진짜 장난 아니었어요 ㅠㅠ
+                                    <span class="comment-time">1시간 전</span>
+                                </div>
+                            </div>
+                            <div class="comment-item">
+                                <span class="comment-avatar">🥩</span>
+                                <div class="comment-body">
+                                    <span class="comment-user">바삭덕후</span>
+                                    입맛 97% 일치하는데 이 경계면 완전 공감이에요! 저도 껍데기 부분만 골라 먹어요
+                                    <span class="comment-time">1시간 전</span>
+                                </div>
+                            </div>
+                            <div class="comment-item">
+                                <span class="comment-avatar">🗺️</span>
+                                <div class="comment-body">
+                                    <span class="comment-user">고기러버</span>
+                                    어느 식당이에요? 을지로 어디쯤인지 알려주실 수 있나요?
+                                    <span class="comment-time">30분 전</span>
+                                </div>
+                            </div>
+                            <span class="comments-more">댓글 8개 더 보기</span>
+                        </div>
                     </div>
                 </div>
 
@@ -1181,6 +1250,33 @@
                             <div class="match-bar"><div class="match-bar-fill" style="width:72%"></div></div>
                             72%
                         </div>
+                        <div class="comments-section">
+                            <div class="comment-item">
+                                <span class="comment-avatar">🍮</span>
+                                <div class="comment-body">
+                                    <span class="comment-user">크림팬</span>
+                                    치팅할 때마다 이런 케이크 먹는데 진짜 공감돼요 ㅋㅋ 죄책감 없이 먹게 만드는 맛
+                                    <span class="comment-time">4시간 전</span>
+                                </div>
+                            </div>
+                            <div class="comment-item">
+                                <span class="comment-avatar">☕</span>
+                                <div class="comment-body">
+                                    <span class="comment-user">디저트탐험가</span>
+                                    성수동이면 혹시 어느 카페예요? 꼭 가보고 싶어요
+                                    <span class="comment-time">3시간 전</span>
+                                </div>
+                            </div>
+                            <div class="comment-item">
+                                <span class="comment-avatar">💪</span>
+                                <div class="comment-body">
+                                    <span class="comment-user">헬스보이</span>
+                                    치팅이라도 행복하면 된 거죠... 사진만 봐도 먹고 싶어졌어요 😭
+                                    <span class="comment-time">2시간 전</span>
+                                </div>
+                            </div>
+                            <span class="comments-more">댓글 5개 더 보기</span>
+                        </div>
                     </div>
                 </div>
 
@@ -1214,6 +1310,33 @@
                         <div class="match-indicator" style="color:#e84057;">
                             ⚠️ 입맛이 58% 다른 유저의 마킹이에요
                             <div class="match-bar"><div class="match-bar-fill" style="width:58%; background: linear-gradient(90deg, #ffb347, #e84057);"></div></div>
+                        </div>
+                        <div class="comments-section">
+                            <div class="comment-item">
+                                <span class="comment-avatar">🔥</span>
+                                <div class="comment-body">
+                                    <span class="comment-user">떡볶이킹</span>
+                                    불맛 소스에 분모자라니... 정통파네요! 저도 분모자 없으면 섭섭해요
+                                    <span class="comment-time">어제</span>
+                                </div>
+                            </div>
+                            <div class="comment-item">
+                                <span class="comment-avatar">🧸</span>
+                                <div class="comment-body">
+                                    <span class="comment-user">순한맛러</span>
+                                    매운맛 약한데 쫄깃한 떡 묘사에 군침 돌아요 ㅋㅋ 참을 수가 없어요
+                                    <span class="comment-time">어제</span>
+                                </div>
+                            </div>
+                            <div class="comment-item">
+                                <span class="comment-avatar">📍</span>
+                                <div class="comment-body">
+                                    <span class="comment-user">건대맛집인</span>
+                                    건대입구 혹시 어느 집이에요? 저도 건대 살고 있는데 못 가봤어요
+                                    <span class="comment-time">20시간 전</span>
+                                </div>
+                            </div>
+                            <span class="comments-more">댓글 3개 더 보기</span>
                         </div>
                     </div>
                 </div>
