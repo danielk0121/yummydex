@@ -64,17 +64,20 @@
         /* ===== 상단 내비게이션 (최상단 탭으로 이동) ===== */
         .top-nav {
             height: calc(64px + env(safe-area-inset-top));
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            display: flex;
             align-items: center;
+            justify-content: space-between;
             background: #fff;
             border-bottom: 1px solid #e5e5e5;
             padding-top: env(safe-area-inset-top);
             flex-shrink: 0;
             z-index: 1000;
+            width: 100%;
+            padding-left: 10px;
+            padding-right: 10px;
         }
-
         .nav-item {
+            flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -85,7 +88,7 @@
             transition: color 0.2s;
             border: none;
             background: none;
-            padding: 4px 12px;
+            padding: 4px 0;
         }
         .nav-item.active { color: #ff6b35; }
         .nav-item .nav-icon { font-size: 24px; line-height: 1; }
@@ -93,27 +96,29 @@
 
         /* ===== 맛 표현 버튼 (상단 이동용 조정) ===== */
         .mark-btn-wrap {
+            flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
-            top: 10px;
+            top: 0; /* 중앙 정렬을 위해 top 제거 */
         }
         .mark-btn {
-            width: 52px;
-            height: 52px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             background: linear-gradient(135deg, #ff6b35, #ff3d71);
-            border: 4px solid #fff;
+            border: 3px solid #fff;
             box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
+            font-size: 22px;
             color: #fff;
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
         }
+
         .mark-btn:active {
             transform: scale(0.92);
             box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
@@ -467,10 +472,16 @@
             margin-right: 4px;
         }
         .comment-country {
-            font-size: 10px;
+            font-size: 12px; /* 이모지 크기 약간 키움 */
+            margin-left: 4px;
             margin-right: 6px;
-            display: inline-block;
-            opacity: 0.8;
+            display: inline-flex;
+            align-items: center;
+            vertical-align: middle;
+            opacity: 0.9;
+            line-height: 1;
+            position: relative;
+            top: -1px; /* 미세 위치 조정 */
         }
         .comment-time {
             font-size: 11px;
