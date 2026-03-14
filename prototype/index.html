@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- v-260314-1715-kst -->
+<!-- v-260314-1730-kst -->
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -789,17 +789,24 @@
         .explore-screen { background: #f5f5f7; }
         .search-bar-wrap {
             padding: 12px 20px;
+            display: flex;
+            gap: 8px;
+            align-items: center;
             position: sticky;
             top: 0;
-            background: #f5f5f7;
+            background: #fff;
             z-index: 10;
+        }
+        .search-input-box {
+            position: relative;
+            flex: 1;
         }
         .search-bar {
             width: 100%;
             padding: 12px 16px 12px 40px;
             border-radius: 12px;
             border: none;
-            background: #e5e5ea;
+            background: #f2f2f7;
             font-size: 15px;
             outline: none;
             color: #1d1d1f;
@@ -807,11 +814,50 @@
         .search-bar::placeholder { color: #8e8e93; }
         .search-icon {
             position: absolute;
-            left: 32px;
+            left: 14px;
             top: 50%;
             transform: translateY(-50%);
             font-size: 16px;
             color: #8e8e93;
+        }
+        .search-add-btn {
+            padding: 12px 16px;
+            background: #ff6b35;
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .search-add-btn:active { opacity: 0.8; }
+
+        /* 검색 태그 영역 */
+        .active-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 0 20px 8px;
+            background: #fff;
+        }
+        .search-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: #fff3ed;
+            color: #ff6b35;
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px solid #ff6b35;
+        }
+        .search-tag .remove-tag {
+            font-size: 14px;
+            margin-left: 4px;
+            cursor: pointer;
+            line-height: 1;
         }
 
         /* 맛 필터 칩 */
@@ -1370,9 +1416,15 @@
                 탐색
                 <small>맛 태그로 찾는 논리적 미식 큐레이션</small>
             </div>
-            <div class="search-bar-wrap" style="position:relative;">
-                <span class="search-icon">🔍</span>
-                <input type="text" class="search-bar" placeholder="맛, 식감, 재료로 검색...">
+            <div class="search-bar-wrap">
+                <div class="search-input-box">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-bar" id="exploreSearchInput" placeholder="맛, 식감, 재료로 검색..." onkeyup="handleSearchKeyUp(event)">
+                </div>
+                <button class="search-add-btn" onclick="addSearchTag()">추가</button>
+            </div>
+            <div class="active-tags" id="activeSearchTags">
+                <!-- 추가된 검색 태그들이 여기에 표시됨 -->
             </div>
             <div class="filter-chips">
                 <button class="filter-chip active">🔥 전체</button>
@@ -1832,6 +1884,85 @@
     /* ===== 필터 칩 토글 ===== */
     function toggleChip(el) {
         el.classList.toggle('active');
+        updateExploreFilter();
+    }
+
+    /* ===== 검색 기능 강화 (태그 추가 방식) ===== */
+    const activeSearchTags = new Set();
+
+    function handleSearchKeyUp(event) {
+        if (event.key === 'Enter') {
+            addSearchTag();
+        } else {
+            updateExploreFilter();
+        }
+    }
+
+    function addSearchTag() {
+        const input = document.getElementById('exploreSearchInput');
+        const val = input.value.trim();
+        
+        if (val && !activeSearchTags.has(val)) {
+            activeSearchTags.add(val);
+            renderSearchTags();
+            input.value = '';
+            updateExploreFilter();
+        }
+    }
+
+    function removeSearchTag(val) {
+        activeSearchTags.delete(val);
+        renderSearchTags();
+        updateExploreFilter();
+    }
+
+    function renderSearchTags() {
+        const container = document.getElementById('activeSearchTags');
+        container.innerHTML = '';
+        activeSearchTags.forEach(tag => {
+            const tagEl = document.createElement('div');
+            tagEl.className = 'search-tag';
+            tagEl.innerHTML = `
+                <span>#${tag}</span>
+                <span class="remove-tag" onclick="removeSearchTag('${tag}')">✕</span>
+            `;
+            container.appendChild(tagEl);
+        });
+    }
+
+    function updateExploreFilter() {
+        const searchVal = document.getElementById('exploreSearchInput').value.toLowerCase();
+        const activeChips = Array.from(document.querySelectorAll('.filter-chip.active:not(:first-child)'))
+                                 .map(c => c.textContent.replace(/[^\w\sㄱ-힣]/g, '').trim());
+        
+        const allCards = document.querySelectorAll('.explore-card');
+        
+        allCards.forEach(card => {
+            const title = card.querySelector('.card-title').textContent.toLowerCase();
+            const restaurant = card.querySelector('.card-restaurant')?.textContent.toLowerCase() || '';
+            const tags = Array.from(card.querySelectorAll('.mini-tag')).map(t => t.textContent.toLowerCase());
+            
+            // 1. 직접 검색어 매칭
+            const matchSearch = !searchVal || title.includes(searchVal) || restaurant.includes(searchVal);
+            
+            // 2. 해시태그(추가된 태그) 매칭 (모든 태그가 포함되어야 함)
+            const matchAddedTags = activeSearchTags.size === 0 || 
+                                   Array.from(activeSearchTags).every(t => 
+                                       title.includes(t.toLowerCase()) || 
+                                       restaurant.includes(t.toLowerCase()) ||
+                                       tags.some(tag => tag.includes(t.toLowerCase()))
+                                   );
+            
+            // 3. 필터 칩 매칭
+            const matchChips = activeChips.length === 0 || 
+                               activeChips.some(chip => tags.some(tag => tag.includes(chip.toLowerCase())));
+
+            if (matchSearch && matchAddedTags && matchChips) {
+                card.style.display = '';
+            } else {
+                card.style.display = 'none';
+            }
+        });
     }
 
     /* ===== 마킹 플로우 ===== */
