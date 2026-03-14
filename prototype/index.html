@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<!-- v-260314-1510-kst -->
+<!-- v-260314-1506-kst -->
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>야미덱스 YummyDex</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <style>
         /* ===== 리셋 & 기본 ===== */
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -559,6 +561,167 @@
         }
         .upload-btn:active { opacity: 0.85; }
 
+        /* ===== 위치 기록 패널 ===== */
+        .location-panel {
+            display: none;
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            flex-direction: column;
+            background: #fff;
+            z-index: 30;
+            animation: slide-up 0.35s ease-out;
+        }
+        .location-panel.show { display: flex; }
+        .location-panel-header {
+            padding: 20px 20px 14px;
+            border-bottom: 1px solid #f0f0f0;
+            text-align: center;
+        }
+        .location-panel-header h3 { font-size: 18px; font-weight: 800; }
+        .location-panel-header p { font-size: 12px; color: #8e8e93; margin-top: 4px; }
+        .location-map-wrap {
+            flex: 1;
+            position: relative;
+            min-height: 0;
+            overflow: hidden;
+            background: #e8f4fd;
+        }
+        #markingMap { width: 100%; height: 100%; }
+        .map-loading-overlay {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(232, 244, 253, 0.92);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            z-index: 10;
+        }
+        .map-loading-icon { font-size: 40px; animation: pulse-icon 1s ease-in-out infinite; }
+        .map-loading-text { font-size: 13px; color: #555; font-weight: 600; }
+        @keyframes pulse-icon {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+        .location-info-bar {
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #f8f8f8;
+            border-top: 1px solid #eee;
+        }
+        .location-info-icon { font-size: 22px; }
+        .location-info-text { flex: 1; }
+        .location-info-name { font-size: 14px; font-weight: 700; color: #1d1d1f; }
+        .location-info-coords { font-size: 11px; color: #8e8e93; margin-top: 2px; }
+        .location-action-btns {
+            display: flex;
+            gap: 10px;
+            padding: 14px 20px;
+            background: #fff;
+        }
+        .btn-location-skip {
+            flex: 1;
+            padding: 14px;
+            border: 1.5px solid #e0e0e0;
+            border-radius: 12px;
+            background: #fff;
+            font-size: 14px;
+            color: #8e8e93;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .btn-location-confirm {
+            flex: 2;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #ff6b35, #ff3d71);
+            color: #fff;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        /* ===== 피드 카드 위치 버튼 ===== */
+        .feed-location {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0 16px 10px;
+        }
+        .feed-location-tag {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 12px;
+            color: #636366;
+            background: #f5f5f7;
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+        .feed-map-btn {
+            font-size: 11px;
+            color: #ff6b35;
+            font-weight: 700;
+            background: #fff8f5;
+            border: 1px solid #ffd4c0;
+            border-radius: 20px;
+            padding: 5px 12px;
+            cursor: pointer;
+        }
+
+        /* ===== 위치 지도 모달 ===== */
+        .map-modal {
+            display: none;
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.65);
+            z-index: 200;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+        .map-modal.show { display: flex; }
+        .map-modal-card {
+            background: #fff;
+            border-radius: 24px 24px 0 0;
+            overflow: hidden;
+            animation: slide-up 0.3s ease-out;
+        }
+        .map-modal-header {
+            padding: 16px 20px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .map-modal-title { font-size: 16px; font-weight: 700; }
+        .map-modal-close {
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            background: #f5f5f7;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #feedMap { width: 100%; height: 280px; }
+        .map-modal-footer {
+            padding: 14px 20px;
+            font-size: 13px;
+            color: #636366;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
         /* ===== 업로드 완료 토스트 ===== */
         .toast {
             display: none;
@@ -964,6 +1127,10 @@
                         <span class="taste-tag salty">🧂 짭조름</span>
                         <span class="taste-tag savory">🌿 고소</span>
                     </div>
+                    <div class="feed-location">
+                        <span class="feed-location-tag">📍 을지로 골목</span>
+                        <button class="feed-map-btn" onclick="showFeedMap('을지로 골목 삼겹살', 37.5668, 126.9921)">지도 보기 🗺️</button>
+                    </div>
                     <div class="feed-footer">
                         <div class="feed-comment">겉은 바삭, 속은 촉촉한 이 경계면이 미쳤어요. 여기 껍데기가 진짜 예술...</div>
                         <div class="reaction-btns">
@@ -997,6 +1164,10 @@
                         <span class="taste-tag sweet">🍯 달콤</span>
                         <span class="taste-tag rich">🧈 진함</span>
                         <span class="taste-tag mild">☁️ 부드러움</span>
+                    </div>
+                    <div class="feed-location">
+                        <span class="feed-location-tag">📍 성수동</span>
+                        <button class="feed-map-btn" onclick="showFeedMap('성수동 디저트 카페', 37.5446, 127.0558)">지도 보기 🗺️</button>
                     </div>
                     <div class="feed-footer">
                         <div class="feed-comment">이 크림층과 시트 사이의 밸런스... 단짠 밸런스 90%! 치팅 지수 상위 5% 💪</div>
@@ -1159,6 +1330,7 @@
                 <span class="marking-step current" id="step1">① 찍기</span>
                 <span class="marking-step" id="step2">② 마킹</span>
                 <span class="marking-step" id="step3">③ 맛 뱉기</span>
+                <span class="marking-step" id="step4">④ 위치</span>
             </div>
 
             <!-- 카메라 모드 -->
@@ -1204,6 +1376,32 @@
                         <input type="range" class="intensity-slider" min="1" max="5" value="3" oninput="updateIntensity(this.value)">
                     </div>
                     <button class="upload-btn" onclick="completeUpload()">마킹 완료! ✨</button>
+                </div>
+
+                <!-- 위치 기록 패널 -->
+                <div class="location-panel" id="locationPanel">
+                    <div class="location-panel-header">
+                        <h3>📍 위치 기록</h3>
+                        <p>이 맛집의 위치를 지도에 저장할까요?</p>
+                    </div>
+                    <div class="location-map-wrap">
+                        <div id="markingMap"></div>
+                        <div class="map-loading-overlay" id="mapLoadingOverlay">
+                            <div class="map-loading-icon">📍</div>
+                            <div class="map-loading-text">위치 확인 중...</div>
+                        </div>
+                    </div>
+                    <div class="location-info-bar">
+                        <span class="location-info-icon">📍</span>
+                        <div class="location-info-text">
+                            <div class="location-info-name" id="locationInfoName">위치를 불러오는 중...</div>
+                            <div class="location-info-coords" id="locationInfoCoords"></div>
+                        </div>
+                    </div>
+                    <div class="location-action-btns">
+                        <button class="btn-location-skip" onclick="skipLocation()">건너뛰기</button>
+                        <button class="btn-location-confirm" onclick="confirmLocation()">위치 저장 ✨</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1440,6 +1638,20 @@
 
     <!-- 토스트 알림 -->
     <div class="toast" id="toast"></div>
+
+    <!-- 위치 지도 모달 (피드 카드용) -->
+    <div class="map-modal" id="mapModal" onclick="closeFeedMap(event)">
+        <div class="map-modal-card" onclick="event.stopPropagation()">
+            <div class="map-modal-header">
+                <span class="map-modal-title" id="mapModalTitle">📍 위치</span>
+                <button class="map-modal-close" onclick="closeFeedMap()">✕</button>
+            </div>
+            <div id="feedMap"></div>
+            <div class="map-modal-footer">
+                📍 <span id="mapModalAddress">위치 정보</span>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
@@ -1487,16 +1699,30 @@
     }
 
     /* ===== 마킹 플로우 ===== */
-    let markingState = 'camera'; // camera → marking → taste
+    let markingState = 'camera'; // camera → marking → taste → location
+    let markingMap = null;
+    let capturedLocation = null;
+    let feedMapInstance = null;
 
     function resetMarking() {
         markingState = 'camera';
+        capturedLocation = null;
         document.getElementById('cameraMode').style.display = '';
         document.getElementById('cameraControls').style.display = '';
         document.getElementById('markingMode').classList.remove('show');
         document.getElementById('tastePanel').classList.remove('show');
+        document.getElementById('locationPanel').classList.remove('show');
         document.getElementById('userMark').style.display = 'none';
         document.getElementById('markingGuide').textContent = '👆 가장 감동한 부위를 터치하세요!';
+        // 로딩 오버레이 초기화
+        const loadingEl = document.getElementById('mapLoadingOverlay');
+        if (loadingEl) loadingEl.style.display = 'flex';
+        const nameEl = document.getElementById('locationInfoName');
+        if (nameEl) nameEl.textContent = '위치를 불러오는 중...';
+        const coordsEl = document.getElementById('locationInfoCoords');
+        if (coordsEl) coordsEl.textContent = '';
+        // 지도 제거
+        if (markingMap) { markingMap.remove(); markingMap = null; }
         updateSteps('step1');
     }
 
@@ -1532,10 +1758,11 @@
     }
 
     function updateSteps(current) {
-        const steps = ['step1', 'step2', 'step3'];
+        const steps = ['step1', 'step2', 'step3', 'step4'];
         const idx = steps.indexOf(current);
         steps.forEach((s, i) => {
             const el = document.getElementById(s);
+            if (!el) return;
             el.classList.remove('current', 'done');
             if (i < idx) el.classList.add('done');
             if (i === idx) el.classList.add('current');
@@ -1553,12 +1780,149 @@
         document.getElementById('intensityVal').textContent = fires[val];
     }
 
-    /* ===== 업로드 완료 ===== */
+    /* ===== 업로드 완료 → 위치 기록 단계 ===== */
     function completeUpload() {
-        showToast('✨ 마킹 완료! 당신의 미식 도감에 추가되었어요');
+        markingState = 'location';
+        document.getElementById('tastePanel').classList.remove('show');
+        showLocationPanel();
+    }
+
+    /* ===== 위치 기록 패널 ===== */
+    function showLocationPanel() {
+        document.getElementById('locationPanel').classList.add('show');
+        updateSteps('step4');
+
+        // 이전 지도 제거
+        if (markingMap) { markingMap.remove(); markingMap = null; }
+
+        // 로딩 오버레이 표시
+        const loadingEl = document.getElementById('mapLoadingOverlay');
+        if (loadingEl) loadingEl.style.display = 'flex';
+        document.getElementById('locationInfoName').textContent = '위치를 불러오는 중...';
+        document.getElementById('locationInfoCoords').textContent = '';
+
+        if (!navigator.geolocation) {
+            // 위치 API 미지원 → 서울 기본 위치 사용
+            initMarkingMap(37.5665, 126.9780, '서울특별시 (기본 위치)');
+            return;
+        }
+
+        navigator.geolocation.getCurrentPosition(
+            (pos) => {
+                initMarkingMap(pos.coords.latitude, pos.coords.longitude, null);
+            },
+            () => {
+                // 권한 거부 또는 오류 → 을지로 데모 위치
+                initMarkingMap(37.5668, 126.9921, '을지로 (데모 위치)');
+            },
+            { timeout: 8000, enableHighAccuracy: true }
+        );
+    }
+
+    function initMarkingMap(lat, lng, fallbackName) {
+        capturedLocation = { lat, lng };
+
+        // 지도 초기화
+        markingMap = L.map('markingMap', { zoomControl: true, attributionControl: false })
+            .setView([lat, lng], 16);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 })
+            .addTo(markingMap);
+
+        // 커스텀 마커
+        const icon = L.divIcon({
+            html: '<div style="background:#ff6b35;width:28px;height:28px;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 10px rgba(255,107,53,0.55);display:flex;align-items:center;justify-content:center;font-size:14px;">📍</div>',
+            iconSize: [28, 28],
+            iconAnchor: [14, 14],
+            className: ''
+        });
+        L.marker([lat, lng], { icon }).addTo(markingMap);
+
+        // 로딩 오버레이 숨기기
+        const loadingEl = document.getElementById('mapLoadingOverlay');
+        if (loadingEl) loadingEl.style.display = 'none';
+
+        // 좌표 표시
+        document.getElementById('locationInfoCoords').textContent =
+            `${lat.toFixed(5)}, ${lng.toFixed(5)}`;
+
+        if (fallbackName) {
+            document.getElementById('locationInfoName').textContent = fallbackName;
+        } else {
+            // Nominatim 역지오코딩 (OpenStreetMap, 무료)
+            fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json&accept-language=ko`,
+                { headers: { 'Accept-Language': 'ko' } })
+                .then(r => r.json())
+                .then(data => {
+                    const a = data.address || {};
+                    const name = a.road || a.neighbourhood || a.suburb ||
+                                 a.city_district || a.city || '현재 위치';
+                    document.getElementById('locationInfoName').textContent = name;
+                })
+                .catch(() => {
+                    document.getElementById('locationInfoName').textContent = '현재 위치';
+                });
+        }
+
+        // 지도 크기 보정
+        setTimeout(() => markingMap && markingMap.invalidateSize(), 150);
+    }
+
+    function skipLocation() {
+        capturedLocation = null;
+        finishMarking(false);
+    }
+
+    function confirmLocation() {
+        finishMarking(true);
+    }
+
+    function finishMarking(withLocation) {
+        const msg = withLocation
+            ? '✨ 마킹 완료! 위치가 지도에 저장되었어요 📍'
+            : '✨ 마킹 완료! 당신의 미식 도감에 추가되었어요';
+        showToast(msg);
+        setTimeout(() => switchScreen('home'), 1500);
+    }
+
+    /* ===== 피드 카드 위치 지도 모달 ===== */
+    function showFeedMap(name, lat, lng) {
+        const modal = document.getElementById('mapModal');
+        document.getElementById('mapModalTitle').textContent = `📍 ${name}`;
+        document.getElementById('mapModalAddress').textContent = `${lat.toFixed(4)}, ${lng.toFixed(4)}`;
+        modal.classList.add('show');
+
         setTimeout(() => {
-            switchScreen('home');
-        }, 1500);
+            if (feedMapInstance) { feedMapInstance.remove(); feedMapInstance = null; }
+            feedMapInstance = L.map('feedMap', { zoomControl: false, attributionControl: false })
+                .setView([lat, lng], 16);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 })
+                .addTo(feedMapInstance);
+
+            const icon = L.divIcon({
+                html: `<div style="background:#ff6b35;width:32px;height:32px;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 10px rgba(255,107,53,0.55);display:flex;align-items:center;justify-content:center;font-size:16px;">🍽️</div>`,
+                iconSize: [32, 32],
+                iconAnchor: [16, 16],
+                className: ''
+            });
+            L.marker([lat, lng], { icon }).addTo(feedMapInstance);
+            feedMapInstance.invalidateSize();
+
+            // 역지오코딩으로 주소 표시
+            fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json&accept-language=ko`)
+                .then(r => r.json())
+                .then(data => {
+                    const a = data.address || {};
+                    const addr = [a.city_district || a.suburb, a.road]
+                        .filter(Boolean).join(' ');
+                    if (addr) document.getElementById('mapModalAddress').textContent = addr;
+                })
+                .catch(() => {});
+        }, 100);
+    }
+
+    function closeFeedMap(event) {
+        if (event && event.target !== document.getElementById('mapModal')) return;
+        document.getElementById('mapModal').classList.remove('show');
     }
 
     /* ===== 토스트 ===== */
