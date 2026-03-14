@@ -1,34 +1,40 @@
-/* ===== 화면 전환 ===== */
-const screens = {
-home: 'screen-home',
-explore: 'screen-explore',
-mark: 'screen-mark',
-detective: 'screen-detective',
-profile: 'screen-profile',
-notif: 'screen-notif'
+/* ===== 화면 전환 (파일 분리 버전) ===== */
+const pages = {
+    home: 'index.html',
+    explore: 'explore.html',
+    mark: 'mark.html',
+    detective: 'detective.html',
+    profile: 'profile.html'
 };
-let currentScreen = 'home';
 
 function switchScreen(name) {
-if (name === currentScreen) return;
+    if (pages[name]) {
+        location.href = pages[name];
+    }
+}
 
-// 맛 표현 화면 초기화
-if (name === 'mark') resetMarking();
+// 현재 페이지에 따른 네비게이션 활성화 (DOMContentLoaded 시 실행)
+document.addEventListener('DOMContentLoaded', () => {
+    const path = window.location.pathname;
+    const page = path.split("/").pop() || 'index.html';
+    
+    const navMap = {
+        'index.html': 0,
+        'explore.html': 1,
+        'mark.html': 2, // mark-btn-wrap은 인덱스 계산시 주의 필요 (아래에서 별도 처리 가능)
+        'detective.html': 3,
+        'profile.html': 4
+    };
 
-document.querySelectorAll('.screen').forEach(s => {
-s.classList.remove('active', 'slide-left');
+    const navItems = document.querySelectorAll('.top-nav .nav-item');
+    if (navItems.length > 0) {
+        navItems.forEach(n => n.classList.remove('active'));
+        const activeIdx = navMap[page];
+        if (activeIdx !== undefined && navItems[activeIdx]) {
+            navItems[activeIdx].classList.add('active');
+        }
+    }
 });
-document.getElementById(screens[name]).classList.add('active');
-
-// 네비게이션 활성 상태 (top-nav 내 nav-item 선택)
-document.querySelectorAll('.top-nav .nav-item').forEach(n => n.classList.remove('active'));
-const navMap = { home: 0, explore: 1, detective: 3, profile: 4 };
-if (navMap[name] !== undefined) {
-document.querySelectorAll('.top-nav .nav-item')[navMap[name]].classList.add('active');
-}
-
-currentScreen = name;
-}
 
 /* ===== 피드 탭 전환 ===== */
 function switchFeedTab(el) {

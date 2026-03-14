@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!-- v-260314-2330-kst -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>야미덱스 YummyDex - 맛 표현</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="style.css"></head>
+<body>
+
+<div class="app-frame">
+    <!-- 상단 내비게이션 -->
+    <div class="top-nav">
+        <button class="nav-item" onclick="switchScreen('home')">
+            <span class="nav-icon">🏠</span>
+            <span class="nav-label">홈</span>
+        </button>
+        <button class="nav-item" onclick="switchScreen('explore')">
+            <span class="nav-icon">🔍</span>
+            <span class="nav-label">탐색</span>
+        </button>
+        <div class="mark-btn-wrap">
+            <button class="mark-btn active" onclick="switchScreen('mark')">
+                <span style="font-size:28px; font-weight:300;">+</span>
+            </button>
+        </div>
+        <button class="nav-item" onclick="switchScreen('detective')">
+            <span class="nav-icon">🕵️</span>
+            <span class="nav-label">탐정</span>
+        </button>
+        <button class="nav-item" onclick="switchScreen('profile')">
+            <span class="nav-icon">😋</span>
+            <span class="nav-label">내 도감</span>
+        </button>
+    </div>
+
+    <div class="screens-container">
+        <!-- ========== 3. 맛 표현(촬영) 화면 ========== -->
+        <div class="screen active marking-screen" id="screen-mark">
+            <div class="marking-steps">
+                <span class="marking-step current" id="step1">① 찍기</span>
+                <span class="marking-step" id="step2">② 맛 표현</span>
+                <span class="marking-step" id="step3">③ 맛 뱉기</span>
+                <span class="marking-step" id="step4">④ 위치</span>
+            </div>
+            <div class="camera-area" id="cameraMode">
+                <div class="camera-placeholder">
+                    <div class="cam-icon">📸</div>
+                    <div class="cam-text">터치하여 음식을 촬영하세요</div>
+                </div>
+            </div>
+            <div class="camera-controls" id="cameraControls">
+                <button class="cam-option">🖼️</button>
+                <button class="shutter-btn" onclick="takePhoto()"></button>
+                <button class="cam-option">🔄</button>
+            </div>
+            <div class="marking-overlay" id="markingMode">
+                <div class="marking-image-area" id="markingArea">
+                    <img src="../docs/sample/food-19.jpg" alt="Photo" style="width:100%; height:100%; object-fit:cover;">
+                    <div class="marking-guide" id="markingGuide">📸 미식 포인트를 확인했어요!</div>
+                </div>
+                <div class="taste-panel" id="tastePanel">
+                    <div class="taste-panel-header">
+                        <h3>맛 뱉기 🗣️</h3>
+                        <p>이 한 입의 감각을 골라주세요 (3초면 충분!)</p>
+                    </div>
+                    <div class="taste-grid">
+                        <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">🍯</span>달콤</button>
+                        <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">🧂</span>짭짤</button>
+                        <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">🌶️</span>매움</button>
+                        <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">🔥</span>바삭</button>
+                        <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">🧈</span>고소</button>
+                        <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">☁️</span>부드러움</button>
+                        <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">🦑</span>쫄깃</button>
+                        <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">💥</span>자극적</button>
+                    </div>
+                    <div class="intensity-section">
+                        <div class="intensity-label">
+                            <span>감동 강도</span>
+                            <span id="intensityVal">🔥🔥🔥</span>
+                        </div>
+                        <input type="range" class="intensity-slider" min="1" max="5" value="3" oninput="updateIntensity(this.value)">
+                    </div>
+                    <button class="upload-btn" onclick="completeUpload()">기록 완료! ✨</button>
+                </div>
+                <div class="location-panel" id="locationPanel">
+                    <div class="location-panel-header">
+                        <h3>📍 위치 기록</h3>
+                        <p>이 맛집의 위치를 지도에 저장할까요?</p>
+                    </div>
+                    <div class="location-map-wrap">
+                        <div id="markingMap"></div>
+                        <div class="map-loading-overlay" id="mapLoadingOverlay">
+                            <div class="map-loading-icon">📍</div>
+                            <div class="map-loading-text">위치 확인 중...</div>
+                        </div>
+                    </div>
+                    <div class="location-info-bar">
+                        <span class="location-info-icon">📍</span>
+                        <div class="location-info-text">
+                            <div class="location-info-name" id="locationInfoName">위치를 불러오는 중...</div>
+                            <div class="location-info-coords" id="locationInfoCoords"></div>
+                        </div>
+                    </div>
+                    <div class="location-action-btns">
+                        <button class="btn-location-skip" onclick="skipLocation()">건너뛰기</button>
+                        <button class="btn-location-confirm" onclick="confirmLocation()">위치 저장 ✨</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 토스트 알림 -->
+    <div class="toast" id="toast"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

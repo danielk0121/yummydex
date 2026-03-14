@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- v-260314-2300-kst -->
+<!-- v-260314-2330-kst -->
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -7,14 +7,14 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>야미덱스 YummyDex</title>
+    <title>야미덱스 YummyDex - 홈</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <link rel="stylesheet" href="style.css"></head>
 <body>
 
 <div class="app-frame">
-    <!-- 상단 내비게이션 (기존 하단 탭 이동) -->
+    <!-- 상단 내비게이션 -->
     <div class="top-nav">
         <button class="nav-item active" onclick="switchScreen('home')">
             <span class="nav-icon">🏠</span>
@@ -39,21 +39,18 @@
         </button>
     </div>
 
-    <!-- 화면 컨테이너 -->
     <div class="screens-container">
-
         <!-- ========== 1. 홈 피드 ========== -->
         <div class="screen active" id="screen-home">
-            <div class="screen-header" style="position:relative;">
+            <div class="screen-header">
                 <span style="color:#ff6b35;">야미덱스 YummyDex</span>
                 <small>미식가들의 맛 표현 인덱스</small>
                 <div class="dev-badge">
                     <div class="dev-name">danielk0121</div>
-                    <div class="dev-ver">v-260314-2300</div>
+                    <div class="dev-ver">v-260314-2330</div>
                 </div>
             </div>
             <div class="feed-list">
-
                 <!-- 피드 카드 1 -->
                 <div class="feed-card">
                     <div class="feed-card-header">
@@ -62,11 +59,9 @@
                             <div class="feed-username">미식가김</div>
                             <div class="feed-time">2시간 전 · 연남동</div>
                         </div>
-                        
                     </div>
                     <div class="feed-image-wrap">
                         <img src="../docs/sample/salad-01.jpg" alt="Salad">
-
                     </div>
                     <div class="feed-tags">
                         <span class="taste-tag mild">☁️ 부드러움</span>
@@ -89,8 +84,6 @@
                             <div class="match-bar"><div class="match-bar-fill" style="width:87%"></div></div>
                             87%
                         </div>
-
-                        <!-- 관련 게시글 섹션 (같은 식당/음식 추정) -->
                         <div class="related-posts-section">
                             <div class="related-posts-title">🔍 같은 메뉴 다른 시선</div>
                             <div class="related-posts-list">
@@ -107,21 +100,15 @@
                                     <span class="related-post-user">@클린라이프</span>
                                 </div>
                             </div>
-                            <!-- 다른 시선 댓글 분석 요약 -->
                             <div class="related-taste-summary">
                                 <div class="related-taste-summary-title">💡 다른 시선 요약 (댓글 분석)</div>
                                 <div class="related-taste-summary-tags">
-                                    <span class="mini-taste-tag">🥬 신선(24개)</span>
-                                    <span class="mini-taste-tag">🌿 고소(15개)</span>
-                                    <span class="mini-taste-tag">🥀 신선도 아쉬움(12개)</span>
-                                    <span class="mini-taste-tag">🥗 부드러움(9개)</span>
-                                    <span class="mini-taste-tag">🥣 소스 조화(7개)</span>
-                                    <span class="mini-taste-tag">✨ 가벼움(5개)</span>
-                                    <span class="mini-taste-tag">🥦 건강한 맛(3개)</span>
+                                    <span class="mini-taste-tag">🥬 신선(5개)</span>
+                                    <span class="mini-taste-tag">🥀 신선도 아쉬움(4개)</span>
+                                    <span class="mini-taste-tag">🥗 부드러움(3개)</span>
                                 </div>
                             </div>
                         </div>
-
                         <div class="comments-section">
                             <div class="comment-item">
                                 <span class="comment-avatar">🥗</span>
@@ -201,8 +188,6 @@
                             <div class="match-bar"><div class="match-bar-fill" style="width:72%"></div></div>
                             72%
                         </div>
-
-                        <!-- 관련 게시글 섹션 (같은 식당/음식 추정) -->
                         <div class="related-posts-section">
                             <div class="related-posts-title">🔍 같은 메뉴 다른 시선</div>
                             <div class="related-posts-list">
@@ -219,22 +204,15 @@
                                     <span class="related-post-user">@패티매니아</span>
                                 </div>
                             </div>
-                            <!-- 다른 시선 댓글 분석 요약 -->
                             <div class="related-taste-summary">
                                 <div class="related-taste-summary-title">💡 다른 시선 요약 (댓글 분석)</div>
                                 <div class="related-taste-summary-tags">
-                                    <span class="mini-taste-tag">🔥 불맛(31개)</span>
-                                    <span class="mini-taste-tag">🧀 치즈치즈(23개)</span>
-                                    <span class="mini-taste-tag">🧂 짭짤(18개)</span>
-                                    <span class="mini-taste-tag">🥩 육즙(14개)</span>
-                                    <span class="mini-taste-tag">🥓 푸짐함(10개)</span>
-                                    <span class="mini-taste-tag">🥯 번 고소(8개)</span>
-                                    <span class="mini-taste-tag">💥 자극적(6개)</span>
-                                    <span class="mini-taste-tag">🏘️ 이태원 감성(4개)</span>
+                                    <span class="mini-taste-tag">🔥 불맛(8개)</span>
+                                    <span class="mini-taste-tag">🧀 치즈치즈(6개)</span>
+                                    <span class="mini-taste-tag">🧂 짭짤(4개)</span>
                                 </div>
                             </div>
                         </div>
-
                         <div class="comments-section">
                             <div class="comment-item">
                                 <span class="comment-avatar">🍔</span>
@@ -317,13 +295,10 @@
                             <span class="feed-location-text">📍 한남동 이탈리안 키친</span>
                             <button class="feed-map-btn" onclick="showFeedMap('한남동 이탈리안 키친', 37.537, 127.002)">지도 보기 🗺️</button>
                         </div>
-                        <!-- 입맛 다른 유저 의견 표시 예시 -->
                         <div class="match-indicator" style="color:#e84057;">
                             ⚠️ 입맛이 58% 다른 유저의 맛 표현이에요
                             <div class="match-bar"><div class="match-bar-fill" style="width:58%; background: linear-gradient(90deg, #ffb347, #e84057);"></div></div>
                         </div>
-
-                        <!-- 관련 게시글 섹션 (같은 식당/음식 추정) -->
                         <div class="related-posts-section">
                             <div class="related-posts-title">🔍 같은 메뉴 다른 시선</div>
                             <div class="related-posts-list">
@@ -340,21 +315,15 @@
                                     <span class="related-post-user">@와인과파스타</span>
                                 </div>
                             </div>
-                            <!-- 다른 시선 댓글 분석 요약 -->
                             <div class="related-taste-summary">
                                 <div class="related-taste-summary-title">💡 다른 시선 요약 (댓글 분석)</div>
                                 <div class="related-taste-summary-tags">
-                                    <span class="mini-taste-tag">🇮🇹 알덴테(19개)</span>
-                                    <span class="mini-taste-tag">🍷 와인페어링(12개)</span>
-                                    <span class="mini-taste-tag">🌿 풍미(10개)</span>
-                                    <span class="mini-taste-tag">🥀 양 적음(8개)</span>
-                                    <span class="mini-taste-tag">🍝 생면 식감(6개)</span>
-                                    <span class="mini-taste-tag">✨ 분위기(5개)</span>
-                                    <span class="mini-taste-tag">👩‍❤️‍👨 데이트 코스(3개)</span>
+                                    <span class="mini-taste-tag">🇮🇹 알덴테(4개)</span>
+                                    <span class="mini-taste-tag">🍷 와인페어링(2개)</span>
+                                    <span class="mini-taste-tag">🥀 양 적음(1개)</span>
                                 </div>
                             </div>
                         </div>
-
                         <div class="comments-section">
                             <div class="comment-item">
                                 <span class="comment-avatar">🍷</span>
@@ -392,407 +361,14 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
-
-                        </div>
-                    </div>
-
-        <!-- ========== 2. 탐색 화면 ========== -->
-        <div class="screen explore-screen" id="screen-explore">
-            <div class="screen-header">
-                탐색
-                <small>맛 태그로 찾는 논리적 미식 큐레이션</small>
-            </div>
-            <div class="search-bar-wrap">
-                <div class="search-input-box">
-                    <span class="search-icon">🔍</span>
-                    <input type="text" class="search-bar" id="exploreSearchInput" placeholder="맛, 식감, 재료로 검색..." onkeyup="handleSearchKeyUp(event)">
-                </div>
-                <button class="search-add-btn" onclick="addSearchTag()">검색</button>
-            </div>
-            <div class="active-tags" id="activeSearchTags">
-                <!-- 추가된 검색 태그들이 여기에 표시됨 -->
-            </div>
-            <div class="filter-chips">
-                <button class="filter-reset-btn" onclick="resetFilters()">↻</button>
-                <button class="filter-chip active">🔥 전체</button>
-                <button class="filter-chip" onclick="toggleChip(this)">🍯 단맛</button>
-                <button class="filter-chip" onclick="toggleChip(this)">🧂 짠맛</button>
-                <button class="filter-chip" onclick="toggleChip(this)">🌶️ 매운맛</button>
-                <button class="filter-chip" onclick="toggleChip(this)">🔥 바삭</button>
-                <button class="filter-chip" onclick="toggleChip(this)">🧈 고소</button>
-                <button class="filter-chip" onclick="toggleChip(this)">☁️ 부드러움</button>
-                <button class="filter-chip" onclick="toggleChip(this)">🦑 쫄깃</button>
-            </div>
-            <div class="explore-grid">
-                <div class="explore-card">
-                    <div class="explore-card-img">
-                        <img src="../docs/sample/food-04.jpg" alt="Food">
-                    </div>
-                    <div class="explore-card-info">
-                        <div class="card-title">프레쉬 연어 아보카도 볼</div>
-                        <div class="card-restaurant">🌿 그린 가든</div>
-                        <div class="card-loc">강남구 역삼동</div>
-                        <div class="card-tags">
-                            <span class="mini-tag taste-tag savory">신선</span>
-                            <span class="mini-tag taste-tag mild">부드러움</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="explore-card">
-                    <div class="explore-card-img">
-                        <img src="../docs/sample/food-05.jpg" alt="Food">
-                    </div>
-                    <div class="explore-card-info">
-                        <div class="card-title">수비드 채끝 스테이크</div>
-                        <div class="card-restaurant">🥩 스테이크 하우스</div>
-                        <div class="card-loc">성동구 성수동</div>
-                        <div class="card-tags">
-                            <span class="mini-tag taste-tag rich">진함</span>
-                            <span class="mini-tag taste-tag salty">짭짤</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="explore-card">
-                    <div class="explore-card-img">
-                        <img src="../docs/sample/food-06.jpg" alt="Food">
-                    </div>
-                    <div class="explore-card-info">
-                        <div class="card-title">크로플 크림</div>
-                        <div class="card-tags">
-                            <span class="mini-tag taste-tag sweet">달콤</span>
-                            <span class="mini-tag taste-tag crispy">바삭</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="explore-card">
-                    <div class="explore-card-img">
-                        <img src="../docs/sample/food-07.jpg" alt="Food">
-                    </div>
-                    <div class="explore-card-info">
-                        <div class="card-title">지중해식 콜드 파스타</div>
-                        <div class="card-restaurant">🍝 카페 블룸</div>
-                        <div class="card-loc">송파구 잠실동</div>
-                        <div class="card-tags">
-                            <span class="mini-tag taste-tag mild">부드러움</span>
-                            <span class="mini-tag taste-tag savory">신선</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="explore-card">
-                    <div class="explore-card-img">
-                        <img src="../docs/sample/food-08.jpg" alt="Food">
-                    </div>
-                    <div class="explore-card-info">
-                        <div class="card-title">한우 꽃등심 마블링</div>
-                        <div class="card-tags">
-                            <span class="mini-tag taste-tag savory">고소</span>
-                            <span class="mini-tag taste-tag rich">진함</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="explore-card">
-                    <div class="explore-card-img">
-                        <img src="../docs/sample/food-09.jpg" alt="Food">
-                    </div>
-                    <div class="explore-card-info">
-                        <div class="card-title">라멘 차슈</div>
-                        <div class="card-tags">
-                            <span class="mini-tag taste-tag savory">고소</span>
-                            <span class="mini-tag taste-tag mild">부드러움</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ========== 3. 맛 표현(촬영) 화면 ========== -->
-        <div class="screen marking-screen" id="screen-mark">
-            <!-- 맛 표현 단계 표시 -->
-            <div class="marking-steps">
-                <span class="marking-step current" id="step1">① 찍기</span>
-                <span class="marking-step" id="step2">② 맛 표현</span>
-                <span class="marking-step" id="step3">③ 맛 뱉기</span>
-                <span class="marking-step" id="step4">④ 위치</span>
-            </div>
-
-            <!-- 카메라 모드 -->
-            <div class="camera-area" id="cameraMode">
-                <div class="camera-placeholder">
-                    <div class="cam-icon">📸</div>
-                    <div class="cam-text">터치하여 음식을 촬영하세요</div>
-                </div>
-            </div>
-            <div class="camera-controls" id="cameraControls">
-                <button class="cam-option">🖼️</button>
-                <button class="shutter-btn" onclick="takePhoto()"></button>
-                <button class="cam-option">🔄</button>
-            </div>
-
-            <!-- 맛 표현 모드 -->
-            <div class="marking-overlay" id="markingMode">
-                <div class="marking-image-area" id="markingArea">
-                    <img src="../docs/sample/food-19.jpg" alt="Photo" style="width:100%; height:100%; object-fit:cover;">
-                    <div class="marking-guide" id="markingGuide">📸 미식 포인트를 확인했어요!</div>
-                </div>
-                <div class="taste-panel" id="tastePanel">
-                    <div class="taste-panel-header">
-                        <h3>맛 뱉기 🗣️</h3>
-                        <p>이 한 입의 감각을 골라주세요 (3초면 충분!)</p>
-                    </div>
-                    <div class="taste-grid">
-                        <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">🍯</span>달콤</button>
-                        <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">🧂</span>짭짤</button>
-                        <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">🌶️</span>매움</button>
-                        <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">🔥</span>바삭</button>
-                        <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">🧈</span>고소</button>
-                        <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">☁️</span>부드러움</button>
-                        <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">🦑</span>쫄깃</button>
-                        <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">💥</span>자극적</button>
-                    </div>
-                    <div class="intensity-section">
-                        <div class="intensity-label">
-                            <span>감동 강도</span>
-                            <span id="intensityVal">🔥🔥🔥</span>
-                        </div>
-                        <input type="range" class="intensity-slider" min="1" max="5" value="3" oninput="updateIntensity(this.value)">
-                    </div>
-                    <button class="upload-btn" onclick="completeUpload()">기록 완료! ✨</button>
-                </div>
-
-                <!-- 위치 기록 패널 -->
-                <div class="location-panel" id="locationPanel">
-                    <div class="location-panel-header">
-                        <h3>📍 위치 기록</h3>
-                        <p>이 맛집의 위치를 지도에 저장할까요?</p>
-                    </div>
-                    <div class="location-map-wrap">
-                        <div id="markingMap"></div>
-                        <div class="map-loading-overlay" id="mapLoadingOverlay">
-                            <div class="map-loading-icon">📍</div>
-                            <div class="map-loading-text">위치 확인 중...</div>
-                        </div>
-                    </div>
-                    <div class="location-info-bar">
-                        <span class="location-info-icon">📍</span>
-                        <div class="location-info-text">
-                            <div class="location-info-name" id="locationInfoName">위치를 불러오는 중...</div>
-                            <div class="location-info-coords" id="locationInfoCoords"></div>
-                        </div>
-                    </div>
-                    <div class="location-action-btns">
-                        <button class="btn-location-skip" onclick="skipLocation()">건너뛰기</button>
-                        <button class="btn-location-confirm" onclick="confirmLocation()">위치 저장 ✨</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ========== 4. 미식 탐정 화면 ========== -->
-        <div class="screen detective-screen" id="screen-detective">
-            <div class="screen-header">
-                미식 탐정
-                <small>모르는 음식, 함께 알아내요!</small>
-            </div>
-            <div class="detective-banner">
-                <h3>🔍 집단지성의 힘</h3>
-                <p>식당 이름을 모르겠나요? 이 소스가 뭔지 궁금한가요?<br>사진 한 장이면 미식 탐정단이 답을 찾아드려요!</p>
-                <button class="detective-ask-btn">탐정 요청하기 🕵️</button>
-            </div>
-            <div class="detective-list">
-                <div class="detective-card">
-                    <div class="detective-card-top">
-                        <div class="detective-card-img"><img src="../docs/sample/food-16.jpg" alt="Detective"></div>
-                        <div class="detective-card-text">
-                            <h4>이 팬케이크 위 시럽 정체가?! 🥞</h4>
-                            <p>그냥 메이플 시럽이 아닌 것 같아요. 약간 시나몬 향도 나고 묵직한데...</p>
-                            <span class="detective-badge open">🟢 수사 중</span>
-                        </div>
-                    </div>
-                    <div class="detective-answers">
-                        💬 답변 8개 · 👀 조회 234 · 유력 용의자: 수제 버터 스카치 시럽
-                    </div>
-                </div>
-                <div class="detective-card">
-                    <div class="detective-card-top">
-                        <div class="detective-card-img"><img src="../docs/sample/food-17.jpg" alt="Detective"></div>
-                        <div class="detective-card-text">
-                            <h4>이 샐러드 토핑 다이어트 중 먹어도 될까요?</h4>
-                            <p>샐러드 볼에 들어간 이 하얀 조각들이 치즈인가요? 칼로리가 궁금해요!</p>
-                            <span class="detective-badge solved">🟠 해결됨</span>
-                        </div>
-                    </div>
-                    <div class="detective-answers">
-                        💬 답변 15개 · 👀 조회 567 · ✅ 저지방 리코타 치즈 (1스쿱 약 50kcal)
-                    </div>
-                </div>
-                <div class="detective-card">
-                    <div class="detective-card-top">
-                        <div class="detective-card-img"><img src="../docs/sample/food-18.jpg" alt="Detective"></div>
-                        <div class="detective-card-text">
-                            <h4>이 화덕 피자 도우의 비결이 뭘까요?</h4>
-                            <p>진짜 쫄깃하고 담백해요. 일반 밀가루만 쓴 것 같지 않은데... 아시는 분?</p>
-                            <span class="detective-badge open">🟢 수사 중</span>
-                        </div>
-                    </div>
-                    <div class="detective-answers">
-                        💬 답변 3개 · 👀 조회 89 · 유력 용의자: 72시간 저온 숙성 호밀 도우
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ========== 5. 프로필 / 미식 MBTI 화면 ========== -->
-        <div class="screen profile-screen" id="screen-profile">
-            <div class="profile-header">
-                <div class="profile-avatar">😋</div>
-                <div class="profile-name">맛집헌터</div>
-                <div class="profile-handle">@taste_hunter · 개성파 미식가</div>
-                <div class="profile-stats">
-                    <div class="profile-stat">
-                        <div class="stat-num">142</div>
-                        <div class="stat-label">맛 표현</div>
-                    </div>
-                    <div class="profile-stat">
-                        <div class="stat-num">87</div>
-                        <div class="stat-label">리스펙</div>
-                    </div>
-                    <div class="profile-stat">
-                        <div class="stat-num">23</div>
-                        <div class="stat-label">탐정 해결</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 미식 MBTI -->
-            <div class="mbti-card">
-                <div class="mbti-label">나의 미식 MBTI</div>
-                <div class="mbti-type">S·C·B·I</div>
-                <div class="mbti-desc">자극 러버 × 크리에이티브 미식가</div>
-                <div class="mbti-detail">
-                    상위 10%의 독특한 취향 · 염도 7 이상 선호<br>
-                    단짠 밸런스 85% · 치팅 지수 상위 15%
-                </div>
-            </div>
-
-            <!-- 맛 프로파일 -->
-            <div class="taste-radar">
-                <h4>🎯 나의 맛 프로파일</h4>
-                <div class="radar-bars">
-                    <div class="radar-row">
-                        <span class="radar-label">단맛</span>
-                        <div class="radar-track"><div class="radar-fill" style="width:45%; background: linear-gradient(90deg, #fecdd3, #e84057);"></div></div>
-                        <span class="radar-val">45</span>
-                    </div>
-                    <div class="radar-row">
-                        <span class="radar-label">짠맛</span>
-                        <div class="radar-track"><div class="radar-fill" style="width:82%; background: linear-gradient(90deg, #bfdbfe, #4a6cf7);"></div></div>
-                        <span class="radar-val">82</span>
-                    </div>
-                    <div class="radar-row">
-                        <span class="radar-label">매운맛</span>
-                        <div class="radar-track"><div class="radar-fill" style="width:91%; background: linear-gradient(90deg, #fed7aa, #ff4500);"></div></div>
-                        <span class="radar-val">91</span>
-                    </div>
-                    <div class="radar-row">
-                        <span class="radar-label">바삭</span>
-                        <div class="radar-track"><div class="radar-fill" style="width:75%; background: linear-gradient(90deg, #fde68a, #e8930c);"></div></div>
-                        <span class="radar-val">75</span>
-                    </div>
-                    <div class="radar-row">
-                        <span class="radar-label">고소</span>
-                        <div class="radar-track"><div class="radar-fill" style="width:68%; background: linear-gradient(90deg, #bbf7d0, #16a34a);"></div></div>
-                        <span class="radar-val">68</span>
-                    </div>
-                    <div class="radar-row">
-                        <span class="radar-label">부드러움</span>
-                        <div class="radar-track"><div class="radar-fill" style="width:55%; background: linear-gradient(90deg, #e9d5ff, #a855f7);"></div></div>
-                        <span class="radar-val">55</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 최근 맛 기록 -->
-            <div class="recent-section">
-                <h4>📌 최근 맛 기록</h4>
-                <div class="recent-grid">
-                    <div class="recent-item">
-                        <img src="../docs/sample/food-10.jpg" alt="Recent">
-                    </div>
-                    <div class="recent-item">
-                        <img src="../docs/sample/food-11.jpg" alt="Recent">
-                    </div>
-                    <div class="recent-item">
-                        <img src="../docs/sample/food-12.jpg" alt="Recent">
-                    </div>
-                    <div class="recent-item">
-                        <img src="../docs/sample/food-13.jpg" alt="Recent">
-                    </div>
-                    <div class="recent-item">
-                        <img src="../docs/sample/food-14.jpg" alt="Recent">
-                    </div>
-                    <div class="recent-item">
-                        <img src="../docs/sample/food-15.jpg" alt="Recent">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ========== 6. 알림 화면 ========== -->
-        <div class="screen notification-screen" id="screen-notif">
-            <div class="screen-header">
-                알림
-                <small>입맛이 비슷한 사람들의 소식</small>
-            </div>
-            <div class="notif-list">
-                <div class="notif-item unread">
-                    <div class="notif-icon match">🤝</div>
-                    <div class="notif-body">
-                        <div class="notif-text"><strong>입맛 87% 일치!</strong> 당신과 입맛이 비슷한 5명이 을지로 골목 맛 표현에 관심을 보이고 있어요!</div>
-                        <div class="notif-time">10분 전</div>
-                        <button class="notif-action-btn">위치 알려주기 📍</button>
-                    </div>
-                </div>
-                <div class="notif-item unread">
-                    <div class="notif-icon reaction">🔄</div>
-                    <div class="notif-body">
-                        <div class="notif-text"><strong>단짠러버</strong>님이 당신의 맛 표현에 '나랑 똑같아요' 리액션을 남겼어요</div>
-                        <div class="notif-time">1시간 전</div>
-                    </div>
-                </div>
-                <div class="notif-item">
-                    <div class="notif-icon detective">🔍</div>
-                    <div class="notif-body">
-                        <div class="notif-text"><strong>미식 탐정</strong> '이 만두 어디 건가요?!' 사건에 새로운 답변 3개가 달렸어요</div>
-                        <div class="notif-time">3시간 전</div>
-                    </div>
-                </div>
-                <div class="notif-item">
-                    <div class="notif-icon system">📊</div>
-                    <div class="notif-body">
-                        <div class="notif-text"><strong>주간 미식 리포트</strong> 이번 주 당신은 '바삭' 태그를 가장 많이 선택했어요. 바삭 마니아 등극!</div>
-                        <div class="notif-time">어제</div>
-                    </div>
-                </div>
-                <div class="notif-item">
-                    <div class="notif-icon match">💡</div>
-                    <div class="notif-body">
-                        <div class="notif-text"><strong>레시피 추천!</strong> '을지로 삼겹살 껍데기'의 바삭한 맛을 집에서 재현해볼까요? 에어프라이어 레시피를 찾았어요!</div>
-                        <div class="notif-time">2일 전</div>
-                        <button class="notif-action-btn">레시피 보기 🍳</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </div>
 
     <!-- 토스트 알림 -->
     <div class="toast" id="toast"></div>
 
-    <!-- 위치 지도 모달 (피드 카드용) -->
+    <!-- 위치 지도 모달 -->
     <div class="map-modal" id="mapModal" onclick="closeFeedMap(event)">
         <div class="map-modal-card" onclick="event.stopPropagation()">
             <div class="map-modal-header">
