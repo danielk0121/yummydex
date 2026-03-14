@@ -853,12 +853,32 @@
         /* 맛 필터 칩 */
         .filter-chips {
             display: flex;
+            align-items: center;
             gap: 8px;
             padding: 8px 20px;
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
         }
         .filter-chips::-webkit-scrollbar { display: none; }
+        
+        .filter-reset-btn {
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1.5px solid #e5e5e5;
+            background: #fff;
+            color: #8e8e93;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .filter-reset-btn:active { transform: rotate(-45deg); background: #f2f2f7; }
+
         .filter-chip {
             flex-shrink: 0;
             padding: 8px 16px;
@@ -870,6 +890,7 @@
             color: #636366;
             cursor: pointer;
             transition: all 0.2s;
+            white-space: nowrap;
         }
         .filter-chip.active {
             border-color: #ff6b35;

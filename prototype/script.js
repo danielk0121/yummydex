@@ -39,6 +39,33 @@ el.classList.add('active');
 /* ===== 필터 칩 토글 ===== */
 function toggleChip(el) {
 el.classList.toggle('active');
+// '전체' 칩 처리
+if (el.textContent.includes('전체')) {
+if (el.classList.contains('active')) {
+document.querySelectorAll('.filter-chip').forEach(c => {
+if (!c.textContent.includes('전체')) c.classList.remove('active');
+});
+}
+} else {
+const allChip = document.querySelector('.filter-chip');
+if (allChip.textContent.includes('전체')) allChip.classList.remove('active');
+}
+updateExploreFilter();
+}
+
+function resetFilters() {
+// 검색어 초기화
+const input = document.getElementById('exploreSearchInput');
+if (input) input.value = '';
+// 검색 태그 초기화
+activeSearchTags.clear();
+renderSearchTags();
+// 필터 칩 초기화
+document.querySelectorAll('.filter-chip').forEach(c => {
+if (c.textContent.includes('전체')) c.classList.add('active');
+else c.classList.remove('active');
+});
+// 필터링 적용
 updateExploreFilter();
 }
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- v-260314-1850-kst -->
+<!-- v-260314-1900-kst -->
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -281,12 +281,13 @@
                     <span class="search-icon">🔍</span>
                     <input type="text" class="search-bar" id="exploreSearchInput" placeholder="맛, 식감, 재료로 검색..." onkeyup="handleSearchKeyUp(event)">
                 </div>
-                <button class="search-add-btn" onclick="addSearchTag()">추가</button>
+                <button class="search-add-btn" onclick="addSearchTag()">검색</button>
             </div>
             <div class="active-tags" id="activeSearchTags">
                 <!-- 추가된 검색 태그들이 여기에 표시됨 -->
             </div>
             <div class="filter-chips">
+                <button class="filter-reset-btn" onclick="resetFilters()">↻</button>
                 <button class="filter-chip active">🔥 전체</button>
                 <button class="filter-chip" onclick="toggleChip(this)">🍯 단맛</button>
                 <button class="filter-chip" onclick="toggleChip(this)">🧂 짠맛</button>
