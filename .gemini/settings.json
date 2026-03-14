@@ -1,7 +1,6 @@
 {
   "hooksConfig": {
     "disabled": [
-      "notify-user-after-turn"
     ]
   }
 }
