@@ -512,8 +512,10 @@ body {
     flex-wrap: wrap;
 }
 .reaction-btn {
+    flex: 1;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 6px;
     padding: 8px 14px;
     border-radius: 12px;
