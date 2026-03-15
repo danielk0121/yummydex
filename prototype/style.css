@@ -822,31 +822,38 @@
             cursor: pointer;
         }
 
-        /* ===== 피드 카드 위치 정보 (하단 배치용) ===== */
-        .feed-location {
-            margin-top: 12px;
-            padding-top: 10px;
-            border-top: 1px dotted #f0f0f0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .feed-location-text {
-            font-size: 11px;
-            color: #8e8e93;
+        /* ===== 피드 이미지 위 지도 정보 오버레이 ===== */
+        .feed-location-overlay {
+            position: absolute;
+            top: 10px;
+            right: 10px;
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 6px;
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 6px 10px;
+            border-radius: 10px;
+            z-index: 5;
         }
-        .feed-map-btn {
+        .feed-location-overlay-text {
             font-size: 11px;
-            color: #ff6b35;
+            font-weight: 600;
+            color: #fff;
+        }
+        .feed-location-overlay-btn {
+            font-size: 10px;
             font-weight: 700;
-            background: #fff3ed;
+            color: #fff;
+            background: rgba(255, 107, 53, 0.85);
             border: none;
-            padding: 5px 12px;
-            border-radius: 8px;
+            padding: 4px 8px;
+            border-radius: 6px;
             cursor: pointer;
+        }
+        .feed-location-overlay-btn:active {
+            opacity: 0.8;
         }
 
         /* ===== 위치 지도 모달 ===== */
