@@ -538,6 +538,14 @@ body {
     align-items: center;
     gap: 6px;
 }
+.related-posts-count {
+    font-size: 11px;
+    font-weight: 600;
+    color: #ff6b35;
+    background: #fff3ee;
+    border-radius: 10px;
+    padding: 1px 7px;
+}
 .related-posts-list {
     display: flex;
     gap: 8px;
