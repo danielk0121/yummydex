@@ -36,12 +36,13 @@ const SAMPLE_FEEDS = [
         image: '../docs/sample/salad-01.jpg',
         comment: '아보카도와 드레싱의 조화가 너무 부드러워요. 채소는 좀 숨이 죽어 신선도가 아쉽지만, 드레싱 맛이 좋아서 계속 먹게 되네요.',
         matchRate: 87,
-        matchReason: "'부드러움'과 '신선도'를 중시하는 미식가님의 평소 취향과 87% 일치합니다.",
+        matchReason: "'부드러움'과 '감칠맛'을 중시하는 미식가님의 평소 취향과 87% 일치하는 데이터입니다.",
         metrics: {
             soft: 90,
-            fresh: 40,
             umami: 75,
-            nutty: 60
+            fresh: 40,
+            nutty: 60,
+            sugar: 20
         }
     },
     {
@@ -52,13 +53,31 @@ const SAMPLE_FEEDS = [
         image: '../docs/sample/burger-01.jpg',
         comment: '패티의 육즙과 녹아내린 치즈의 밸런스가 환상적이에요. 번도 구워져서 고소함이 두 배!',
         matchRate: 72,
-        matchReason: "평소 '육향'과 '치즈향'을 선호하시지만, '짠맛' 수치가 예상보다 높게 측정되었습니다.",
+        matchReason: "평소 '육향'과 '치즈향'을 선호하시지만, 이 메뉴의 '짠맛' 수치가 미식가님의 기준보다 높습니다.",
         metrics: {
             meaty: 95,
             dairy: 85,
             salt: 70,
             buttery: 80,
-            smoky: 60
+            smoky: 60,
+            spiced: 15
+        }
+    },
+    {
+        id: 3,
+        user: '파스타덕후',
+        location: '한남동 이탈리안 키친',
+        time: '어제',
+        image: '../docs/sample/pasta-01.jpg',
+        comment: '면의 삶기가 완벽해요. 알덴테의 정석! 다만 성인 남성이 먹기엔 양이 조금 적은 편이라 사이드 메뉴 추가를 추천해요.',
+        matchRate: 58,
+        matchReason: "미식가님은 '짠맛'에 민감하시지만, 이 유저는 '짠맛' 수치를 높게 평가하는 경향이 있습니다.",
+        metrics: {
+            salt: 80,
+            soft: 85,
+            chewy: 95,
+            umami: 70,
+            fruity: 10
         }
     }
 ];
@@ -191,40 +210,54 @@ function renderSearchTags() {
 }
 
 function updateExploreFilter() {
-    const searchVal = document.getElementById('exploreSearchInput').value.toLowerCase();
-    const activeChips = Array.from(document.querySelectorAll('.filter-chip.active:not(:first-child)'))
-        .map(c => c.textContent.replace(/[^\w\sㄱ-힣]/g, '').trim());
+const searchVal = document.getElementById('exploreSearchInput').value.toLowerCase();
+const activeChips = Array.from(document.querySelectorAll('.filter-chip.active:not(:first-child)'))
+.map(c => c.textContent.replace(/[^\w\sㄱ-힣]/g, '').trim());
 
-    const allCards = document.querySelectorAll('.explore-card');
+const allCards = document.querySelectorAll('.explore-card');
+let visibleCount = 0;
 
-    allCards.forEach(card => {
-        const title = card.querySelector('.card-title').textContent.toLowerCase();
-        const restaurant = card.querySelector('.card-restaurant')?.textContent.toLowerCase() || '';
-        const tags = Array.from(card.querySelectorAll('.mini-tag')).map(t => t.textContent.toLowerCase());
+allCards.forEach(card => {
+const title = card.querySelector('.card-title').textContent.toLowerCase();
+const restaurant = card.querySelector('.card-restaurant')?.textContent.toLowerCase() || '';
+const tags = Array.from(card.querySelectorAll('.mini-tag')).map(t => t.textContent.toLowerCase());
 
 // 1. 직접 검색어 매칭
-        const matchSearch = !searchVal || title.includes(searchVal) || restaurant.includes(searchVal);
+const matchSearch = !searchVal || title.includes(searchVal) || restaurant.includes(searchVal);
 
 // 2. 해시태그(추가된 태그) 매칭 (모든 태그가 포함되어야 함)
-        const matchAddedTags = activeSearchTags.size === 0 ||
-            Array.from(activeSearchTags).every(t =>
-                title.includes(t.toLowerCase()) ||
-                restaurant.includes(t.toLowerCase()) ||
-                tags.some(tag => tag.includes(t.toLowerCase()))
-            );
+const matchAddedTags = activeSearchTags.size === 0 || 
+Array.from(activeSearchTags).every(t => 
+title.includes(t.toLowerCase()) || 
+restaurant.includes(t.toLowerCase()) ||
+tags.some(tag => tag.includes(t.toLowerCase()))
+);
 
 // 3. 필터 칩 매칭
-        const matchChips = activeChips.length === 0 ||
-            activeChips.some(chip => tags.some(tag => tag.includes(chip.toLowerCase())));
+const matchChips = activeChips.length === 0 || 
+activeChips.some(chip => tags.some(tag => tag.includes(chip.toLowerCase())));
 
-        if (matchSearch && matchAddedTags && matchChips) {
-            card.style.display = '';
-        } else {
-            card.style.display = 'none';
-        }
-    });
+if (matchSearch && matchAddedTags && matchChips) {
+card.style.display = '';
+visibleCount++;
+} else {
+card.style.display = 'none';
 }
+});
 
+// [NEW] 빈 상태 처리
+const emptyState = document.getElementById('exploreEmptyState');
+const grid = document.getElementById('exploreGrid');
+if (emptyState && grid) {
+    if (visibleCount === 0) {
+        emptyState.style.display = 'block';
+        grid.style.display = 'none';
+    } else {
+        emptyState.style.display = 'none';
+        grid.style.display = 'grid';
+    }
+}
+}
 /* ===== 맛 표현 플로우 ===== */
 let markingState = 'camera'; // camera → marking → taste → location
 let markingMap = null;

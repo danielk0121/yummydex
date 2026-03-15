@@ -19,7 +19,7 @@
     <meta property="og:site_name" content="yummydex">
     <meta name="twitter:card" content="summary_large_image">
 
-    <link rel="stylesheet" href="style.css?v=260315-1645"></head>
+    <link rel="stylesheet" href="style.css?v=260315-1944"></head>
 <body>
 
 <div class="app-frame">
@@ -56,7 +56,7 @@
                 <small>맛 태그로 찾는 논리적 미식 큐레이션</small>
                 <div class="dev-badge">
                     <div class="dev-name">danielk0121</div>
-                    <div class="dev-ver">v-260315-1655</div>
+                    <div class="dev-ver">v-260315-1944</div>
                 </div>
             </div>
             <div class="search-bar-wrap">
@@ -78,7 +78,18 @@
                 <button class="filter-chip" onclick="toggleChip(this)">☁️ 부드러움</button>
                 <button class="filter-chip" onclick="toggleChip(this)">🦑 쫄깃</button>
             </div>
-            <div class="explore-grid">
+
+            <!-- [NEW] 검색 결과 없음 빈 상태 -->
+            <div id="exploreEmptyState" class="empty-state" style="display: none; padding: 60px 20px; text-align: center;">
+                <div class="empty-icon" style="font-size: 48px; margin-bottom: 16px;">🍱?</div>
+                <div class="empty-text">
+                    <strong style="display: block; font-size: 16px; color: #1d1d1f; margin-bottom: 8px;">찾으시는 맛이 아직 없네요</strong>
+                    <p style="font-size: 13px; color: #636366; line-height: 1.5;">다른 맛 키워드로 검색하거나<br>필터를 초기화해보세요!</p>
+                </div>
+                <button class="empty-reset-btn" onclick="resetFilters()" style="margin-top: 24px; padding: 10px 20px; background: #ff6b35; color: #fff; border: none; border-radius: 10px; font-weight: 600; cursor: pointer;">필터 초기화 ↻</button>
+            </div>
+
+            <div class="explore-grid" id="exploreGrid">
                 <div class="explore-card">
                     <div class="explore-card-img">
                         <img src="../docs/sample/salad-04.jpg" alt="Food">
@@ -165,6 +176,6 @@
     <div class="toast" id="toast"></div>
 </div>
 
-<script src="script.js?v=260315-1645"></script>
+<script src="script.js?v=260315-1944"></script>
 </body>
 </html>
