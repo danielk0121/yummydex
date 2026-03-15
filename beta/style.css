@@ -357,6 +357,35 @@ body {
 .feed-user-info { flex: 1; }
 .feed-username { font-size: 14px; font-weight: 700; }
 .feed-time { font-size: 11px; color: #636366; }
+.feed-header-location {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    flex-shrink: 0;
+}
+.feed-header-address {
+    font-size: 11px;
+    color: #636366;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 110px;
+}
+.feed-header-map-btn {
+    font-size: 11px;
+    font-weight: 600;
+    color: #ff6b35;
+    background: #fff3ee;
+    border: 1px solid #ffcbb5;
+    border-radius: 20px;
+    padding: 3px 10px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+.feed-header-map-btn:active {
+    background: #ffe0d0;
+}
 
 /* 음식 이미지 + 맛 표현 */
 .feed-image-wrap {
