@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- v-260315-1544-kst -->
+<!-- v-260315-1548-kst -->
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -13,7 +13,7 @@
     <meta name="description" content="미식가들의 맛 표현 인덱스, 야미덱스 YummyDex">
     <meta property="og:title" content="야미덱스 YummyDex - 미식가들의 맛 표현 인덱스">
     <meta property="og:description" content="맛을 기록하고 공유하는 미식가들의 공간">
-    <meta property="og:image" content="https://danielk0121.github.io/yummydex/docs/thumbnail.png">
+    <meta property="og:image" content="https://danielk0121.github.io/yummydex/prototype/thumbnail.png">
     <meta property="og:url" content="https://danielk0121.github.io/yummydex/prototype/">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="ko_KR">
@@ -22,87 +22,6 @@
 
     <link rel="stylesheet" href="style.css"></head>
 <body>
-
-<div class="app-frame">
-    <!-- 상단 내비게이션 -->
-    <div class="top-nav">
-        <button class="nav-item" onclick="switchScreen('home')">
-            <span class="nav-icon">🏠</span>
-            <span class="nav-label">홈</span>
-        </button>
-        <button class="nav-item" onclick="switchScreen('explore')">
-            <span class="nav-icon">🔍</span>
-            <span class="nav-label">탐색</span>
-        </button>
-        <div class="mark-btn-wrap">
-            <button class="mark-btn" onclick="switchScreen('mark')">
-                <span style="font-size:28px; font-weight:300;">+</span>
-            </button>
-        </div>
-        <button class="nav-item active" onclick="switchScreen('detective')">
-            <span class="nav-icon">🕵️</span>
-            <span class="nav-label">탐정</span>
-        </button>
-        <button class="nav-item" onclick="switchScreen('profile')">
-            <span class="nav-icon">😋</span>
-            <span class="nav-label">내 도감</span>
-        </button>
-    </div>
-
-    <div class="screens-container">
-        <!-- ========== 4. 미식 탐정 화면 ========== -->
-        <div class="screen active detective-screen" id="screen-detective">
-            <div class="screen-header">
-                미식 탐정
-                <small>모르는 음식, 함께 알아내요!</small>
-            </div>
-            <div class="detective-banner">
-                <h3>🔍 집단지성의 힘</h3>
-                <p>식당 이름을 모르겠나요? 이 소스가 뭔지 궁금한가요?<br>사진 한 장이면 미식 탐정단이 답을 찾아드려요!</p>
-                <button class="detective-ask-btn">탐정 요청하기 🕵️</button>
-            </div>
-            <div class="detective-list">
-                <div class="detective-card">
-                    <div class="detective-card-top">
-                        <div class="detective-card-img"><img src="../docs/sample/food-16.jpg" alt="Detective"></div>
-                        <div class="detective-card-text">
-                            <h4>이 팬케이크 위 시럽 정체가?! 🥞</h4>
-                            <p>그냥 메이플 시럽이 아닌 것 같아요. 약간 시나몬 향도 나고 묵직한데...</p>
-                            <span class="detective-badge open">🟢 수사 중</span>
-                        </div>
-                    </div>
-                    <div class="detective-answers">💬 답변 8개 · 👀 조회 234 · 유력 용의자: 수제 버터 스카치 시럽</div>
-                </div>
-                <div class="detective-card">
-                    <div class="detective-card-top">
-                        <div class="detective-card-img"><img src="../docs/sample/food-17.jpg" alt="Detective"></div>
-                        <div class="detective-card-text">
-                            <h4>이 샐러드 토핑 다이어트 중 먹어도 될까요?</h4>
-                            <p>샐러드 볼에 들어간 이 하얀 조각들이 치즈인가요? 칼로리가 궁금해요!</p>
-                            <span class="detective-badge solved">🟠 해결됨</span>
-                        </div>
-                    </div>
-                    <div class="detective-answers">💬 답변 15개 · 👀 조회 567 · ✅ 저지방 리코타 치즈 (1스쿱 약 50kcal)</div>
-                </div>
-                <div class="detective-card">
-                    <div class="detective-card-top">
-                        <div class="detective-card-img"><img src="../docs/sample/food-18.jpg" alt="Detective"></div>
-                        <div class="detective-card-text">
-                            <h4>이 화덕 피자 도우의 비결이 뭘까요?</h4>
-                            <p>진짜 쫄깃하고 담백해요. 일반 밀가루만 쓴 것 같지 않은데... 아시는 분?</p>
-                            <span class="detective-badge open">🟢 수사 중</span>
-                        </div>
-                    </div>
-                    <div class="detective-answers">💬 답변 3개 · 👀 조회 89 · 유력 용의자: 72시간 저온 숙성 호밀 도우</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 토스트 알림 -->
-    <div class="toast" id="toast"></div>
-</div>
-
-<script src="script.js"></script>
+...
 </body>
 </html>

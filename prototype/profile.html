@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- v-260315-1544-kst -->
+<!-- v-260315-1548-kst -->
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -13,7 +13,7 @@
     <meta name="description" content="미식가들의 맛 표현 인덱스, 야미덱스 YummyDex">
     <meta property="og:title" content="야미덱스 YummyDex - 미식가들의 맛 표현 인덱스">
     <meta property="og:description" content="맛을 기록하고 공유하는 미식가들의 공간">
-    <meta property="og:image" content="https://danielk0121.github.io/yummydex/docs/thumbnail.png">
+    <meta property="og:image" content="https://danielk0121.github.io/yummydex/prototype/thumbnail.png">
     <meta property="og:url" content="https://danielk0121.github.io/yummydex/prototype/">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="ko_KR">
@@ -22,114 +22,6 @@
 
     <link rel="stylesheet" href="style.css"></head>
 <body>
-
-<div class="app-frame">
-    <!-- 상단 내비게이션 -->
-    <div class="top-nav">
-        <button class="nav-item" onclick="switchScreen('home')">
-            <span class="nav-icon">🏠</span>
-            <span class="nav-label">홈</span>
-        </button>
-        <button class="nav-item" onclick="switchScreen('explore')">
-            <span class="nav-icon">🔍</span>
-            <span class="nav-label">탐색</span>
-        </button>
-        <div class="mark-btn-wrap">
-            <button class="mark-btn" onclick="switchScreen('mark')">
-                <span style="font-size:28px; font-weight:300;">+</span>
-            </button>
-        </div>
-        <button class="nav-item" onclick="switchScreen('detective')">
-            <span class="nav-icon">🕵️</span>
-            <span class="nav-label">탐정</span>
-        </button>
-        <button class="nav-item active" onclick="switchScreen('profile')">
-            <span class="nav-icon">😋</span>
-            <span class="nav-label">내 도감</span>
-        </button>
-    </div>
-
-    <div class="screens-container">
-        <!-- ========== 5. 프로필 / 미식 MBTI 화면 ========== -->
-        <div class="screen active profile-screen" id="screen-profile">
-            <div class="profile-header">
-                <div class="profile-avatar">😋</div>
-                <div class="profile-name">맛집헌터</div>
-                <div class="profile-handle">@taste_hunter · 개성파 미식가</div>
-                <div class="profile-stats">
-                    <div class="profile-stat">
-                        <div class="stat-num">142</div>
-                        <div class="stat-label">맛 표현</div>
-                    </div>
-                    <div class="profile-stat">
-                        <div class="stat-num">87</div>
-                        <div class="stat-label">리스펙</div>
-                    </div>
-                    <div class="profile-stat">
-                        <div class="stat-num">23</div>
-                        <div class="stat-label">탐정 해결</div>
-                    </div>
-                </div>
-            </div>
-            <div class="mbti-card">
-                <div class="mbti-label">나의 미식 MBTI</div>
-                <div class="mbti-type">S·C·B·I</div>
-                <div class="mbti-desc">자극 러버 × 크리에이티브 미식가</div>
-                <div class="mbti-detail">상위 10%의 독특한 취향 · 염도 7 이상 선호<br>단짠 밸런스 85% · 치팅 지수 상위 15%</div>
-            </div>
-            <div class="taste-radar">
-                <h4>🎯 나의 맛 프로파일</h4>
-                <div class="radar-bars">
-                    <div class="radar-row">
-                        <span class="radar-label">단맛</span>
-                        <div class="radar-track"><div class="radar-fill" style="width:45%; background: linear-gradient(90deg, #fecdd3, #e84057);"></div></div>
-                        <span class="radar-val">45</span>
-                    </div>
-                    <div class="radar-row">
-                        <span class="radar-label">짠맛</span>
-                        <div class="radar-track"><div class="radar-fill" style="width:82%; background: linear-gradient(90deg, #bfdbfe, #4a6cf7);"></div></div>
-                        <span class="radar-val">82</span>
-                    </div>
-                    <div class="radar-row">
-                        <span class="radar-label">매운맛</span>
-                        <div class="radar-track"><div class="radar-fill" style="width:91%; background: linear-gradient(90deg, #fed7aa, #ff4500);"></div></div>
-                        <span class="radar-val">91</span>
-                    </div>
-                    <div class="radar-row">
-                        <span class="radar-label">바삭</span>
-                        <div class="radar-track"><div class="radar-fill" style="width:75%; background: linear-gradient(90deg, #fde68a, #e8930c);"></div></div>
-                        <span class="radar-val">75</span>
-                    </div>
-                    <div class="radar-row">
-                        <span class="radar-label">고소</span>
-                        <div class="radar-track"><div class="radar-fill" style="width:68%; background: linear-gradient(90deg, #bbf7d0, #16a34a);"></div></div>
-                        <span class="radar-val">68</span>
-                    </div>
-                    <div class="radar-row">
-                        <span class="radar-label">부드러움</span>
-                        <div class="radar-track"><div class="radar-fill" style="width:55%; background: linear-gradient(90deg, #e9d5ff, #a855f7);"></div></div>
-                        <span class="radar-val">55</span>
-                    </div>
-                </div>
-            </div>
-            <div class="recent-section">
-                <h4>📌 최근 맛 기록</h4>
-                <div class="recent-grid">
-                    <div class="recent-item"><img src="../docs/sample/food-10.jpg" alt="Recent"></div>
-                    <div class="recent-item"><img src="../docs/sample/food-11.jpg" alt="Recent"></div>
-                    <div class="recent-item"><img src="../docs/sample/food-12.jpg" alt="Recent"></div>
-                    <div class="recent-item"><img src="../docs/sample/food-13.jpg" alt="Recent"></div>
-                    <div class="recent-item"><img src="../docs/sample/food-14.jpg" alt="Recent"></div>
-                    <div class="recent-item"><img src="../docs/sample/food-15.jpg" alt="Recent"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 토스트 알림 -->
-    <div class="toast" id="toast"></div>
-</div>
-
-<script src="script.js"></script>
+...
 </body>
 </html>
