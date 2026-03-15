@@ -21,7 +21,7 @@
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <link rel="stylesheet" href="style.css?v=260315-1705"></head>
+    <link rel="stylesheet" href="style.css?v=260315-1950"></head>
 <body>
 
 <div class="app-frame">
@@ -58,11 +58,11 @@
                 <small>미식가들의 맛 표현 인덱스</small>
                 <div class="dev-badge">
                     <div class="dev-name">danielk0121</div>
-                    <div class="dev-ver">v-260315-1944</div>
+                    <div class="dev-ver">v-260315-1950</div>
                 </div>
             </div>
 
-            <!-- [NEW] 온보딩 가이드 배너 -->
+            <!-- 온보딩 가이드 배너 -->
             <div class="onboarding-banner" onclick="switchScreen('profile')">
                 <div class="onboarding-content">
                     <span class="onboarding-icon">✨</span>
@@ -75,7 +75,7 @@
             </div>
 
             <div class="feed-list">
-                <!-- 피드 카드 1 -->
+                <!-- 피드 카드 1: 샐러드 -->
                 <div class="feed-card">
                     <div class="feed-card-header">
                         <div class="feed-avatar">🥗</div>
@@ -88,41 +88,60 @@
                         <img src="../docs/sample/salad-01.jpg" alt="Salad">
                     </div>
                     
-                    <!-- 미식 지표 요약 -->
+                    <!-- [고도화] 미식 지표 비교 (작성자 vs 대중) -->
                     <div class="feed-metrics-summary">
-                        <div class="metric-item">
-                            <div class="metric-info">
-                                <span class="metric-name">☁️ 부드러움</span>
-                                <span class="metric-val">90</span>
+                        <div class="metric-row">
+                            <div class="metric-header">
+                                <span class="metric-label">☁️ 부드러움</span>
+                                <div class="metric-values"><span class="val-user">나 90</span><span class="val-sep">/</span><span class="val-public">대중 82</span></div>
                             </div>
-                            <div class="metric-bar-bg"><div class="metric-bar-fill" style="width:90%; background:#0d9488;"></div></div>
+                            <div class="dual-bar-container">
+                                <div class="bar-user" style="width:90%; background:#0d9488;"></div>
+                                <div class="marker-public" style="left:82%;"></div>
+                            </div>
                         </div>
-                        <div class="metric-item">
-                            <div class="metric-info">
-                                <span class="metric-name">🍄 감칠맛</span>
-                                <span class="metric-val">75</span>
+                        <div class="metric-row">
+                            <div class="metric-header">
+                                <span class="metric-label">🍄 감칠맛</span>
+                                <div class="metric-values"><span class="val-user">나 75</span><span class="val-sep">/</span><span class="val-public">대중 78</span></div>
                             </div>
-                            <div class="metric-bar-bg"><div class="metric-bar-fill" style="width:75%; background:#16a34a;"></div></div>
+                            <div class="dual-bar-container">
+                                <div class="bar-user" style="width:75%; background:#16a34a;"></div>
+                                <div class="marker-public" style="left:78%;"></div>
+                            </div>
                         </div>
-                        <div class="metric-item">
-                            <div class="metric-info">
-                                <span class="metric-name">🌿 신선도</span>
-                                <span class="metric-val">40</span>
+                        <div class="metric-row">
+                            <div class="metric-header">
+                                <span class="metric-label">🌿 신선도</span>
+                                <div class="metric-values"><span class="val-user">나 40</span><span class="val-sep">/</span><span class="val-public">대중 85</span></div>
                             </div>
-                            <div class="metric-bar-bg"><div class="metric-bar-fill" style="width:40%; background:#22c55e;"></div></div>
+                            <div class="dual-bar-container" title="이 유저는 남들보다 신선도를 낮게 평가했네요!">
+                                <div class="bar-user" style="width:40%; background:#22c55e;"></div>
+                                <div class="marker-public" style="left:85%;"></div>
+                            </div>
                         </div>
                     </div>
 
-                    <button class="metrics-expand-btn" onclick="toggleMetrics(this)">전체 미식 데이터 보기 ▼</button>
+                    <button class="metrics-expand-btn" onclick="toggleMetrics(this)">전체 미식 데이터 비교 ▼</button>
                     <div class="metrics-full-list">
-                        <div class="mini-metric-item"><span>🥜 고소함</span> <span>60</span></div>
-                        <div class="mini-metric-item"><span>🍯 단맛</span> <span>20</span></div>
-                        <div class="mini-metric-item"><span>🧂 짠맛</span> <span>15</span></div>
-                        <div class="mini-metric-item"><span>🍋 신맛</span> <span>30</span></div>
+                        <div class="mini-metric-item"><span>🥜 고소함</span> <span>나 60 / 대중 55</span></div>
+                        <div class="mini-metric-item"><span>🍯 단맛</span> <span>나 20 / 대중 15</span></div>
+                        <div class="mini-metric-item"><span>🧂 짠맛</span> <span>나 15 / 대중 10</span></div>
+                        <div class="mini-metric-item"><span>🍋 신맛</span> <span>나 30 / 대중 25</span></div>
+                    </div>
+
+                    <!-- [NEW] 공식 미식 스펙트럼 (빅데이터 요약) -->
+                    <div class="official-spectrum">
+                        <div class="official-spectrum-title">🏆 YummyDex 공식 미식 성분 (1,240명 분석)</div>
+                        <div class="official-tags">
+                            <span class="official-tag">#부드러움_끝판왕</span>
+                            <span class="official-tag">#아보카도_풍미</span>
+                            <span class="official-tag">#건강한_감칠맛</span>
+                        </div>
                     </div>
 
                     <div class="feed-footer">
-                        <div class="feed-comment">아보카도와 드레싱의 조화가 너무 부드러워요. 채소는 좀 숨이 죽어 신선도가 아쉽지만, 드레싱 맛이 좋아서 계속 먹게 되네요.</div>
+                        <div class="feed-comment">아보카도와 드레싱의 조화가 너무 부드러워요. 채소는 좀 숨이 죽어 신선도가 아쉽지만, 드레싱 맛이 좋아서 계속 먹게 되네요. <span style="color:#ff6b35;">#가성비좋음 #연남동브런치</span></div>
                         
                         <!-- 개선된 리액션 버튼 -->
                         <div class="reaction-btns">
@@ -143,7 +162,7 @@
                         </div>
                         
                         <div class="related-posts-section">
-                            <div class="related-posts-title">🔍 같은 메뉴 다른 시선</div>
+                            <div class="related-posts-title">🔍 이 메뉴의 다른 피드들</div>
                             <div class="related-posts-list">
                                 <div class="related-post-card">
                                     <img src="../docs/sample/salad-02.jpg" alt="음식 사진" class="related-post-img">
@@ -158,20 +177,12 @@
                                     <span class="related-post-user">@클린라이프</span>
                                 </div>
                             </div>
-                            <div class="related-taste-summary">
-                                <div class="related-taste-summary-title">💡 다른 시선 요약 (댓글 분석)</div>
-                                <div class="related-taste-summary-tags">
-                                    <span class="mini-taste-tag">🥬 신선(5개)</span>
-                                    <span class="mini-taste-tag">🥀 신선도 아쉬움(4개)</span>
-                                    <span class="mini-taste-tag">🥗 부드러움(3개)</span>
-                                </div>
-                            </div>
                         </div>
                         <div class="comments-section">
                             <div class="comment-item">
                                 <span class="comment-avatar">🥗</span>
                                 <div class="comment-body">
-                                    <span class="comment-user">건강러</span><span class="comment-country">🇰🇷</span>
+                                    <span class="comment-user">건강러</span>
                                     여기 아보카도 진짜 잘 익었네요! 드레싱 어떤 거 쓰나요?
                                     <span class="comment-time">1시간 전</span>
                                 </div>
@@ -179,33 +190,9 @@
                             <div class="comment-item">
                                 <span class="comment-avatar">🥬</span>
                                 <div class="comment-body">
-                                    <span class="comment-user">샐러드매니아</span><span class="comment-country">🇰🇷</span>
+                                    <span class="comment-user">샐러드매니아</span>
                                     채소 신선도가 여기까지 느껴져요. 연남동 가면 꼭 가볼게요!
                                     <span class="comment-time">45분 전</span>
-                                </div>
-                            </div>
-                            <div class="comment-item">
-                                <span class="comment-avatar">🧘</span>
-                                <div class="comment-body">
-                                    <span class="comment-user">요기니</span><span class="comment-country">🇯🇵</span>
-                                    운동 끝나고 먹기 딱 좋은 구성이네요. 정보 감사합니다 :)
-                                    <span class="comment-time">30분 전</span>
-                                </div>
-                            </div>
-                            <div class="comment-item">
-                                <span class="comment-avatar">🥑</span>
-                                <div class="comment-body">
-                                    <span class="comment-user">다이어트중</span><span class="comment-country">🇺🇸</span>
-                                    입맛 매칭 87%라니... 믿고 먹으러 갑니다!
-                                    <span class="comment-time">10분 전</span>
-                                </div>
-                            </div>
-                            <div class="comment-item">
-                                <span class="comment-avatar">🥦</span>
-                                <div class="comment-body">
-                                    <span class="comment-user">식단러</span><span class="comment-country">🇰🇷</span>
-                                    여기 양도 꽤 많아서 한 끼 식사로 든든하더라구요 ㅎㅎ
-                                    <span class="comment-time">방금</span>
                                 </div>
                             </div>
                             <span class="comments-more">댓글 2개 더 보기</span>
@@ -213,7 +200,7 @@
                     </div>
                 </div>
 
-                <!-- 피드 카드 2 -->
+                <!-- 피드 카드 2: 버거 -->
                 <div class="feed-card">
                     <div class="feed-card-header">
                         <div class="feed-avatar">🍔</div>
@@ -226,41 +213,60 @@
                         <img src="../docs/sample/burger-01.jpg" alt="Burger">
                     </div>
 
-                    <!-- 미식 지표 요약 -->
+                    <!-- [고도화] 미식 지표 비교 (작성자 vs 대중) -->
                     <div class="feed-metrics-summary">
-                        <div class="metric-item">
-                            <div class="metric-info">
-                                <span class="metric-name">🥩 육향</span>
-                                <span class="metric-val">95</span>
+                        <div class="metric-row">
+                            <div class="metric-header">
+                                <span class="metric-label">🥩 육향</span>
+                                <div class="metric-values"><span class="val-user">나 95</span><span class="val-sep">/</span><span class="val-public">대중 92</span></div>
                             </div>
-                            <div class="metric-bar-bg"><div class="metric-bar-fill" style="width:95%; background:#ef4444;"></div></div>
+                            <div class="dual-bar-container">
+                                <div class="bar-user" style="width:95%; background:#ef4444;"></div>
+                                <div class="marker-public" style="left:92%;"></div>
+                            </div>
                         </div>
-                        <div class="metric-item">
-                            <div class="metric-info">
-                                <span class="metric-name">🧀 치즈/우유</span>
-                                <span class="metric-val">85</span>
+                        <div class="metric-row">
+                            <div class="metric-header">
+                                <span class="metric-label">🧀 치즈/우유</span>
+                                <div class="metric-values"><span class="val-user">나 85</span><span class="val-sep">/</span><span class="val-public">대중 80</span></div>
                             </div>
-                            <div class="metric-bar-bg"><div class="metric-bar-fill" style="width:85%; background:#fbbf24;"></div></div>
+                            <div class="dual-bar-container">
+                                <div class="bar-user" style="width:85%; background:#fbbf24;"></div>
+                                <div class="marker-public" style="left:80%;"></div>
+                            </div>
                         </div>
-                        <div class="metric-item">
-                            <div class="metric-info">
-                                <span class="metric-name">🧂 짠맛</span>
-                                <span class="metric-val">70</span>
+                        <div class="metric-row">
+                            <div class="metric-header">
+                                <span class="metric-label">🧂 짠맛</span>
+                                <div class="metric-values"><span class="val-user">나 70</span><span class="val-sep">/</span><span class="val-public">대중 62</span></div>
                             </div>
-                            <div class="metric-bar-bg"><div class="metric-bar-fill" style="width:70%; background:#4a6cf7;"></div></div>
+                            <div class="dual-bar-container">
+                                <div class="bar-user" style="width:70%; background:#4a6cf7;"></div>
+                                <div class="marker-public" style="left:62%;"></div>
+                            </div>
                         </div>
                     </div>
 
-                    <button class="metrics-expand-btn" onclick="toggleMetrics(this)">전체 미식 데이터 보기 ▼</button>
+                    <button class="metrics-expand-btn" onclick="toggleMetrics(this)">전체 미식 데이터 비교 ▼</button>
                     <div class="metrics-full-list">
-                        <div class="mini-metric-item"><span>🧈 버터향</span> <span>80</span></div>
-                        <div class="mini-metric-item"><span>🔥 불맛</span> <span>60</span></div>
-                        <div class="mini-metric-item"><span>🍞 고소함</span> <span>50</span></div>
-                        <div class="mini-metric-item"><span>🌶️ 매운맛</span> <span>5</span></div>
+                        <div class="mini-metric-item"><span>🧈 버터향</span> <span>나 80 / 대중 75</span></div>
+                        <div class="mini-metric-item"><span>🔥 불맛</span> <span>나 60 / 대중 65</span></div>
+                        <div class="mini-metric-item"><span>🍞 고소함</span> <span>나 50 / 대중 55</span></div>
+                        <div class="mini-metric-item"><span>🌶️ 매운맛</span> <span>나 5 / 대중 8</span></div>
+                    </div>
+
+                    <!-- [NEW] 공식 미식 스펙트럼 (빅데이터 요약) -->
+                    <div class="official-spectrum">
+                        <div class="official-spectrum-title">🏆 YummyDex 공식 미식 성분 (3,580명 분석)</div>
+                        <div class="official-tags">
+                            <span class="official-tag">#압도적_육즙</span>
+                            <span class="official-tag">#체다치즈_폭탄</span>
+                            <span class="official-tag">#미국식_헤비함</span>
+                        </div>
                     </div>
 
                     <div class="feed-footer">
-                        <div class="feed-comment">패티의 육즙과 녹아내린 치즈의 밸런스가 환상적이에요. 번도 구워져서 고소함이 두 배!</div>
+                        <div class="feed-comment">패티의 육즙과 녹아내린 치즈의 밸런스가 환상적이에요. 번도 구워져서 고소함이 두 배! <span style="color:#ff6b35;">#이태원맛집 #헤비함주의</span></div>
                         
                         <!-- 개선된 리액션 버튼 -->
                         <div class="reaction-btns">
@@ -281,7 +287,7 @@
                         </div>
                         
                         <div class="related-posts-section">
-                            <div class="related-posts-title">🔍 같은 메뉴 다른 시선</div>
+                            <div class="related-posts-title">🔍 이 메뉴의 다른 피드들</div>
                             <div class="related-posts-list">
                                 <div class="related-post-card">
                                     <img src="../docs/sample/burger-02.jpg" alt="음식 사진" class="related-post-img">
@@ -296,20 +302,12 @@
                                     <span class="related-post-user">@패티매니아</span>
                                 </div>
                             </div>
-                            <div class="related-taste-summary">
-                                <div class="related-taste-summary-title">💡 다른 시선 요약 (댓글 분석)</div>
-                                <div class="related-taste-summary-tags">
-                                    <span class="mini-taste-tag">🔥 불맛(8개)</span>
-                                    <span class="mini-taste-tag">🧀 치즈치즈(6개)</span>
-                                    <span class="mini-taste-tag">🧂 짭짤(4개)</span>
-                                </div>
-                            </div>
                         </div>
                         <div class="comments-section">
                             <div class="comment-item">
                                 <span class="comment-avatar">🍔</span>
                                 <div class="comment-body">
-                                    <span class="comment-user">버거덕후</span><span class="comment-country">🇰🇷</span>
+                                    <span class="comment-user">버거덕후</span>
                                     여기 패티 굽기 조절 가능한가요? 비주얼 대박이네요
                                     <span class="comment-time">4시간 전</span>
                                 </div>
@@ -317,41 +315,9 @@
                             <div class="comment-item">
                                 <span class="comment-avatar">🥩</span>
                                 <div class="comment-body">
-                                    <span class="comment-user">육즙사랑</span><span class="comment-country">🇺🇸</span>
+                                    <span class="comment-user">육즙사랑</span>
                                     한 입 베어물면 육즙 팡 터질 것 같아요... 츄릅
                                     <span class="comment-time">3시간 전</span>
-                                </div>
-                            </div>
-                            <div class="comment-item">
-                                <span class="comment-avatar">🧀</span>
-                                <div class="comment-body">
-                                    <span class="comment-user">치즈빌런</span><span class="comment-country">🇫🇷</span>
-                                    치즈 흘러내리는 거 보소... 이건 반칙이죠!
-                                    <span class="comment-time">2시간 전</span>
-                                </div>
-                            </div>
-                            <div class="comment-item">
-                                <span class="comment-avatar">🏘️</span>
-                                <div class="comment-body">
-                                    <span class="comment-user">이태원주민</span><span class="comment-country">🇰🇷</span>
-                                    여기 주말엔 웨이팅 좀 있는데 평일 낮엔 갈만해요!
-                                    <span class="comment-time">1시간 전</span>
-                                </div>
-                            </div>
-                            <div class="comment-item">
-                                <span class="comment-avatar">🚐</span>
-                                <div class="comment-body">
-                                    <span class="comment-user">수제버거투어</span><span class="comment-country">🇰🇷</span>
-                                    전국 버거 지도 만드는 중인데 여기 리스트에 올려야겠네요 ㅋㅋ
-                                    <span class="comment-time">30분 전</span>
-                                </div>
-                            </div>
-                            <div class="comment-item">
-                                <span class="comment-avatar">💪</span>
-                                <div class="comment-body">
-                                    <span class="comment-user">헬스보이</span><span class="comment-country">🇰🇷</span>
-                                    치팅데이 메뉴로 완벽합니다. 단백질 보충 가야죠!
-                                    <span class="comment-time">10분 전</span>
                                 </div>
                             </div>
                             <span class="comments-more">댓글 4개 더 보기</span>
@@ -359,7 +325,7 @@
                     </div>
                 </div>
 
-                <!-- 피드 카드 3 -->
+                <!-- 피드 카드 3: 파스타 -->
                 <div class="feed-card">
                     <div class="feed-card-header">
                         <div class="feed-avatar">🍝</div>
@@ -372,41 +338,60 @@
                         <img src="../docs/sample/pasta-01.jpg" alt="Pasta">
                     </div>
 
-                    <!-- 미식 지표 요약 -->
+                    <!-- [고도화] 미식 지표 비교 (작성자 vs 대중) -->
                     <div class="feed-metrics-summary">
-                        <div class="metric-item">
-                            <div class="metric-info">
-                                <span class="metric-name">🧂 짠맛</span>
-                                <span class="metric-val">80</span>
+                        <div class="metric-row">
+                            <div class="metric-header">
+                                <span class="metric-label">🧂 짠맛</span>
+                                <div class="metric-values"><span class="val-user">나 80</span><span class="val-sep">/</span><span class="val-public">대중 65</span></div>
                             </div>
-                            <div class="metric-bar-bg"><div class="metric-bar-fill" style="width:80%; background:#4a6cf7;"></div></div>
+                            <div class="dual-bar-container">
+                                <div class="bar-user" style="width:80%; background:#4a6cf7;"></div>
+                                <div class="marker-public" style="left:65%;"></div>
+                            </div>
                         </div>
-                        <div class="metric-item">
-                            <div class="metric-info">
-                                <span class="metric-name">☁️ 부드러움</span>
-                                <span class="metric-val">85</span>
+                        <div class="metric-row">
+                            <div class="metric-header">
+                                <span class="metric-label">☁️ 부드러움</span>
+                                <div class="metric-values"><span class="val-user">나 85</span><span class="val-sep">/</span><span class="val-public">대중 82</span></div>
                             </div>
-                            <div class="metric-bar-bg"><div class="metric-bar-fill" style="width:85%; background:#0d9488;"></div></div>
+                            <div class="dual-bar-container">
+                                <div class="bar-user" style="width:85%; background:#0d9488;"></div>
+                                <div class="marker-public" style="left:82%;"></div>
+                            </div>
                         </div>
-                        <div class="metric-item">
-                            <div class="metric-info">
-                                <span class="metric-name">🥀 양 적음</span>
-                                <span class="metric-val">90</span>
+                        <div class="metric-row">
+                            <div class="metric-header">
+                                <span class="metric-label">🦑 쫄깃함</span>
+                                <div class="metric-values"><span class="val-user">나 95</span><span class="val-sep">/</span><span class="val-public">대중 88</span></div>
                             </div>
-                            <div class="metric-bar-bg"><div class="metric-bar-fill" style="width:90%; background:#636366;"></div></div>
+                            <div class="dual-bar-container">
+                                <div class="bar-user" style="width:95%; background:#ca8a04;"></div>
+                                <div class="marker-public" style="left:88%;"></div>
+                            </div>
                         </div>
                     </div>
 
-                    <button class="metrics-expand-btn" onclick="toggleMetrics(this)">전체 미식 데이터 보기 ▼</button>
+                    <button class="metrics-expand-btn" onclick="toggleMetrics(this)">전체 미식 데이터 비교 ▼</button>
                     <div class="metrics-full-list">
-                        <div class="mini-metric-item"><span>🇮🇹 알덴테</span> <span>95</span></div>
-                        <div class="mini-metric-item"><span>🍷 와인향</span> <span>40</span></div>
-                        <div class="mini-metric-item"><span>🍄 감칠맛</span> <span>70</span></div>
-                        <div class="mini-metric-item"><span>🍯 단맛</span> <span>5</span></div>
+                        <div class="mini-metric-item"><span>🇮🇹 알덴테</span> <span>나 95 / 대중 90</span></div>
+                        <div class="mini-metric-item"><span>🍷 와인향</span> <span>나 40 / 대중 35</span></div>
+                        <div class="mini-metric-item"><span>🍄 감칠맛</span> <span>나 70 / 대중 72</span></div>
+                        <div class="mini-metric-item"><span>🍯 단맛</span> <span>나 5 / 대중 8</span></div>
+                    </div>
+
+                    <!-- [NEW] 공식 미식 스펙트럼 (빅데이터 요약) -->
+                    <div class="official-spectrum">
+                        <div class="official-spectrum-title">🏆 YummyDex 공식 미식 성분 (2,105명 분석)</div>
+                        <div class="official-tags">
+                            <span class="official-tag">#정통_알덴테</span>
+                            <span class="official-tag">#짭짤한_바다내음</span>
+                            <span class="official-tag">#생면_식감</span>
+                        </div>
                     </div>
 
                     <div class="feed-footer">
-                        <div class="feed-comment">면의 삶기가 완벽해요. 알덴테의 정석! 다만 성인 남성이 먹기엔 양이 조금 적은 편이라 사이드 메뉴 추가를 추천해요.</div>
+                        <div class="feed-comment">면의 삶기가 완벽해요. 알덴테의 정석! <span style="color:#ff6b35;">#한남동맛집 #파스타전문점 #양은조금적음</span></div>
                         
                         <!-- 개선된 리액션 버튼 -->
                         <div class="reaction-btns">
@@ -415,7 +400,7 @@
                             <button class="reaction-btn"><span class="r-icon">🔄</span> 나랑 똑같아요 <span class="r-count">15</span></button>
                         </div>
 
-                        <!-- 싱크로율 근거 박스 (낮은 싱크로율 예시) -->
+                        <!-- 싱크로율 근거 박스 -->
                         <div class="match-reason-box" style="background:#fff0f0; border-left-color:#e84057;">
                             <strong style="color:#e84057;">⚠️ 입맛 싱크로율 58%</strong>
                             미식가님은 '짠맛'에 민감하시지만, 이 유저는 '짠맛' 수치를 높게 평가하는 경향이 있습니다.
@@ -427,7 +412,7 @@
                         </div>
                         
                         <div class="related-posts-section">
-                            <div class="related-posts-title">🔍 같은 메뉴 다른 시선</div>
+                            <div class="related-posts-title">🔍 이 메뉴의 다른 피드들</div>
                             <div class="related-posts-list">
                                 <div class="related-post-card">
                                     <img src="../docs/sample/pasta-02.jpg" alt="음식 사진" class="related-post-img">
@@ -442,49 +427,17 @@
                                     <span class="related-post-user">@와인과파스타</span>
                                 </div>
                             </div>
-                            <div class="related-taste-summary">
-                                <div class="related-taste-summary-title">💡 다른 시선 요약 (댓글 분석)</div>
-                                <div class="related-taste-summary-tags">
-                                    <span class="mini-taste-tag">🇮🇹 알덴테(4개)</span>
-                                    <span class="mini-taste-tag">🍷 와인페어링(2개)</span>
-                                    <span class="mini-taste-tag">🥀 양 적음(1개)</span>
-                                </div>
-                            </div>
                         </div>
                         <div class="comments-section">
                             <div class="comment-item">
                                 <span class="comment-avatar">🍷</span>
                                 <div class="comment-body">
-                                    <span class="comment-user">와인러버</span><span class="comment-country">🇰🇷</span>
+                                    <span class="comment-user">와인러버</span>
                                     여기 파스타 진짜 생면 쓰나요? 소스가 잘 배어있네요
                                     <span class="comment-time">어제</span>
                                 </div>
                             </div>
-                            <div class="comment-item">
-                                <span class="comment-avatar">🍝</span>
-                                <div class="comment-body">
-                                    <span class="comment-user">면덕후</span><span class="comment-country">🇮🇹</span>
-                                    한남동에서 파스타 실패하기 쉬운데 여긴 믿고 가도 되겠어요!
-                                    <span class="comment-time">20시간 전</span>
-                                </div>
-                            </div>
-                            <div class="comment-item">
-                                <span class="comment-avatar">✨</span>
-                                <div class="comment-body">
-                                    <span class="comment-user">분위기파</span><span class="comment-country">🇰🇷</span>
-                                    여기 조명도 예뻐서 데이트 코스로 딱일 것 같아요 ㅎㅎ
-                                    <span class="comment-time">15시간 전</span>
-                                </div>
-                            </div>
-                            <div class="comment-item">
-                                <span class="comment-avatar">🇮🇹</span>
-                                <div class="comment-body">
-                                    <span class="comment-user">알덴테성애자</span><span class="comment-country">🇰🇷</span>
-                                    면 익힘 정도 보니까 딱 제 스타일이네요. 당장 예약합니다!
-                                    <span class="comment-time">10시간 전</span>
-                                </div>
-                            </div>
-                            <span class="comments-more">댓글 1개 더 보기</span>
+                            <span class="comments-more">댓글 3개 더 보기</span>
                         </div>
                     </div>
                 </div>
@@ -510,6 +463,6 @@
     </div>
 </div>
 
-<script src="script.js?v=260315-1705"></script>
+<script src="script.js?v=260315-1950"></script>
 </body>
 </html>

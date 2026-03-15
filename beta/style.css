@@ -1,49 +1,111 @@
-/* ===== 미식 지표 시각화 UI (추가) ===== */
+/* ===== 미식 지표 시각화 UI 고도화 ===== */
 .feed-metrics-summary {
-    padding: 12px 16px 4px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-.metric-item {
+    padding: 14px 16px 4px;
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    flex: 1;
-    min-width: 80px;
-    background: #f8f8f8;
-    padding: 8px 10px;
-    border-radius: 10px;
-    border: 1px solid #eee;
+    gap: 12px;
 }
-.metric-info {
+.metric-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.metric-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 700;
     color: #3a3a3c;
 }
-.metric-name {
+.metric-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.metric-values {
+    font-size: 10px;
+    font-weight: 600;
+}
+.val-user { color: #ff6b35; }
+.val-sep { color: #d1d1d6; margin: 0 2px; }
+.val-public { color: #8e8e93; }
+
+.dual-bar-container {
+    position: relative;
+    height: 8px;
+    background: #f2f2f7;
+    border-radius: 4px;
+    overflow: visible;
+}
+/* 작성자 바 (메인 컬러) */
+.bar-user {
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    border-radius: 4px;
+    z-index: 2;
+    transition: width 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+/* 대중 평균 표시기 (수직 선 형태 또는 점) */
+.marker-public {
+    position: absolute;
+    top: -2px;
+    width: 4px;
+    height: 12px;
+    background: #3a3a3c;
+    border-radius: 2px;
+    z-index: 3;
+    transform: translateX(-50%);
+    box-shadow: 0 0 4px rgba(0,0,0,0.2);
+}
+.marker-public::after {
+    content: '대중';
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 8px;
+    color: #3a3a3c;
+    white-space: nowrap;
+}
+
+/* 공식 미식 스펙트럼 (YummyDex Official) */
+.official-spectrum {
+    margin: 12px 16px 0;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    border: 1px dashed #d1d1d6;
+}
+.official-spectrum-title {
+    font-size: 11px;
+    font-weight: 800;
+    color: #1d1d1f;
+    margin-bottom: 8px;
     display: flex;
     align-items: center;
     gap: 4px;
 }
-.metric-val {
-    color: #ff6b35;
+.official-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
 }
-.metric-bar-bg {
-    height: 4px;
-    background: #e5e5e5;
-    border-radius: 2px;
-    overflow: hidden;
-}
-.metric-bar-fill {
-    height: 100%;
-    border-radius: 2px;
-    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+.official-tag {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 4px 8px;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    color: #3a3a3c;
 }
 
+/* 구 버전 스타일 유지 및 보완 (필요시) */
+.metric-item {
+    display: none; /* 새로운 metric-row로 대체 */
+}
 /* 상세 지표 토글 */
 .metrics-expand-btn {
     display: block;

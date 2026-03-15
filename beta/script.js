@@ -34,16 +34,19 @@ const SAMPLE_FEEDS = [
         location: '연남동 샐러드 카페',
         time: '2시간 전',
         image: '../docs/sample/salad-01.jpg',
-        comment: '아보카도와 드레싱의 조화가 너무 부드러워요. 채소는 좀 숨이 죽어 신선도가 아쉽지만, 드레싱 맛이 좋아서 계속 먹게 되네요.',
+        comment: '아보카도와 드레싱의 조화가 너무 부드러워요. 채소는 좀 숨이 죽어 신선도가 아쉽지만, 드레싱 맛이 좋아서 계속 먹게 되네요. #가성비좋음 #연남동브런치',
         matchRate: 87,
         matchReason: "'부드러움'과 '감칠맛'을 중시하는 미식가님의 평소 취향과 87% 일치하는 데이터입니다.",
         metrics: {
-            soft: 90,
-            umami: 75,
-            fresh: 40,
-            nutty: 60,
-            sugar: 20
-        }
+            soft: { user: 90, public: 82 },
+            umami: { user: 75, public: 78 },
+            fresh: { user: 40, public: 85 }
+        },
+        officialSpectrum: ['#부드러움_끝판왕', '#아보카도_풍미', '#건강한_감칠맛'],
+        comments: [
+            { user: '건강러', text: '여기 아보카도 진짜 잘 익었네요! 드레싱 어떤 거 쓰나요?', time: '1시간 전' },
+            { user: '샐러드매니아', text: '채소 신선도가 여기까지 느껴져요. 연남동 가면 꼭 가볼게요!', time: '45분 전' }
+        ]
     },
     {
         id: 2,
@@ -51,17 +54,19 @@ const SAMPLE_FEEDS = [
         location: '이태원 버거 하우스',
         time: '5시간 전',
         image: '../docs/sample/burger-01.jpg',
-        comment: '패티의 육즙과 녹아내린 치즈의 밸런스가 환상적이에요. 번도 구워져서 고소함이 두 배!',
+        comment: '패티의 육즙과 녹아내린 치즈의 밸런스가 환상적이에요. 번도 구워져서 고소함이 두 배! #이태원맛집 #헤비함주의',
         matchRate: 72,
         matchReason: "평소 '육향'과 '치즈향'을 선호하시지만, 이 메뉴의 '짠맛' 수치가 미식가님의 기준보다 높습니다.",
         metrics: {
-            meaty: 95,
-            dairy: 85,
-            salt: 70,
-            buttery: 80,
-            smoky: 60,
-            spiced: 15
-        }
+            meaty: { user: 95, public: 92 },
+            dairy: { user: 85, public: 80 },
+            salt: { user: 70, public: 62 }
+        },
+        officialSpectrum: ['#압도적_육즙', '#체다치즈_폭탄', '#미국식_헤비함'],
+        comments: [
+            { user: '버거덕후', text: '여기 패티 굽기 조절 가능한가요? 비주얼 대박이네요', time: '4시간 전' },
+            { user: '육즙사랑', text: '한 입 베어물면 육즙 팡 터질 것 같아요... 츄릅', time: '3시간 전' }
+        ]
     },
     {
         id: 3,
@@ -69,16 +74,18 @@ const SAMPLE_FEEDS = [
         location: '한남동 이탈리안 키친',
         time: '어제',
         image: '../docs/sample/pasta-01.jpg',
-        comment: '면의 삶기가 완벽해요. 알덴테의 정석! 다만 성인 남성이 먹기엔 양이 조금 적은 편이라 사이드 메뉴 추가를 추천해요.',
+        comment: '면의 삶기가 완벽해요. 알덴테의 정석! #한남동맛집 #파스타전문점 #양은조금적음',
         matchRate: 58,
         matchReason: "미식가님은 '짠맛'에 민감하시지만, 이 유저는 '짠맛' 수치를 높게 평가하는 경향이 있습니다.",
         metrics: {
-            salt: 80,
-            soft: 85,
-            chewy: 95,
-            umami: 70,
-            fruity: 10
-        }
+            salt: { user: 80, public: 65 },
+            soft: { user: 85, public: 82 },
+            chewy: { user: 95, public: 88 }
+        },
+        officialSpectrum: ['#정통_알덴테', '#짭짤한_바다내음', '#생면_식감'],
+        comments: [
+            { user: '와인러버', text: '여기 파스타 진짜 생면 쓰나요? 소스가 잘 배어있네요', time: '어제' }
+        ]
     }
 ];
 
