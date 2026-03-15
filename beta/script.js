@@ -106,9 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const navMap = {
         'index.html': 0,
         'explore.html': 1,
-        'mark.html': 2, 
-        'detective.html': 3,
-        'profile.html': 4
+        'profile.html': 2
     };
 
     const navItems = document.querySelectorAll('.top-nav .nav-item');
