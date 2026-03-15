@@ -488,3 +488,8 @@ toast.textContent = msg;
 toast.classList.add('show');
 setTimeout(() => toast.classList.remove('show'), 2500);
 }
+
+/* ===== 개발중 안내 토스트 ===== */
+function showDevToast() {
+showToast('🚧 아직 개발중이에요');
+}
