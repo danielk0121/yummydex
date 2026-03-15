@@ -58,7 +58,7 @@
                 <small>미식가들의 맛 표현 인덱스</small>
                 <div class="dev-badge">
                     <div class="dev-name">danielk0121</div>
-                    <div class="dev-ver">v-260315-2236</div>
+                    <div class="dev-ver">v-260316-0014</div>
                 </div>
             </div>
 
@@ -86,8 +86,12 @@
                     </div>
                     <div class="feed-image-wrap">
                         <img src="../docs/sample/salad-01.jpg" alt="Salad">
+                        <div class="feed-location-overlay">
+                            <span class="feed-location-overlay-text">📍 연남동 샐러드 카페</span>
+                            <button class="feed-location-overlay-btn" onclick="showFeedMap('연남동 샐러드 카페', 37.561, 126.923)">지도 🗺️</button>
+                        </div>
                     </div>
-                    
+
                     <div class="author-taste-tags">
                         <div class="author-tags-title">🗣️ 미식가김 님이 느낀 맛</div>
                         <div class="author-tags-list">
@@ -98,51 +102,46 @@
                         </div>
                     </div>
 
-                    <div class="ai-spectrum">
-                        <div class="ai-spectrum-title">🏆 YummyDex AI 분석 <span class="ai-spectrum-count">1,240명의 데이터 기반</span></div>
-                        <div class="ai-spectrum-bars">
-                            <div class="ai-bar-row">
-                                <span class="ai-bar-label">☁️ 부드러움</span>
-                                <div class="ai-bar-track"><div class="ai-bar-fill" style="width:82%; background:#0d9488;"></div></div>
-                                <span class="ai-bar-score">82</span>
-                            </div>
-                            <div class="ai-bar-row">
-                                <span class="ai-bar-label">🍄 감칠맛</span>
-                                <div class="ai-bar-track"><div class="ai-bar-fill" style="width:78%; background:#16a34a;"></div></div>
-                                <span class="ai-bar-score">78</span>
-                            </div>
-                            <div class="ai-bar-row">
-                                <span class="ai-bar-label">🌿 신선도</span>
-                                <div class="ai-bar-track"><div class="ai-bar-fill" style="width:85%; background:#22c55e;"></div></div>
-                                <span class="ai-bar-score">85</span>
-                            </div>
-                            <div class="ai-bar-row">
-                                <span class="ai-bar-label">🥜 고소함</span>
-                                <div class="ai-bar-track"><div class="ai-bar-fill" style="width:55%; background:#92400e;"></div></div>
-                                <span class="ai-bar-score">55</span>
-                            </div>
-                        </div>
-                        <div class="official-tags">
-                            <span class="official-tag">#부드러움_끝판왕</span>
-                            <span class="official-tag">#아보카도_풍미</span>
-                            <span class="official-tag">#건강한_감칠맛</span>
-                        </div>
-                    </div>
-
                     <div class="feed-footer">
                         <div class="feed-comment">아보카도와 드레싱의 조화가 너무 부드러워요. 채소는 좀 숨이 죽어 신선도가 아쉽지만, 드레싱 맛이 좋아서 계속 먹게 되네요. <span style="color:#ff6b35;">#가성비좋음 #연남동브런치</span></div>
-                        
+
                         <div class="reaction-btns">
                             <button class="reaction-btn"><span class="r-icon">📍</span> 가보고 싶어요 <span class="r-count">15</span></button>
                             <button class="reaction-btn"><span class="r-icon">🔄</span> 나랑 똑같아요 <span class="r-count">12</span></button>
                         </div>
 
-                        <div class="feed-location">
-                            <span class="feed-location-text">📍 연남동 샐러드 카페</span>
-                            <button class="feed-map-btn" onclick="showFeedMap('연남동 샐러드 카페', 37.561, 126.923)">지도 보기 🗺️</button>
+                        <div class="ai-spectrum">
+                            <div class="ai-spectrum-title">🏆 YummyDex AI 분석 <span class="ai-spectrum-count">1,240명의 데이터 기반</span></div>
+                            <div class="ai-spectrum-bars">
+                                <div class="ai-bar-row">
+                                    <span class="ai-bar-label">☁️ 부드러움</span>
+                                    <div class="ai-bar-track"><div class="ai-bar-fill" style="width:82%; background:#0d9488;"></div></div>
+                                    <span class="ai-bar-score">82</span>
+                                </div>
+                                <div class="ai-bar-row">
+                                    <span class="ai-bar-label">🍄 감칠맛</span>
+                                    <div class="ai-bar-track"><div class="ai-bar-fill" style="width:78%; background:#16a34a;"></div></div>
+                                    <span class="ai-bar-score">78</span>
+                                </div>
+                                <div class="ai-bar-row">
+                                    <span class="ai-bar-label">🌿 신선도</span>
+                                    <div class="ai-bar-track"><div class="ai-bar-fill" style="width:85%; background:#22c55e;"></div></div>
+                                    <span class="ai-bar-score">85</span>
+                                </div>
+                                <div class="ai-bar-row">
+                                    <span class="ai-bar-label">🥜 고소함</span>
+                                    <div class="ai-bar-track"><div class="ai-bar-fill" style="width:55%; background:#92400e;"></div></div>
+                                    <span class="ai-bar-score">55</span>
+                                </div>
+                            </div>
+                            <div class="official-tags">
+                                <span class="official-tag">#부드러움_끝판왕</span>
+                                <span class="official-tag">#아보카도_풍미</span>
+                                <span class="official-tag">#건강한_감칠맛</span>
+                            </div>
                         </div>
 
-                        <!-- [복구] 같은 메뉴 다른 시선 상세 -->
+                        <!-- 같은 메뉴 다른 시선 -->
                         <div class="related-posts-section">
                             <div class="related-posts-title">🔍 같은 메뉴 다른 시선 <span class="related-posts-count">10개 이상</span><button class="related-posts-more-btn" onclick="alert('아직 개발중이에요')">모두 보기</button></div>
                             <div class="related-posts-list">
@@ -215,6 +214,10 @@
                     </div>
                     <div class="feed-image-wrap">
                         <img src="../docs/sample/burger-01.jpg" alt="Burger">
+                        <div class="feed-location-overlay">
+                            <span class="feed-location-overlay-text">📍 이태원 버거 하우스</span>
+                            <button class="feed-location-overlay-btn" onclick="showFeedMap('이태원 버거 하우스', 37.534, 126.993)">지도 🗺️</button>
+                        </div>
                     </div>
 
                     <div class="author-taste-tags">
@@ -228,56 +231,51 @@
                         </div>
                     </div>
 
-                    <div class="ai-spectrum">
-                        <div class="ai-spectrum-title">🏆 YummyDex AI 분석 <span class="ai-spectrum-count">3,580명의 데이터 기반</span></div>
-                        <div class="ai-spectrum-bars">
-                            <div class="ai-bar-row">
-                                <span class="ai-bar-label">🥩 육향</span>
-                                <div class="ai-bar-track"><div class="ai-bar-fill" style="width:92%; background:#ef4444;"></div></div>
-                                <span class="ai-bar-score">92</span>
-                            </div>
-                            <div class="ai-bar-row">
-                                <span class="ai-bar-label">🧀 치즈/우유</span>
-                                <div class="ai-bar-track"><div class="ai-bar-fill" style="width:80%; background:#fbbf24;"></div></div>
-                                <span class="ai-bar-score">80</span>
-                            </div>
-                            <div class="ai-bar-row">
-                                <span class="ai-bar-label">🧂 짠맛</span>
-                                <div class="ai-bar-track"><div class="ai-bar-fill" style="width:62%; background:#4a6cf7;"></div></div>
-                                <span class="ai-bar-score">62</span>
-                            </div>
-                            <div class="ai-bar-row">
-                                <span class="ai-bar-label">🧈 버터향</span>
-                                <div class="ai-bar-track"><div class="ai-bar-fill" style="width:75%; background:#f59e0b;"></div></div>
-                                <span class="ai-bar-score">75</span>
-                            </div>
-                            <div class="ai-bar-row">
-                                <span class="ai-bar-label">🥓 기름짐</span>
-                                <div class="ai-bar-track"><div class="ai-bar-fill" style="width:88%; background:#ff6b35;"></div></div>
-                                <span class="ai-bar-score">88</span>
-                            </div>
-                        </div>
-                        <div class="official-tags">
-                            <span class="official-tag">#압도적_육즙</span>
-                            <span class="official-tag">#체다치즈_폭탄</span>
-                            <span class="official-tag">#미국식_헤비함</span>
-                        </div>
-                    </div>
-
                     <div class="feed-footer">
                         <div class="feed-comment">패티의 육즙과 녹아내린 치즈의 밸런스가 환상적이에요. 번도 구워져서 고소함이 두 배! <span style="color:#ff6b35;">#이태원맛집 #헤비함주의</span></div>
-                        
+
                         <div class="reaction-btns">
                             <button class="reaction-btn"><span class="r-icon">📍</span> 가보고 싶어요 <span class="r-count">42</span></button>
                             <button class="reaction-btn reacted"><span class="r-icon">🔄</span> 나랑 똑같아요 <span class="r-count">31</span></button>
                         </div>
 
-                        <div class="feed-location">
-                            <span class="feed-location-text">📍 이태원 버거 하우스</span>
-                            <button class="feed-map-btn" onclick="showFeedMap('이태원 버거 하우스', 37.534, 126.993)">지도 보기 🗺️</button>
+                        <div class="ai-spectrum">
+                            <div class="ai-spectrum-title">🏆 YummyDex AI 분석 <span class="ai-spectrum-count">3,580명의 데이터 기반</span></div>
+                            <div class="ai-spectrum-bars">
+                                <div class="ai-bar-row">
+                                    <span class="ai-bar-label">🥩 육향</span>
+                                    <div class="ai-bar-track"><div class="ai-bar-fill" style="width:92%; background:#ef4444;"></div></div>
+                                    <span class="ai-bar-score">92</span>
+                                </div>
+                                <div class="ai-bar-row">
+                                    <span class="ai-bar-label">🧀 치즈/우유</span>
+                                    <div class="ai-bar-track"><div class="ai-bar-fill" style="width:80%; background:#fbbf24;"></div></div>
+                                    <span class="ai-bar-score">80</span>
+                                </div>
+                                <div class="ai-bar-row">
+                                    <span class="ai-bar-label">🧂 짠맛</span>
+                                    <div class="ai-bar-track"><div class="ai-bar-fill" style="width:62%; background:#4a6cf7;"></div></div>
+                                    <span class="ai-bar-score">62</span>
+                                </div>
+                                <div class="ai-bar-row">
+                                    <span class="ai-bar-label">🧈 버터향</span>
+                                    <div class="ai-bar-track"><div class="ai-bar-fill" style="width:75%; background:#f59e0b;"></div></div>
+                                    <span class="ai-bar-score">75</span>
+                                </div>
+                                <div class="ai-bar-row">
+                                    <span class="ai-bar-label">🥓 기름짐</span>
+                                    <div class="ai-bar-track"><div class="ai-bar-fill" style="width:88%; background:#ff6b35;"></div></div>
+                                    <span class="ai-bar-score">88</span>
+                                </div>
+                            </div>
+                            <div class="official-tags">
+                                <span class="official-tag">#압도적_육즙</span>
+                                <span class="official-tag">#체다치즈_폭탄</span>
+                                <span class="official-tag">#미국식_헤비함</span>
+                            </div>
                         </div>
 
-                        <!-- [복구] 같은 메뉴 다른 시선 상세 -->
+                        <!-- 같은 메뉴 다른 시선 -->
                         <div class="related-posts-section">
                             <div class="related-posts-title">🔍 같은 메뉴 다른 시선 <span class="related-posts-count">1,000개 이상</span><button class="related-posts-more-btn" onclick="alert('아직 개발중이에요')">모두 보기</button></div>
                             <div class="related-posts-list">
@@ -350,6 +348,10 @@
                     </div>
                     <div class="feed-image-wrap">
                         <img src="../docs/sample/pasta-01.jpg" alt="Pasta">
+                        <div class="feed-location-overlay">
+                            <span class="feed-location-overlay-text">📍 한남동 이탈리안 키친</span>
+                            <button class="feed-location-overlay-btn" onclick="showFeedMap('한남동 이탈리안 키친', 37.537, 127.002)">지도 🗺️</button>
+                        </div>
                     </div>
 
                     <div class="author-taste-tags">
@@ -363,56 +365,51 @@
                         </div>
                     </div>
 
-                    <div class="ai-spectrum">
-                        <div class="ai-spectrum-title">🏆 YummyDex AI 분석 <span class="ai-spectrum-count">2,105명의 데이터 기반</span></div>
-                        <div class="ai-spectrum-bars">
-                            <div class="ai-bar-row">
-                                <span class="ai-bar-label">🦑 쫄깃함</span>
-                                <div class="ai-bar-track"><div class="ai-bar-fill" style="width:88%; background:#ca8a04;"></div></div>
-                                <span class="ai-bar-score">88</span>
-                            </div>
-                            <div class="ai-bar-row">
-                                <span class="ai-bar-label">☁️ 부드러움</span>
-                                <div class="ai-bar-track"><div class="ai-bar-fill" style="width:82%; background:#0d9488;"></div></div>
-                                <span class="ai-bar-score">82</span>
-                            </div>
-                            <div class="ai-bar-row">
-                                <span class="ai-bar-label">🌊 해물향</span>
-                                <div class="ai-bar-track"><div class="ai-bar-fill" style="width:80%; background:#3b82f6;"></div></div>
-                                <span class="ai-bar-score">80</span>
-                            </div>
-                            <div class="ai-bar-row">
-                                <span class="ai-bar-label">🧂 짠맛</span>
-                                <div class="ai-bar-track"><div class="ai-bar-fill" style="width:65%; background:#4a6cf7;"></div></div>
-                                <span class="ai-bar-score">65</span>
-                            </div>
-                            <div class="ai-bar-row">
-                                <span class="ai-bar-label">🍄 감칠맛</span>
-                                <div class="ai-bar-track"><div class="ai-bar-fill" style="width:72%; background:#16a34a;"></div></div>
-                                <span class="ai-bar-score">72</span>
-                            </div>
-                        </div>
-                        <div class="official-tags">
-                            <span class="official-tag">#정통_알덴테</span>
-                            <span class="official-tag">#짭짤한_바다내음</span>
-                            <span class="official-tag">#생면_식감</span>
-                        </div>
-                    </div>
-
                     <div class="feed-footer">
                         <div class="feed-comment">면의 삶기가 완벽해요. 알덴테의 정석! <span style="color:#ff6b35;">#한남동맛집 #파스타전문점 #양은조금적음</span></div>
-                        
+
                         <div class="reaction-btns">
                             <button class="reaction-btn"><span class="r-icon">📍</span> 가보고 싶어요 <span class="r-count">28</span></button>
                             <button class="reaction-btn"><span class="r-icon">🔄</span> 나랑 똑같아요 <span class="r-count">15</span></button>
                         </div>
 
-                        <div class="feed-location">
-                            <span class="feed-location-text">📍 한남동 이탈리안 키친</span>
-                            <button class="feed-map-btn" onclick="showFeedMap('한남동 이탈리안 키친', 37.537, 127.002)">지도 보기 🗺️</button>
+                        <div class="ai-spectrum">
+                            <div class="ai-spectrum-title">🏆 YummyDex AI 분석 <span class="ai-spectrum-count">2,105명의 데이터 기반</span></div>
+                            <div class="ai-spectrum-bars">
+                                <div class="ai-bar-row">
+                                    <span class="ai-bar-label">🦑 쫄깃함</span>
+                                    <div class="ai-bar-track"><div class="ai-bar-fill" style="width:88%; background:#ca8a04;"></div></div>
+                                    <span class="ai-bar-score">88</span>
+                                </div>
+                                <div class="ai-bar-row">
+                                    <span class="ai-bar-label">☁️ 부드러움</span>
+                                    <div class="ai-bar-track"><div class="ai-bar-fill" style="width:82%; background:#0d9488;"></div></div>
+                                    <span class="ai-bar-score">82</span>
+                                </div>
+                                <div class="ai-bar-row">
+                                    <span class="ai-bar-label">🌊 해물향</span>
+                                    <div class="ai-bar-track"><div class="ai-bar-fill" style="width:80%; background:#3b82f6;"></div></div>
+                                    <span class="ai-bar-score">80</span>
+                                </div>
+                                <div class="ai-bar-row">
+                                    <span class="ai-bar-label">🧂 짠맛</span>
+                                    <div class="ai-bar-track"><div class="ai-bar-fill" style="width:65%; background:#4a6cf7;"></div></div>
+                                    <span class="ai-bar-score">65</span>
+                                </div>
+                                <div class="ai-bar-row">
+                                    <span class="ai-bar-label">🍄 감칠맛</span>
+                                    <div class="ai-bar-track"><div class="ai-bar-fill" style="width:72%; background:#16a34a;"></div></div>
+                                    <span class="ai-bar-score">72</span>
+                                </div>
+                            </div>
+                            <div class="official-tags">
+                                <span class="official-tag">#정통_알덴테</span>
+                                <span class="official-tag">#짭짤한_바다내음</span>
+                                <span class="official-tag">#생면_식감</span>
+                            </div>
                         </div>
 
-                        <!-- [복구] 같은 메뉴 다른 시선 상세 -->
+                        <!-- 같은 메뉴 다른 시선 -->
                         <div class="related-posts-section">
                             <div class="related-posts-title">🔍 같은 메뉴 다른 시선 <span class="related-posts-count">100개 이상</span><button class="related-posts-more-btn" onclick="alert('아직 개발중이에요')">모두 보기</button></div>
                             <div class="related-posts-list">
