@@ -305,27 +305,33 @@ body {
 
 /* ===== 프로필 미니 입맛 레이더 차트 ===== */
 .profile-radar-chart {
-    width: 36px;
-    height: 36px;
-    margin-left: 8px;
+    width: 72px;
+    height: 72px;
+    margin-left: 12px;
     flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+}
+.radar-label-text {
+    font-size: 8px;
+    font-weight: 800;
+    fill: #8e8e93;
 }
 .radar-bg {
     fill: #f2f2f7;
-    stroke: #e5e5ea;
+    stroke: #d1d1d6;
     stroke-width: 0.5;
 }
 .radar-data {
-    fill: rgba(255, 107, 53, 0.4);
+    fill: rgba(255, 107, 53, 0.45);
     stroke: #ff6b35;
-    stroke-width: 1.5;
+    stroke-width: 1.2;
     stroke-linejoin: round;
 }
 .radar-axis {
-    stroke: #e5e5ea;
+    stroke: #d1d1d6;
     stroke-width: 0.5;
 }
 
