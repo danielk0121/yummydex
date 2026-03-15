@@ -550,6 +550,27 @@ body {
     cursor: pointer;
 }
 .related-posts-more-btn:active { opacity: 0.7; }
+
+/* AI 다른 피드 종합 분석 */
+.ai-feed-analysis {
+    margin-top: 12px;
+    padding: 12px 14px;
+    background: linear-gradient(135deg, #f0f4ff, #f8f0ff);
+    border-left: 3px solid #7c3aed;
+    border-radius: 10px;
+}
+.ai-feed-analysis-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #7c3aed;
+    margin-bottom: 6px;
+}
+.ai-feed-analysis-body {
+    font-size: 12px;
+    color: #444;
+    line-height: 1.6;
+    margin: 0;
+}
 .related-posts-count {
     font-size: 11px;
     font-weight: 600;
