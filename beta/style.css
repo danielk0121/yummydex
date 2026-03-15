@@ -542,9 +542,9 @@ body {
     box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
 }
 .reaction-btn.full-width {
-    width: 100%;
+    flex: 0 0 100%;
+    margin-bottom: 8px;
     justify-content: center;
-    margin-bottom: 4px;
 }
 .reaction-btn .r-icon { font-size: 16px; }
 .reaction-btn .r-count { font-weight: 700; margin-left: 2px; }
