@@ -133,7 +133,7 @@
             background: #fff;
             position: relative;
             z-index: 50;
-            text-align: center;
+            text-align: left;
             isolation: isolate;
         }
         .screen-header small {
@@ -142,7 +142,7 @@
             font-weight: 400;
             color: #8e8e93;
             margin-top: 2px;
-            text-align: center;
+            text-align: left;
         }
         
         /* 개발자 정보 (중앙 정렬에 맞춰 위치 조정) */
