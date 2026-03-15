@@ -139,7 +139,18 @@
     padding: 4px 8px;
     border-radius: 4px;
 }
-
+.mini-metric-category {
+    grid-column: span 2;
+    font-size: 9px;
+    font-weight: 800;
+    color: #ff6b35;
+    margin-top: 8px;
+    margin-bottom: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid #ffece5;
+    padding-bottom: 2px;
+}
 /* 싱크로율 상세 사유 */
 .match-reason-box {
     margin: 8px 16px 0;
