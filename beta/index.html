@@ -21,7 +21,7 @@
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <link rel="stylesheet" href="style.css?v=260315-2022"></head>
+    <link rel="stylesheet" href="style.css?v=260315-2025"></head>
 <body>
 
 <div class="app-frame">
@@ -58,7 +58,7 @@
                 <small>미식가들의 맛 표현 인덱스</small>
                 <div class="dev-badge">
                     <div class="dev-name">danielk0121</div>
-                    <div class="dev-ver">v-260315-2022</div>
+                    <div class="dev-ver">v-260315-2025</div>
                 </div>
             </div>
 
@@ -88,7 +88,6 @@
                         <img src="../docs/sample/salad-01.jpg" alt="Salad">
                     </div>
                     
-                    <!-- 미식 지표 요약 -->
                     <div class="feed-metrics-summary">
                         <div class="metric-row">
                             <div class="metric-header">
@@ -112,12 +111,12 @@
                         </div>
                         <div class="metric-row">
                             <div class="metric-header">
-                                <span class="metric-label">🥜 고소함 (풍미)</span>
-                                <div class="metric-values"><span class="val-user">나 60</span><span class="val-sep">/</span><span class="val-public">대중 55</span></div>
+                                <span class="metric-label">🌿 신선도 (식감)</span>
+                                <div class="metric-values"><span class="val-user">나 40</span><span class="val-sep">/</span><span class="val-public">대중 85</span></div>
                             </div>
                             <div class="dual-bar-container">
-                                <div class="bar-user" style="width:60%; background:#92400e;"></div>
-                                <div class="marker-public" style="left:55%;"></div>
+                                <div class="bar-user" style="width:40%; background:#22c55e;"></div>
+                                <div class="marker-public" style="left:85%;"></div>
                             </div>
                         </div>
                     </div>
@@ -129,7 +128,7 @@
                         <div class="mini-metric-item"><span>🧂 짠맛</span> <span>나 15 / 대중 10</span></div>
                         <div class="mini-metric-item"><span>🍋 신맛</span> <span>나 30 / 대중 25</span></div>
                         <div class="mini-metric-category">🦷 물리적 식감</div>
-                        <div class="mini-metric-item"><span>🌿 신선도</span> <span>나 40 / 대중 85</span></div>
+                        <div class="mini-metric-item"><span>🥜 고소함</span> <span>나 60 / 대중 55</span></div>
                         <div class="mini-metric-category">👃 직관적 풍미</div>
                         <div class="mini-metric-item"><span>🍓 과일/상큼</span> <span>나 10 / 대중 15</span></div>
                     </div>
@@ -162,25 +161,34 @@
                             <button class="feed-map-btn" onclick="showFeedMap('연남동 샐러드 카페', 37.561, 126.923)">지도 보기 🗺️</button>
                         </div>
 
+                        <!-- [복구] 같은 메뉴 다른 시선 상세 -->
                         <div class="related-posts-section">
-                            <div class="related-posts-title">🔍 이 메뉴의 다른 피드들</div>
+                            <div class="related-posts-title">🔍 같은 메뉴 다른 시선 (3명)</div>
                             <div class="related-posts-list">
                                 <div class="related-post-card">
-                                    <img src="../docs/sample/salad-02.jpg" alt="Salad" class="related-post-img">
+                                    <div class="related-post-img-wrap">
+                                        <img src="../docs/sample/salad-02.jpg" alt="Salad">
+                                        <span class="related-post-taste-tag">🌿 신선도 95!</span>
+                                    </div>
                                     <span class="related-post-user">@다이어터_진</span>
                                 </div>
                                 <div class="related-post-card">
-                                    <img src="../docs/sample/salad-03.jpg" alt="Salad" class="related-post-img">
+                                    <div class="related-post-img-wrap">
+                                        <img src="../docs/sample/salad-03.jpg" alt="Salad">
+                                        <span class="related-post-taste-tag">🍯 단맛 10..</span>
+                                    </div>
                                     <span class="related-post-user">@샐러드왕</span>
                                 </div>
                                 <div class="related-post-card">
-                                    <img src="../docs/sample/salad-04.jpg" alt="Salad" class="related-post-img">
+                                    <div class="related-post-img-wrap">
+                                        <img src="../docs/sample/salad-04.jpg" alt="Salad">
+                                        <span class="related-post-taste-tag">☁️ 극강부드러움</span>
+                                    </div>
                                     <span class="related-post-user">@클린라이프</span>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- 댓글 섹션 복구 -->
                         <div class="comments-section">
                             <div class="comment-item">
                                 <span class="comment-avatar">🥗</span>
@@ -289,25 +297,34 @@
                             <button class="feed-map-btn" onclick="showFeedMap('이태원 버거 하우스', 37.534, 126.993)">지도 보기 🗺️</button>
                         </div>
 
+                        <!-- [복구] 같은 메뉴 다른 시선 상세 -->
                         <div class="related-posts-section">
-                            <div class="related-posts-title">🔍 이 메뉴의 다른 피드들</div>
+                            <div class="related-posts-title">🔍 같은 메뉴 다른 시선 (3명)</div>
                             <div class="related-posts-list">
                                 <div class="related-post-card">
-                                    <img src="../docs/sample/burger-02.jpg" alt="Burger" class="related-post-img">
+                                    <div class="related-post-img-wrap">
+                                        <img src="../docs/sample/burger-02.jpg" alt="Burger">
+                                        <span class="related-post-taste-tag">🔥 불맛 90!</span>
+                                    </div>
                                     <span class="related-post-user">@버거헌터</span>
                                 </div>
                                 <div class="related-post-card">
-                                    <img src="../docs/sample/burger-03.jpg" alt="Burger" class="related-post-img">
+                                    <div class="related-post-img-wrap">
+                                        <img src="../docs/sample/burger-03.jpg" alt="Burger">
+                                        <span class="related-post-taste-tag">🧀 치즈 100</span>
+                                    </div>
                                     <span class="related-post-user">@이태원맛쟁이</span>
                                 </div>
                                 <div class="related-post-card">
-                                    <img src="../docs/sample/burger-04.jpg" alt="Burger" class="related-post-img">
+                                    <div class="related-post-img-wrap">
+                                        <img src="../docs/sample/burger-04.jpg" alt="Burger">
+                                        <span class="related-post-taste-tag">🥩 육향폭발</span>
+                                    </div>
                                     <span class="related-post-user">@패티매니아</span>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- 댓글 섹션 복구 -->
                         <div class="comments-section">
                             <div class="comment-item">
                                 <span class="comment-avatar">🍔</span>
@@ -330,7 +347,7 @@
                     </div>
                 </div>
 
-                <!-- 피드 카드 3: 파스타 (완전 복구) -->
+                <!-- 피드 카드 3: 파스타 -->
                 <div class="feed-card">
                     <div class="feed-card-header">
                         <div class="feed-avatar">🍝</div>
@@ -404,8 +421,8 @@
                             <button class="reaction-btn"><span class="r-icon">🔄</span> 나랑 똑같아요 <span class="r-count">15</span></button>
                         </div>
 
-                        <div class="match-reason-box" style="background:#fff0f0; border-left-color:#e84057;">
-                            <strong style="color:#e84057;">⚠️ 입맛 싱크로율 58%</strong>
+                        <div class="match-reason-box">
+                            <strong>📊 입맛 싱크로율 58%</strong>
                             미식가님은 '짠맛'에 민감하시지만, 이 유저는 '짠맛' 수치를 높게 평가하는 경향이 있습니다.
                         </div>
 
@@ -414,25 +431,34 @@
                             <button class="feed-map-btn" onclick="showFeedMap('한남동 이탈리안 키친', 37.537, 127.002)">지도 보기 🗺️</button>
                         </div>
 
+                        <!-- [복구] 같은 메뉴 다른 시선 상세 -->
                         <div class="related-posts-section">
-                            <div class="related-posts-title">🔍 이 메뉴의 다른 피드들</div>
+                            <div class="related-posts-title">🔍 같은 메뉴 다른 시선 (3명)</div>
                             <div class="related-posts-list">
                                 <div class="related-post-card">
-                                    <img src="../docs/sample/pasta-02.jpg" alt="Pasta" class="related-post-img">
+                                    <div class="related-post-img-wrap">
+                                        <img src="../docs/sample/pasta-02.jpg" alt="Pasta">
+                                        <span class="related-post-taste-tag">🍝 정통알덴테</span>
+                                    </div>
                                     <span class="related-post-user">@면덕후_제이</span>
                                 </div>
                                 <div class="related-post-card">
-                                    <img src="../docs/sample/pasta-03.jpg" alt="Pasta" class="related-post-img">
+                                    <div class="related-post-img-wrap">
+                                        <img src="../docs/sample/pasta-03.jpg" alt="Pasta">
+                                        <span class="related-post-taste-tag">🍷 와인향굿</span>
+                                    </div>
                                     <span class="related-post-user">@이탈리안러버</span>
                                 </div>
                                 <div class="related-post-card">
-                                    <img src="../docs/sample/pasta-04.jpg" alt="Pasta" class="related-post-img">
+                                    <div class="related-post-img-wrap">
+                                        <img src="../docs/sample/pasta-04.jpg" alt="Pasta">
+                                        <span class="related-post-taste-tag">🌊 짭짤함!</span>
+                                    </div>
                                     <span class="related-post-user">@와인과파스타</span>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- 댓글 섹션 복구 -->
                         <div class="comments-section">
                             <div class="comment-item">
                                 <span class="comment-avatar">🍷</span>
@@ -468,6 +494,6 @@
     </div>
 </div>
 
-<script src="script.js?v=260315-2022"></script>
+<script src="script.js?v=260315-2025"></script>
 </body>
 </html>
