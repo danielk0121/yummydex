@@ -1,91 +1,94 @@
-/* ===== 미식 지표 시각화 UI 고도화 ===== */
-.feed-metrics-summary {
-    padding: 14px 16px 4px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+/* ===== 작성자 맛 태그 뱃지 영역 ===== */
+.author-taste-tags {
+    padding: 14px 16px 8px;
 }
-.metric-row {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-.metric-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.author-tags-title {
     font-size: 12px;
     font-weight: 700;
     color: #3a3a3c;
+    margin-bottom: 10px;
 }
-.metric-label {
+.author-tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.author-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--tag-color, #ff6b35);
+    background: color-mix(in srgb, var(--tag-color, #ff6b35) 8%, #fff);
+    border: 1.5px solid color-mix(in srgb, var(--tag-color, #ff6b35) 25%, #fff);
+    transition: transform 0.15s;
+}
+.author-tag:active { transform: scale(0.95); }
+
+/* ===== AI 분석 스펙트럼 (대중 데이터 기반) ===== */
+.ai-spectrum {
+    margin: 8px 16px 0;
+    padding: 14px;
+    background: #f8f9fa;
+    border-radius: 14px;
+    border: 1px solid #eee;
+}
+.ai-spectrum-title {
+    font-size: 12px;
+    font-weight: 800;
+    color: #1d1d1f;
+    margin-bottom: 12px;
     display: flex;
     align-items: center;
     gap: 6px;
 }
-.metric-values {
+.ai-spectrum-count {
     font-size: 10px;
     font-weight: 600;
+    color: #ff6b35;
+    background: #fff3ed;
+    padding: 2px 8px;
+    border-radius: 10px;
 }
-.val-user { color: #ff6b35; }
-.val-sep { color: #d1d1d6; margin: 0 2px; }
-.val-public { color: #8e8e93; }
-
-.dual-bar-container {
-    position: relative;
-    height: 8px;
-    background: #f2f2f7;
-    border-radius: 4px;
-    overflow: visible;
+.ai-spectrum-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 12px;
 }
-/* 작성자 바 (메인 컬러) */
-.bar-user {
-    position: absolute;
-    top: 0; left: 0;
-    height: 100%;
-    border-radius: 4px;
-    z-index: 2;
-    transition: width 1s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-/* 대중 평균 표시기 (수직 선 형태 또는 점) */
-.marker-public {
-    position: absolute;
-    top: -2px;
-    width: 4px;
-    height: 12px;
-    background: #3a3a3c;
-    border-radius: 2px;
-    z-index: 3;
-    transform: translateX(-50%);
-    box-shadow: 0 0 4px rgba(0,0,0,0.2);
-}
-.marker-public::after {
-    content: '대중';
-    position: absolute;
-    top: -14px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 8px;
-    color: #3a3a3c;
-    white-space: nowrap;
-}
-
-/* 공식 미식 스펙트럼 (YummyDex Official) */
-.official-spectrum {
-    margin: 12px 16px 0;
-    padding: 12px;
-    background: #f8f9fa;
-    border-radius: 12px;
-    border: 1px dashed #d1d1d6;
-}
-.official-spectrum-title {
-    font-size: 11px;
-    font-weight: 800;
-    color: #1d1d1f;
-    margin-bottom: 8px;
+.ai-bar-row {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 8px;
+}
+.ai-bar-label {
+    width: 80px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #3a3a3c;
+    flex-shrink: 0;
+}
+.ai-bar-track {
+    flex: 1;
+    height: 8px;
+    background: #e9ecef;
+    border-radius: 4px;
+    overflow: hidden;
+}
+.ai-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.ai-bar-score {
+    width: 28px;
+    font-size: 12px;
+    font-weight: 800;
+    color: #1d1d1f;
+    text-align: right;
 }
 .official-tags {
     display: flex;
@@ -102,55 +105,6 @@
     color: #3a3a3c;
 }
 
-/* 구 버전 스타일 유지 및 보완 (필요시) */
-.metric-item {
-    display: none; /* 새로운 metric-row로 대체 */
-}
-/* 상세 지표 토글 */
-.metrics-expand-btn {
-    display: block;
-    width: calc(100% - 32px);
-    margin: 8px 16px;
-    padding: 6px;
-    background: #f2f2f7;
-    border: none;
-    border-radius: 8px;
-    font-size: 11px;
-    font-weight: 600;
-    color: #636366;
-    cursor: pointer;
-    text-align: center;
-}
-.metrics-full-list {
-    display: none;
-    padding: 0 16px 12px;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
-}
-.metrics-full-list.show {
-    display: grid;
-}
-.mini-metric-item {
-    font-size: 10px;
-    display: flex;
-    justify-content: space-between;
-    color: #636366;
-    background: #fafafa;
-    padding: 4px 8px;
-    border-radius: 4px;
-}
-.mini-metric-category {
-    grid-column: span 2;
-    font-size: 9px;
-    font-weight: 800;
-    color: #ff6b35;
-    margin-top: 8px;
-    margin-bottom: 2px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    border-bottom: 1px solid #ffece5;
-    padding-bottom: 2px;
-}
 /* 싱크로율 상세 사유 */
 .match-reason-box {
     margin: 8px 16px 0;
@@ -923,31 +877,39 @@ body {
 }
 .taste-option .t-emoji { font-size: 28px; }
 
-/* 강도 슬라이더 */
-.intensity-section { display: flex; flex-direction: column; gap: 8px; }
-.intensity-label {
+/* 맛 카테고리 라벨 */
+.taste-category-label {
+    font-size: 11px;
+    font-weight: 800;
+    color: #ff6b35;
+    margin-bottom: 6px;
+    letter-spacing: 0.3px;
+}
+/* 선택된 태그 미리보기 */
+.selected-tags-preview {
+    min-height: 0;
     display: flex;
-    justify-content: space-between;
-    font-size: 13px;
-    font-weight: 600;
-    color: #636366;
+    flex-wrap: wrap;
+    gap: 6px;
+    transition: all 0.2s;
 }
-.intensity-slider {
-    -webkit-appearance: none;
-    width: 100%;
-    height: 6px;
-    border-radius: 3px;
-    background: linear-gradient(90deg, #ffd4c0, #ff6b35);
-    outline: none;
+.selected-tags-preview:empty { display: none; }
+.selected-tags-preview .preview-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 12px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #ff6b35;
+    background: #fff3ed;
+    border: 1px solid #ff6b35;
+    animation: tag-pop 0.2s ease-out;
 }
-.intensity-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 24px; height: 24px;
-    border-radius: 50%;
-    background: #ff6b35;
-    border: 3px solid #fff;
-    box-shadow: 0 2px 8px rgba(255,107,53,0.3);
-    cursor: pointer;
+@keyframes tag-pop {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
 }
 
 .upload-btn {

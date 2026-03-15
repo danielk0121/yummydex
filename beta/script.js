@@ -37,13 +37,9 @@ const SAMPLE_FEEDS = [
         comment: '아보카도와 드레싱의 조화가 너무 부드러워요. 채소는 좀 숨이 죽어 신선도가 아쉽지만, 드레싱 맛이 좋아서 계속 먹게 되네요. #가성비좋음 #연남동브런치',
         matchRate: 87,
         matchReason: "'부드러움'과 '감칠맛'을 중시하는 미식가님의 평소 취향과 87% 일치하는 데이터입니다.",
-        metrics: {
-            soft: { user: 90, public: 82 },
-            umami: { user: 75, public: 78 },
-            fresh: { user: 40, public: 85 },
-            nutty: { user: 60, public: 55 },
-            sugar: { user: 20, public: 15 }
-        },
+        authorTags: ['soft', 'umami', 'nutty', 'sour'],
+        aiScores: { soft: 82, umami: 78, fresh: 85, nutty: 55 },
+        aiSampleCount: 1240,
         officialSpectrum: ['#부드러움_끝판왕', '#아보카도_풍미', '#건강한_감칠맛'],
         comments: [
             { user: '건강러', text: '여기 아보카도 진짜 잘 익었네요! 드레싱 어떤 거 쓰나요?', time: '1시간 전' },
@@ -59,14 +55,9 @@ const SAMPLE_FEEDS = [
         comment: '패티의 육즙과 녹아내린 치즈의 밸런스가 환상적이에요. 번도 구워져서 고소함이 두 배! #이태원맛집 #헤비함주의',
         matchRate: 72,
         matchReason: "평소 '육향'과 '치즈향'을 선호하시지만, 이 메뉴의 '짠맛' 수치가 미식가님의 기준보다 높습니다.",
-        metrics: {
-            meaty: { user: 95, public: 92 },
-            dairy: { user: 85, public: 80 },
-            salt: { user: 70, public: 62 },
-            buttery: { user: 80, public: 75 },
-            smoky: { user: 60, public: 65 },
-            thick: { user: 75, public: 70 }
-        },
+        authorTags: ['meaty', 'dairy', 'buttery', 'salt', 'thick'],
+        aiScores: { meaty: 92, dairy: 80, salt: 62, buttery: 75, oily: 88 },
+        aiSampleCount: 3580,
         officialSpectrum: ['#압도적_육즙', '#체다치즈_폭탄', '#미국식_헤비함'],
         comments: [
             { user: '버거덕후', text: '여기 패티 굽기 조절 가능한가요? 비주얼 대박이네요', time: '4시간 전' },
@@ -82,14 +73,9 @@ const SAMPLE_FEEDS = [
         comment: '면의 삶기가 완벽해요. 알덴테의 정석! #한남동맛집 #파스타전문점 #양은조금적음',
         matchRate: 58,
         matchReason: "미식가님은 '짠맛'에 민감하시지만, 이 유저는 '짠맛' 수치를 높게 평가하는 경향이 있습니다.",
-        metrics: {
-            salt: { user: 80, public: 65 },
-            soft: { user: 85, public: 82 },
-            chewy: { user: 95, public: 88 },
-            umami: { user: 70, public: 72 },
-            spiced: { user: 30, public: 25 },
-            seafood: { user: 85, public: 80 }
-        },
+        authorTags: ['salt', 'chewy', 'soft', 'seafood', 'umami'],
+        aiScores: { chewy: 88, soft: 82, seafood: 80, salt: 65, umami: 72 },
+        aiSampleCount: 2105,
         officialSpectrum: ['#정통_알덴테', '#짭짤한_바다내음', '#생면_식감'],
         comments: [
             { user: '와인러버', text: '여기 파스타 진짜 생면 쓰나요? 소스가 잘 배어있네요', time: '어제' }
@@ -325,12 +311,23 @@ if (i === idx) el.classList.add('current');
 /* ===== 맛 태그 선택 ===== */
 function toggleTaste(el) {
 el.classList.toggle('selected');
+updateSelectedTagsPreview();
 }
 
-/* ===== 강도 슬라이더 ===== */
-function updateIntensity(val) {
-const fires = ['😐', '🔥', '🔥🔥', '🔥🔥🔥', '🔥🔥🔥🔥', '🤯🔥🔥🔥🔥🔥'];
-document.getElementById('intensityVal').textContent = fires[val];
+function updateSelectedTagsPreview() {
+const preview = document.getElementById('selectedTagsPreview');
+if (!preview) return;
+const selected = document.querySelectorAll('.taste-option.selected');
+if (selected.length === 0) {
+    preview.innerHTML = '';
+    return;
+}
+preview.innerHTML = '<div style="width:100%;font-size:11px;font-weight:700;color:#636366;margin-bottom:2px;">선택한 맛 표현 (' + selected.length + '개)</div>' +
+    Array.from(selected).map(el => {
+        const emoji = el.querySelector('.t-emoji').textContent;
+        const name = el.textContent.replace(emoji, '').trim();
+        return '<span class="preview-tag">' + emoji + ' ' + name + '</span>';
+    }).join('');
 }
 
 /* ===== 업로드 완료 → 위치 기록 단계 ===== */

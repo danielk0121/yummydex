@@ -21,7 +21,7 @@
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <link rel="stylesheet" href="style.css?v=260315-1645"></head>
+    <link rel="stylesheet" href="style.css?v=260315-2157"></head>
 <body>
 
 <div class="app-frame">
@@ -56,7 +56,7 @@
             <!-- 버전 정보 (상단 고정 스타일 참고) -->
             <div class="dev-badge" style="z-index: 100;">
                 <div class="dev-name">danielk0121</div>
-                <div class="dev-ver">v-260315-1655</div>
+                <div class="dev-ver">v-260315-2157</div>
             </div>
             <div class="marking-steps">
                 <span class="marking-step current" id="step1">① 찍기</span>
@@ -83,25 +83,38 @@
                 <div class="taste-panel" id="tastePanel">
                     <div class="taste-panel-header">
                         <h3>맛 뱉기 🗣️</h3>
-                        <p>이 한 입의 감각을 골라주세요 (3초면 충분!)</p>
+                        <p>느껴지는 맛을 툭툭 골라주세요! 점수는 AI가 알아서 매겨줘요</p>
                     </div>
+                    <div class="taste-category-label">👅 기본 미각</div>
                     <div class="taste-grid">
-                        <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">🍯</span>달콤</button>
-                        <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">🧂</span>짭짤</button>
-                        <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">🌶️</span>매움</button>
-                        <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">🔥</span>바삭</button>
-                        <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">🧈</span>고소</button>
+                        <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">🍯</span>단맛</button>
+                        <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">🧂</span>짠맛</button>
+                        <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">🍋</span>신맛</button>
+                        <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">🍄</span>감칠맛</button>
+                        <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">☕</span>쓴맛</button>
+                    </div>
+                    <div class="taste-category-label">🦷 식감</div>
+                    <div class="taste-grid">
+                        <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">🌶️</span>매운맛</button>
+                        <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">🔥</span>바삭함</button>
+                        <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">🦑</span>쫄깃함</button>
                         <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">☁️</span>부드러움</button>
-                        <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">🦑</span>쫄깃</button>
-                        <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">💥</span>자극적</button>
+                        <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">🍯</span>꾸덕함</button>
+                        <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">🥓</span>기름짐</button>
+                        <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">🌿</span>신선도</button>
                     </div>
-                    <div class="intensity-section">
-                        <div class="intensity-label">
-                            <span>감동 강도</span>
-                            <span id="intensityVal">🔥🔥🔥</span>
-                        </div>
-                        <input type="range" class="intensity-slider" min="1" max="5" value="3" oninput="updateIntensity(this.value)">
+                    <div class="taste-category-label">👃 풍미/향</div>
+                    <div class="taste-grid">
+                        <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">🧀</span>치즈/우유</button>
+                        <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">🧈</span>버터향</button>
+                        <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">🔥</span>불맛</button>
+                        <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">🌿</span>향신료</button>
+                        <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">🥜</span>고소함</button>
+                        <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">🥩</span>육향</button>
+                        <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">🌊</span>해물향</button>
+                        <button class="taste-option" onclick="toggleTaste(this)"><span class="t-emoji">🍓</span>과일/상큼</button>
                     </div>
+                    <div class="selected-tags-preview" id="selectedTagsPreview"></div>
                     <button class="upload-btn" onclick="completeUpload()">기록 완료! ✨</button>
                 </div>
                 <div class="location-panel" id="locationPanel">
@@ -136,6 +149,6 @@
     <div class="toast" id="toast"></div>
 </div>
 
-<script src="script.js?v=260315-1645"></script>
+<script src="script.js?v=260315-2157"></script>
 </body>
 </html>
