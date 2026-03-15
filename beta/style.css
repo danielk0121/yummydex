@@ -303,6 +303,32 @@ body {
 .onboarding-text p { font-size: 11px; opacity: 0.9; }
 .onboarding-arrow { font-size: 14px; opacity: 0.7; font-weight: 700; }
 
+/* ===== 프로필 미니 입맛 레이더 차트 ===== */
+.profile-radar-chart {
+    width: 36px;
+    height: 36px;
+    margin-left: 8px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.radar-bg {
+    fill: #f2f2f7;
+    stroke: #e5e5ea;
+    stroke-width: 0.5;
+}
+.radar-data {
+    fill: rgba(255, 107, 53, 0.4);
+    stroke: #ff6b35;
+    stroke-width: 1.5;
+    stroke-linejoin: round;
+}
+.radar-axis {
+    stroke: #e5e5ea;
+    stroke-width: 0.5;
+}
+
 /* ================================================================
    홈 피드 화면
    ================================================================ */
