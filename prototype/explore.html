@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- v-260315-1552-kst -->
+<!-- v-260315-1614-kst -->
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -22,6 +22,146 @@
 
     <link rel="stylesheet" href="style.css"></head>
 <body>
-...
+
+<div class="app-frame">
+    <!-- 상단 내비게이션 -->
+    <div class="top-nav">
+        <button class="nav-item" onclick="switchScreen('home')">
+            <span class="nav-icon">🏠</span>
+            <span class="nav-label">홈</span>
+        </button>
+        <button class="nav-item active" onclick="switchScreen('explore')">
+            <span class="nav-icon">🔍</span>
+            <span class="nav-label">탐색</span>
+        </button>
+        <div class="mark-btn-wrap">
+            <button class="mark-btn" onclick="switchScreen('mark')">
+                <span style="font-size:28px; font-weight:300;">+</span>
+            </button>
+        </div>
+        <button class="nav-item" onclick="switchScreen('detective')">
+            <span class="nav-icon">🕵️</span>
+            <span class="nav-label">탐정</span>
+        </button>
+        <button class="nav-item" onclick="switchScreen('profile')">
+            <span class="nav-icon">😋</span>
+            <span class="nav-label">내 도감</span>
+        </button>
+    </div>
+
+    <div class="screens-container">
+        <!-- ========== 2. 탐색 화면 ========== -->
+        <div class="screen active" id="screen-explore">
+            <div class="screen-header">
+                탐색
+                <small>맛 태그로 찾는 논리적 미식 큐레이션</small>
+            </div>
+            <div class="search-bar-wrap">
+                <div class="search-input-box">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-bar" id="exploreSearchInput" placeholder="맛, 식감, 재료로 검색..." onkeyup="handleSearchKeyUp(event)">
+                </div>
+                <button class="search-add-btn" onclick="addSearchTag()">검색</button>
+            </div>
+            <div class="active-tags" id="activeSearchTags"></div>
+            <div class="filter-chips">
+                <button class="filter-reset-btn" onclick="resetFilters()">↻</button>
+                <button class="filter-chip active">🔥 전체</button>
+                <button class="filter-chip" onclick="toggleChip(this)">🍯 단맛</button>
+                <button class="filter-chip" onclick="toggleChip(this)">🧂 짠맛</button>
+                <button class="filter-chip" onclick="toggleChip(this)">🌶️ 매운맛</button>
+                <button class="filter-chip" onclick="toggleChip(this)">🔥 바삭</button>
+                <button class="filter-chip" onclick="toggleChip(this)">🧈 고소</button>
+                <button class="filter-chip" onclick="toggleChip(this)">☁️ 부드러움</button>
+                <button class="filter-chip" onclick="toggleChip(this)">🦑 쫄깃</button>
+            </div>
+            <div class="explore-grid">
+                <div class="explore-card">
+                    <div class="explore-card-img">
+                        <img src="../docs/sample/salad-04.jpg" alt="Food">
+                    </div>
+                    <div class="explore-card-info">
+                        <div class="card-title">프레쉬 연어 아보카도 볼</div>
+                        <div class="card-restaurant">🌿 그린 가든</div>
+                        <div class="card-loc">강남구 역삼동</div>
+                        <div class="card-tags">
+                            <span class="mini-tag taste-tag savory">신선</span>
+                            <span class="mini-tag taste-tag mild">부드러움</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="explore-card">
+                    <div class="explore-card-img">
+                        <img src="../docs/sample/food-05.jpg" alt="Food">
+                    </div>
+                    <div class="explore-card-info">
+                        <div class="card-title">수비드 채끝 스테이크</div>
+                        <div class="card-restaurant">🥩 스테이크 하우스</div>
+                        <div class="card-loc">성동구 성수동</div>
+                        <div class="card-tags">
+                            <span class="mini-tag taste-tag rich">진함</span>
+                            <span class="mini-tag taste-tag salty">짭짤</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="explore-card">
+                    <div class="explore-card-img">
+                        <img src="../docs/sample/food-06.jpg" alt="Food">
+                    </div>
+                    <div class="explore-card-info">
+                        <div class="card-title">크로플 크림</div>
+                        <div class="card-tags">
+                            <span class="mini-tag taste-tag sweet">달콤</span>
+                            <span class="mini-tag taste-tag crispy">바삭</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="explore-card">
+                    <div class="explore-card-img">
+                        <img src="../docs/sample/pasta-03.jpg" alt="Food">
+                    </div>
+                    <div class="explore-card-info">
+                        <div class="card-title">지중해식 콜드 파스타</div>
+                        <div class="card-restaurant">🍝 카페 블룸</div>
+                        <div class="card-loc">송파구 잠실동</div>
+                        <div class="card-tags">
+                            <span class="mini-tag taste-tag mild">부드러움</span>
+                            <span class="mini-tag taste-tag savory">신선</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="explore-card">
+                    <div class="explore-card-img">
+                        <img src="../docs/sample/food-08.jpg" alt="Food">
+                    </div>
+                    <div class="explore-card-info">
+                        <div class="card-title">한우 꽃등심 마블링</div>
+                        <div class="card-tags">
+                            <span class="mini-tag taste-tag savory">고소</span>
+                            <span class="mini-tag taste-tag rich">진함</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="explore-card">
+                    <div class="explore-card-img">
+                        <img src="../docs/sample/food-09.jpg" alt="Food">
+                    </div>
+                    <div class="explore-card-info">
+                        <div class="card-title">라멘 차슈</div>
+                        <div class="card-tags">
+                            <span class="mini-tag taste-tag savory">고소</span>
+                            <span class="mini-tag taste-tag mild">부드러움</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 토스트 알림 -->
+    <div class="toast" id="toast"></div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
