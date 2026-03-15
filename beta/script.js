@@ -38,7 +38,7 @@ const SAMPLE_FEEDS = [
         matchRate: 87,
         matchReason: "'부드러움'과 '감칠맛'을 중시하는 미식가님의 평소 취향과 87% 일치하는 데이터입니다.",
         authorTags: ['soft', 'umami', 'nutty', 'sour'],
-        aiScores: { soft: 82, umami: 78, fresh: 85, nutty: 55 },
+        aiScores: { soft: 482, umami: 378, fresh: 256, nutty: 155 },
         aiSampleCount: 1240,
         officialSpectrum: ['#부드러움_끝판왕', '#아보카도_풍미', '#건강한_감칠맛'],
         comments: [
@@ -56,7 +56,7 @@ const SAMPLE_FEEDS = [
         matchRate: 72,
         matchReason: "평소 '육향'과 '치즈향'을 선호하시지만, 이 메뉴의 '짠맛' 수치가 미식가님의 기준보다 높습니다.",
         authorTags: ['meaty', 'dairy', 'buttery', 'salt', 'thick'],
-        aiScores: { meaty: 92, dairy: 80, salt: 62, buttery: 75, oily: 88 },
+        aiScores: { meaty: 1892, dairy: 980, salt: 562, buttery: 675, oily: 1488 },
         aiSampleCount: 3580,
         officialSpectrum: ['#압도적_육즙', '#체다치즈_폭탄', '#미국식_헤비함'],
         comments: [
@@ -74,7 +74,7 @@ const SAMPLE_FEEDS = [
         matchRate: 58,
         matchReason: "미식가님은 '짠맛'에 민감하시지만, 이 유저는 '짠맛' 수치를 높게 평가하는 경향이 있습니다.",
         authorTags: ['salt', 'chewy', 'soft', 'seafood', 'umami'],
-        aiScores: { chewy: 88, soft: 82, seafood: 80, salt: 65, umami: 72 },
+        aiScores: { chewy: 988, soft: 482, seafood: 380, salt: 365, umami: 272 },
         aiSampleCount: 2105,
         officialSpectrum: ['#정통_알덴테', '#짭짤한_바다내음', '#생면_식감'],
         comments: [
