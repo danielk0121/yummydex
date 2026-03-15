@@ -475,6 +475,14 @@ if (event && event.target !== document.getElementById('mapModal')) return;
 document.getElementById('mapModal').classList.remove('show');
 }
 
+/* ===== 리액션 토글 (맛있어요 / 먹고싶다) ===== */
+function toggleReaction(btn, baseCount) {
+    const isReacted = btn.classList.toggle('reacted');
+    const countEl = btn.querySelector('.r-count');
+    const newCount = isReacted ? baseCount + 1 : baseCount;
+    countEl.textContent = newCount.toLocaleString();
+}
+
 /* ===== 토스트 ===== */
 function showToast(msg) {
 const toast = document.getElementById('toast');
