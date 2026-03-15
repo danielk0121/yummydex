@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- v-260315-1614-kst -->
+<!-- v-260315-1635-kst -->
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -7,7 +7,7 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    
+
     <!-- SEO & SNS Meta Tags -->
     <title>야미덱스 YummyDex - 홈</title>
     <meta name="description" content="미식가들의 맛 표현 인덱스, 야미덱스 YummyDex">
@@ -59,7 +59,7 @@
                 <small>미식가들의 맛 표현 인덱스</small>
                 <div class="dev-badge">
                     <div class="dev-name">danielk0121</div>
-                    <div class="dev-ver">v-260315-1614-kst</div>
+                    <div class="dev-ver">v-260315-1635-kst</div>
                 </div>
             </div>
             <div class="feed-list">
@@ -75,11 +75,40 @@
                     <div class="feed-image-wrap">
                         <img src="../docs/sample/salad-01.jpg" alt="Salad">
                     </div>
-                    <div class="feed-tags">
-                        <span class="taste-tag mild">☁️ 부드러움</span>
-                        <span class="taste-tag savory">🌿 고소</span>
-                        <span class="taste-tag critical">🥀 신선도 아쉬움</span>
+
+                    <!-- [NEW] 미식 지표 요약 -->
+                    <div class="feed-metrics-summary">
+                        <div class="metric-item">
+                            <div class="metric-info">
+                                <span class="metric-name">☁️ 부드러움</span>
+                                <span class="metric-val">90</span>
+                            </div>
+                            <div class="metric-bar-bg"><div class="metric-bar-fill" style="width:90%; background:#0d9488;"></div></div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-info">
+                                <span class="metric-name">🍄 감칠맛</span>
+                                <span class="metric-val">75</span>
+                            </div>
+                            <div class="metric-bar-bg"><div class="metric-bar-fill" style="width:75%; background:#16a34a;"></div></div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-info">
+                                <span class="metric-name">🌿 신선도</span>
+                                <span class="metric-val">40</span>
+                            </div>
+                            <div class="metric-bar-bg"><div class="metric-bar-fill" style="width:40%; background:#22c55e;"></div></div>
+                        </div>
                     </div>
+
+                    <button class="metrics-expand-btn" onclick="toggleMetrics(this)">전체 미식 데이터 보기 ▼</button>
+                    <div class="metrics-full-list">
+                        <div class="mini-metric-item"><span>🥜 고소함</span> <span>60</span></div>
+                        <div class="mini-metric-item"><span>🍯 단맛</span> <span>20</span></div>
+                        <div class="mini-metric-item"><span>🧂 짠맛</span> <span>15</span></div>
+                        <div class="mini-metric-item"><span>🍋 신맛</span> <span>30</span></div>
+                    </div>
+
                     <div class="feed-footer">
                         <div class="feed-comment">아보카도와 드레싱의 조화가 너무 부드러워요. 채소는 좀 숨이 죽어 신선도가 아쉽지만, 드레싱 맛이 좋아서 계속 먹게 되네요.</div>
                         <div class="reaction-btns">
@@ -87,15 +116,18 @@
                             <button class="reaction-btn"><span class="r-icon">🔄</span> 나랑 똑같아요 <span class="r-count">12</span></button>
                             <button class="reaction-btn"><span class="r-icon">✨</span> 오 신기해요 <span class="r-count">5</span></button>
                         </div>
+
+                        <!-- [NEW] 싱크로율 근거 박스 -->
+                        <div class="match-reason-box">
+                            <strong>📊 입맛 싱크로율 87%</strong>
+                            '부드러움'과 '감칠맛'을 중시하는 미식가님의 평소 취향과 87% 일치하는 데이터입니다.
+                        </div>
+
                         <div class="feed-location">
                             <span class="feed-location-text">📍 연남동 샐러드 카페</span>
                             <button class="feed-map-btn" onclick="showFeedMap('연남동 샐러드 카페', 37.561, 126.923)">지도 보기 🗺️</button>
                         </div>
-                        <div class="match-indicator">
-                            입맛 싱크로율
-                            <div class="match-bar"><div class="match-bar-fill" style="width:87%"></div></div>
-                            87%
-                        </div>
+
                         <div class="related-posts-section">
                             <div class="related-posts-title">🔍 같은 메뉴 다른 시선</div>
                             <div class="related-posts-list">
@@ -179,11 +211,40 @@
                     <div class="feed-image-wrap">
                         <img src="../docs/sample/burger-01.jpg" alt="Burger">
                     </div>
-                    <div class="feed-tags">
-                        <span class="taste-tag salty">🧂 짭조름</span>
-                        <span class="taste-tag rich">🧈 진함</span>
-                        <span class="taste-tag savory">🥓 고소</span>
+
+                    <!-- [NEW] 미식 지표 요약 -->
+                    <div class="feed-metrics-summary">
+                        <div class="metric-item">
+                            <div class="metric-info">
+                                <span class="metric-name">🥩 육향</span>
+                                <span class="metric-val">95</span>
+                            </div>
+                            <div class="metric-bar-bg"><div class="metric-bar-fill" style="width:95%; background:#ef4444;"></div></div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-info">
+                                <span class="metric-name">🧀 치즈/우유</span>
+                                <span class="metric-val">85</span>
+                            </div>
+                            <div class="metric-bar-bg"><div class="metric-bar-fill" style="width:85%; background:#fbbf24;"></div></div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-info">
+                                <span class="metric-name">🧂 짠맛</span>
+                                <span class="metric-val">70</span>
+                            </div>
+                            <div class="metric-bar-bg"><div class="metric-bar-fill" style="width:70%; background:#4a6cf7;"></div></div>
+                        </div>
                     </div>
+
+                    <button class="metrics-expand-btn" onclick="toggleMetrics(this)">전체 미식 데이터 보기 ▼</button>
+                    <div class="metrics-full-list">
+                        <div class="mini-metric-item"><span>🧈 버터향</span> <span>80</span></div>
+                        <div class="mini-metric-item"><span>🔥 불맛</span> <span>60</span></div>
+                        <div class="mini-metric-item"><span>🍞 고소함</span> <span>50</span></div>
+                        <div class="mini-metric-item"><span>🌶️ 매운맛</span> <span>5</span></div>
+                    </div>
+
                     <div class="feed-footer">
                         <div class="feed-comment">패티의 육즙과 녹아내린 치즈의 밸런스가 환상적이에요. 번도 구워져서 고소함이 두 배!</div>
                         <div class="reaction-btns">
@@ -191,15 +252,18 @@
                             <button class="reaction-btn reacted"><span class="r-icon">🔄</span> 나랑 똑같아요 <span class="r-count">31</span></button>
                             <button class="reaction-btn"><span class="r-icon">😮</span> 나랑은 달라요 <span class="r-count">3</span></button>
                         </div>
+
+                        <!-- [NEW] 싱크로율 근거 박스 -->
+                        <div class="match-reason-box">
+                            <strong>📊 입맛 싱크로율 72%</strong>
+                            평소 '육향'과 '치즈향'을 선호하시지만, 이 메뉴의 '짠맛' 수치가 미식가님의 기준보다 높습니다.
+                        </div>
+
                         <div class="feed-location">
                             <span class="feed-location-text">📍 이태원 버거 하우스</span>
                             <button class="feed-map-btn" onclick="showFeedMap('이태원 버거 하우스', 37.534, 126.993)">지도 보기 🗺️</button>
                         </div>
-                        <div class="match-indicator">
-                            입맛 싱크로율
-                            <div class="match-bar"><div class="match-bar-fill" style="width:72%"></div></div>
-                            72%
-                        </div>
+
                         <div class="related-posts-section">
                             <div class="related-posts-title">🔍 같은 메뉴 다른 시선</div>
                             <div class="related-posts-list">
@@ -291,11 +355,40 @@
                     <div class="feed-image-wrap">
                         <img src="../docs/sample/pasta-01.jpg" alt="Pasta">
                     </div>
-                    <div class="feed-tags">
-                        <span class="taste-tag salty">🧂 짭짤</span>
-                        <span class="taste-tag mild">☁️ 부드러움</span>
-                        <span class="taste-tag critical">🥀 양 적음</span>
+
+                    <!-- [NEW] 미식 지표 요약 -->
+                    <div class="feed-metrics-summary">
+                        <div class="metric-item">
+                            <div class="metric-info">
+                                <span class="metric-name">🧂 짠맛</span>
+                                <span class="metric-val">80</span>
+                            </div>
+                            <div class="metric-bar-bg"><div class="metric-bar-fill" style="width:80%; background:#4a6cf7;"></div></div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-info">
+                                <span class="metric-name">☁️ 부드러움</span>
+                                <span class="metric-val">85</span>
+                            </div>
+                            <div class="metric-bar-bg"><div class="metric-bar-fill" style="width:85%; background:#0d9488;"></div></div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-info">
+                                <span class="metric-name">🥀 양 적음</span>
+                                <span class="metric-val">90</span>
+                            </div>
+                            <div class="metric-bar-bg"><div class="metric-bar-fill" style="width:90%; background:#636366;"></div></div>
+                        </div>
                     </div>
+
+                    <button class="metrics-expand-btn" onclick="toggleMetrics(this)">전체 미식 데이터 보기 ▼</button>
+                    <div class="metrics-full-list">
+                        <div class="mini-metric-item"><span>🇮🇹 알덴테</span> <span>95</span></div>
+                        <div class="mini-metric-item"><span>🍷 와인향</span> <span>40</span></div>
+                        <div class="mini-metric-item"><span>🍄 감칠맛</span> <span>70</span></div>
+                        <div class="mini-metric-item"><span>🍯 단맛</span> <span>5</span></div>
+                    </div>
+
                     <div class="feed-footer">
                         <div class="feed-comment">면의 삶기가 완벽해요. 알덴테의 정석! 다만 성인 남성이 먹기엔 양이 조금 적은 편이라 사이드 메뉴 추가를 추천해요.</div>
                         <div class="reaction-btns">
@@ -303,14 +396,18 @@
                             <button class="reaction-btn"><span class="r-icon">✨</span> 오 신기해요 <span class="r-count">15</span></button>
                             <button class="reaction-btn"><span class="r-icon">😮</span> 나랑은 달라요 <span class="r-count">7</span></button>
                         </div>
+
+                        <!-- [NEW] 싱크로율 근거 박스 (낮은 싱크로율 예시) -->
+                        <div class="match-reason-box" style="background:#fff0f0; border-left-color:#e84057;">
+                            <strong style="color:#e84057;">⚠️ 입맛 싱크로율 58%</strong>
+                            미식가님은 '짠맛'에 민감하시지만, 이 유저는 '짠맛' 수치를 높게 평가하는 경향이 있습니다.
+                        </div>
+
                         <div class="feed-location">
                             <span class="feed-location-text">📍 한남동 이탈리안 키친</span>
                             <button class="feed-map-btn" onclick="showFeedMap('한남동 이탈리안 키친', 37.537, 127.002)">지도 보기 🗺️</button>
                         </div>
-                        <div class="match-indicator" style="color:#e84057;">
-                            ⚠️ 입맛이 58% 다른 유저의 맛 표현이에요
-                            <div class="match-bar"><div class="match-bar-fill" style="width:58%; background: linear-gradient(90deg, #ffb347, #e84057);"></div></div>
-                        </div>
+
                         <div class="related-posts-section">
                             <div class="related-posts-title">🔍 같은 메뉴 다른 시선</div>
                             <div class="related-posts-list">

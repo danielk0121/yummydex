@@ -1,3 +1,68 @@
+/* ===== 20대 미식 표준 지표 정의 ===== */
+const TASTE_METRICS = {
+    // 1. 기본 미각 (Basic Taste)
+    sugar: { name: '단맛', icon: '🍯', category: 'basic', color: '#ffb347' },
+    salt: { name: '짠맛', icon: '🧂', category: 'basic', color: '#4a6cf7' },
+    sour: { name: '신맛', icon: '🍋', category: 'basic', color: '#ffd43b' },
+    umami: { name: '감칠맛', icon: '🍄', category: 'basic', color: '#16a34a' },
+    bitter: { name: '쓴맛', icon: '☕', category: 'basic', color: '#636366' },
+
+    // 2. 물리적 감각 & 식감 (Texture)
+    spicy: { name: '매운맛', icon: '🌶️', category: 'texture', color: '#ff4500' },
+    crispy: { name: '바삭함', icon: '🔥', category: 'texture', color: '#e8930c' },
+    chewy: { name: '쫄깃함', icon: '🦑', category: 'texture', color: '#ca8a04' },
+    soft: { name: '부드러움', icon: '☁️', category: 'texture', color: '#0d9488' },
+    thick: { name: '꾸덕함', icon: '🍯', category: 'texture', color: '#a855f7' },
+    oily: { name: '기름짐', icon: '🥓', category: 'texture', color: '#ff6b35' },
+    fresh: { name: '신선도', icon: '🌿', category: 'texture', color: '#22c55e' },
+
+    // 3. 직관적 풍미/향 (Flavor)
+    dairy: { name: '치즈/우유', icon: '🧀', category: 'flavor', color: '#fbbf24' },
+    buttery: { name: '버터향', icon: '🧈', category: 'flavor', color: '#f59e0b' },
+    smoky: { name: '불맛/스모키', icon: '🔥', category: 'flavor', color: '#44403c' },
+    spiced: { name: '향신료', icon: '🌿', category: 'flavor', color: '#8b5cf6' },
+    nutty: { name: '고소함', icon: '🥜', category: 'flavor', color: '#92400e' },
+    meaty: { name: '육향', icon: '🥩', category: 'flavor', color: '#ef4444' },
+    seafood: { name: '해물향', icon: '🌊', category: 'flavor', color: '#3b82f6' },
+    fruity: { name: '과일/상큼', icon: '🍓', category: 'flavor', color: '#ec4899' }
+};
+
+const SAMPLE_FEEDS = [
+    {
+        id: 1,
+        user: '미식가김',
+        location: '연남동 샐러드 카페',
+        time: '2시간 전',
+        image: '../docs/sample/salad-01.jpg',
+        comment: '아보카도와 드레싱의 조화가 너무 부드러워요. 채소는 좀 숨이 죽어 신선도가 아쉽지만, 드레싱 맛이 좋아서 계속 먹게 되네요.',
+        matchRate: 87,
+        matchReason: "'부드러움'과 '신선도'를 중시하는 미식가님의 평소 취향과 87% 일치합니다.",
+        metrics: {
+            soft: 90,
+            fresh: 40,
+            umami: 75,
+            nutty: 60
+        }
+    },
+    {
+        id: 2,
+        user: '단짠러버',
+        location: '이태원 버거 하우스',
+        time: '5시간 전',
+        image: '../docs/sample/burger-01.jpg',
+        comment: '패티의 육즙과 녹아내린 치즈의 밸런스가 환상적이에요. 번도 구워져서 고소함이 두 배!',
+        matchRate: 72,
+        matchReason: "평소 '육향'과 '치즈향'을 선호하시지만, '짠맛' 수치가 예상보다 높게 측정되었습니다.",
+        metrics: {
+            meaty: 95,
+            dairy: 85,
+            salt: 70,
+            buttery: 80,
+            smoky: 60
+        }
+    }
+];
+
 /* ===== 화면 전환 (파일 분리 버전) ===== */
 const pages = {
     home: 'index.html',
@@ -17,7 +82,7 @@ function switchScreen(name) {
 document.addEventListener('DOMContentLoaded', () => {
     const path = window.location.pathname;
     const page = path.split("/").pop() || 'index.html';
-    
+
     const navMap = {
         'index.html': 0,
         'explore.html': 1,
@@ -38,119 +103,126 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* ===== 피드 탭 전환 ===== */
 function switchFeedTab(el) {
-el.parentElement.querySelectorAll('.feed-tab').forEach(t => t.classList.remove('active'));
-el.classList.add('active');
+    el.parentElement.querySelectorAll('.feed-tab').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+}
+
+/* ===== 미식 데이터 토글 ===== */
+function toggleMetrics(btn) {
+    const list = btn.nextElementSibling;
+    const isShowing = list.classList.toggle('show');
+    btn.textContent = isShowing ? '미식 데이터 접기 ▲' : '전체 미식 데이터 보기 ▼';
 }
 
 /* ===== 필터 칩 토글 ===== */
 function toggleChip(el) {
-el.classList.toggle('active');
+    el.classList.toggle('active');
 // '전체' 칩 처리
-if (el.textContent.includes('전체')) {
-if (el.classList.contains('active')) {
-document.querySelectorAll('.filter-chip').forEach(c => {
-if (!c.textContent.includes('전체')) c.classList.remove('active');
-});
-}
-} else {
-const allChip = document.querySelector('.filter-chip');
-if (allChip.textContent.includes('전체')) allChip.classList.remove('active');
-}
-updateExploreFilter();
+    if (el.textContent.includes('전체')) {
+        if (el.classList.contains('active')) {
+            document.querySelectorAll('.filter-chip').forEach(c => {
+                if (!c.textContent.includes('전체')) c.classList.remove('active');
+            });
+        }
+    } else {
+        const allChip = document.querySelector('.filter-chip');
+        if (allChip.textContent.includes('전체')) allChip.classList.remove('active');
+    }
+    updateExploreFilter();
 }
 
 function resetFilters() {
 // 검색어 초기화
-const input = document.getElementById('exploreSearchInput');
-if (input) input.value = '';
+    const input = document.getElementById('exploreSearchInput');
+    if (input) input.value = '';
 // 검색 태그 초기화
-activeSearchTags.clear();
-renderSearchTags();
+    activeSearchTags.clear();
+    renderSearchTags();
 // 필터 칩 초기화
-document.querySelectorAll('.filter-chip').forEach(c => {
-if (c.textContent.includes('전체')) c.classList.add('active');
-else c.classList.remove('active');
-});
+    document.querySelectorAll('.filter-chip').forEach(c => {
+        if (c.textContent.includes('전체')) c.classList.add('active');
+        else c.classList.remove('active');
+    });
 // 필터링 적용
-updateExploreFilter();
+    updateExploreFilter();
 }
 
 /* ===== 검색 기능 강화 (태그 추가 방식) ===== */
 const activeSearchTags = new Set();
 
 function handleSearchKeyUp(event) {
-if (event.key === 'Enter') {
-addSearchTag();
-} else {
-updateExploreFilter();
-}
+    if (event.key === 'Enter') {
+        addSearchTag();
+    } else {
+        updateExploreFilter();
+    }
 }
 
 function addSearchTag() {
-const input = document.getElementById('exploreSearchInput');
-const val = input.value.trim();
+    const input = document.getElementById('exploreSearchInput');
+    const val = input.value.trim();
 
-if (val && !activeSearchTags.has(val)) {
-activeSearchTags.add(val);
-renderSearchTags();
-input.value = '';
-updateExploreFilter();
-}
+    if (val && !activeSearchTags.has(val)) {
+        activeSearchTags.add(val);
+        renderSearchTags();
+        input.value = '';
+        updateExploreFilter();
+    }
 }
 
 function removeSearchTag(val) {
-activeSearchTags.delete(val);
-renderSearchTags();
-updateExploreFilter();
+    activeSearchTags.delete(val);
+    renderSearchTags();
+    updateExploreFilter();
 }
 
 function renderSearchTags() {
-const container = document.getElementById('activeSearchTags');
-container.innerHTML = '';
-activeSearchTags.forEach(tag => {
-const tagEl = document.createElement('div');
-tagEl.className = 'search-tag';
-tagEl.innerHTML = `
+    const container = document.getElementById('activeSearchTags');
+    container.innerHTML = '';
+    activeSearchTags.forEach(tag => {
+        const tagEl = document.createElement('div');
+        tagEl.className = 'search-tag';
+        tagEl.innerHTML = `
 <span>#${tag}</span>
 <span class="remove-tag" onclick="removeSearchTag('${tag}')">✕</span>
 `;
-container.appendChild(tagEl);
-});
+        container.appendChild(tagEl);
+    });
 }
 
 function updateExploreFilter() {
-const searchVal = document.getElementById('exploreSearchInput').value.toLowerCase();
-const activeChips = Array.from(document.querySelectorAll('.filter-chip.active:not(:first-child)'))
-.map(c => c.textContent.replace(/[^\w\sㄱ-힣]/g, '').trim());
+    const searchVal = document.getElementById('exploreSearchInput').value.toLowerCase();
+    const activeChips = Array.from(document.querySelectorAll('.filter-chip.active:not(:first-child)'))
+        .map(c => c.textContent.replace(/[^\w\sㄱ-힣]/g, '').trim());
 
-const allCards = document.querySelectorAll('.explore-card');
+    const allCards = document.querySelectorAll('.explore-card');
 
-allCards.forEach(card => {
-const title = card.querySelector('.card-title').textContent.toLowerCase();
-const restaurant = card.querySelector('.card-restaurant')?.textContent.toLowerCase() || '';
-const tags = Array.from(card.querySelectorAll('.mini-tag')).map(t => t.textContent.toLowerCase());
+    allCards.forEach(card => {
+        const title = card.querySelector('.card-title').textContent.toLowerCase();
+        const restaurant = card.querySelector('.card-restaurant')?.textContent.toLowerCase() || '';
+        const tags = Array.from(card.querySelectorAll('.mini-tag')).map(t => t.textContent.toLowerCase());
 
 // 1. 직접 검색어 매칭
-const matchSearch = !searchVal || title.includes(searchVal) || restaurant.includes(searchVal);
+        const matchSearch = !searchVal || title.includes(searchVal) || restaurant.includes(searchVal);
 
 // 2. 해시태그(추가된 태그) 매칭 (모든 태그가 포함되어야 함)
-const matchAddedTags = activeSearchTags.size === 0 || 
-Array.from(activeSearchTags).every(t => 
-title.includes(t.toLowerCase()) || 
-restaurant.includes(t.toLowerCase()) ||
-tags.some(tag => tag.includes(t.toLowerCase()))
-);
+        const matchAddedTags = activeSearchTags.size === 0 ||
+            Array.from(activeSearchTags).every(t =>
+                title.includes(t.toLowerCase()) ||
+                restaurant.includes(t.toLowerCase()) ||
+                tags.some(tag => tag.includes(t.toLowerCase()))
+            );
 
 // 3. 필터 칩 매칭
-const matchChips = activeChips.length === 0 || 
-activeChips.some(chip => tags.some(tag => tag.includes(chip.toLowerCase())));
+        const matchChips = activeChips.length === 0 ||
+            activeChips.some(chip => tags.some(tag => tag.includes(chip.toLowerCase())));
 
-if (matchSearch && matchAddedTags && matchChips) {
-card.style.display = '';
-} else {
-card.style.display = 'none';
-}
-});
+        if (matchSearch && matchAddedTags && matchChips) {
+            card.style.display = '';
+        } else {
+            card.style.display = 'none';
+        }
+    });
 }
 
 /* ===== 맛 표현 플로우 ===== */
@@ -160,208 +232,208 @@ let capturedLocation = null;
 let feedMapInstance = null;
 
 function resetMarking() {
-markingState = 'camera';
-capturedLocation = null;
-document.getElementById('cameraMode').style.display = '';
-document.getElementById('cameraControls').style.display = '';
-document.getElementById('markingMode').classList.remove('show');
-document.getElementById('tastePanel').classList.remove('show');
-document.getElementById('locationPanel').classList.remove('show');
-document.getElementById('markingGuide').textContent = '📸 미식 포인트를 확인했어요!';
+    markingState = 'camera';
+    capturedLocation = null;
+    document.getElementById('cameraMode').style.display = '';
+    document.getElementById('cameraControls').style.display = '';
+    document.getElementById('markingMode').classList.remove('show');
+    document.getElementById('tastePanel').classList.remove('show');
+    document.getElementById('locationPanel').classList.remove('show');
+    document.getElementById('markingGuide').textContent = '📸 미식 포인트를 확인했어요!';
 // 로딩 오버레이 초기화
-const loadingEl = document.getElementById('mapLoadingOverlay');
-if (loadingEl) loadingEl.style.display = 'flex';
-const nameEl = document.getElementById('locationInfoName');
-if (nameEl) nameEl.textContent = '위치를 불러오는 중...';
-const coordsEl = document.getElementById('locationInfoCoords');
-if (coordsEl) coordsEl.textContent = '';
+    const loadingEl = document.getElementById('mapLoadingOverlay');
+    if (loadingEl) loadingEl.style.display = 'flex';
+    const nameEl = document.getElementById('locationInfoName');
+    if (nameEl) nameEl.textContent = '위치를 불러오는 중...';
+    const coordsEl = document.getElementById('locationInfoCoords');
+    if (coordsEl) coordsEl.textContent = '';
 // 지도 제거
-if (markingMap) { markingMap.remove(); markingMap = null; }
-updateSteps('step1');
+    if (markingMap) { markingMap.remove(); markingMap = null; }
+    updateSteps('step1');
 }
 
 function takePhoto() {
-markingState = 'taste';
-document.getElementById('cameraMode').style.display = 'none';
-document.getElementById('cameraControls').style.display = 'none';
-document.getElementById('markingMode').classList.add('show');
-document.getElementById('tastePanel').classList.add('show');
-updateSteps('step3');
+    markingState = 'taste';
+    document.getElementById('cameraMode').style.display = 'none';
+    document.getElementById('cameraControls').style.display = 'none';
+    document.getElementById('markingMode').classList.add('show');
+    document.getElementById('tastePanel').classList.add('show');
+    updateSteps('step3');
 }
 
 function updateSteps(current) {
-const steps = ['step1', 'step2', 'step3', 'step4'];
-const idx = steps.indexOf(current);
-steps.forEach((s, i) => {
-const el = document.getElementById(s);
-if (!el) return;
-el.classList.remove('current', 'done');
-if (i < idx) el.classList.add('done');
-if (i === idx) el.classList.add('current');
-});
+    const steps = ['step1', 'step2', 'step3', 'step4'];
+    const idx = steps.indexOf(current);
+    steps.forEach((s, i) => {
+        const el = document.getElementById(s);
+        if (!el) return;
+        el.classList.remove('current', 'done');
+        if (i < idx) el.classList.add('done');
+        if (i === idx) el.classList.add('current');
+    });
 }
 
 /* ===== 맛 태그 선택 ===== */
 function toggleTaste(el) {
-el.classList.toggle('selected');
+    el.classList.toggle('selected');
 }
 
 /* ===== 강도 슬라이더 ===== */
 function updateIntensity(val) {
-const fires = ['😐', '🔥', '🔥🔥', '🔥🔥🔥', '🔥🔥🔥🔥', '🤯🔥🔥🔥🔥🔥'];
-document.getElementById('intensityVal').textContent = fires[val];
+    const fires = ['😐', '🔥', '🔥🔥', '🔥🔥🔥', '🔥🔥🔥🔥', '🤯🔥🔥🔥🔥🔥'];
+    document.getElementById('intensityVal').textContent = fires[val];
 }
 
 /* ===== 업로드 완료 → 위치 기록 단계 ===== */
 function completeUpload() {
-markingState = 'location';
-document.getElementById('tastePanel').classList.remove('show');
-showLocationPanel();
+    markingState = 'location';
+    document.getElementById('tastePanel').classList.remove('show');
+    showLocationPanel();
 }
 
 /* ===== 위치 기록 패널 ===== */
 function showLocationPanel() {
-document.getElementById('locationPanel').classList.add('show');
-updateSteps('step4');
+    document.getElementById('locationPanel').classList.add('show');
+    updateSteps('step4');
 
 // 이전 지도 제거
-if (markingMap) { markingMap.remove(); markingMap = null; }
+    if (markingMap) { markingMap.remove(); markingMap = null; }
 
 // 로딩 오버레이 표시
-const loadingEl = document.getElementById('mapLoadingOverlay');
-if (loadingEl) loadingEl.style.display = 'flex';
-document.getElementById('locationInfoName').textContent = '위치를 불러오는 중...';
-document.getElementById('locationInfoCoords').textContent = '';
+    const loadingEl = document.getElementById('mapLoadingOverlay');
+    if (loadingEl) loadingEl.style.display = 'flex';
+    document.getElementById('locationInfoName').textContent = '위치를 불러오는 중...';
+    document.getElementById('locationInfoCoords').textContent = '';
 
-if (!navigator.geolocation) {
+    if (!navigator.geolocation) {
 // 위치 API 미지원 → 서울 기본 위치 사용
-initMarkingMap(37.5665, 126.9780, '서울특별시 (기본 위치)');
-return;
-}
+        initMarkingMap(37.5665, 126.9780, '서울특별시 (기본 위치)');
+        return;
+    }
 
-navigator.geolocation.getCurrentPosition(
-(pos) => {
-initMarkingMap(pos.coords.latitude, pos.coords.longitude, null);
-},
-() => {
+    navigator.geolocation.getCurrentPosition(
+        (pos) => {
+            initMarkingMap(pos.coords.latitude, pos.coords.longitude, null);
+        },
+        () => {
 // 권한 거부 또는 오류 → 을지로 데모 위치
-initMarkingMap(37.5668, 126.9921, '을지로 (데모 위치)');
-},
-{ timeout: 8000, enableHighAccuracy: true }
-);
+            initMarkingMap(37.5668, 126.9921, '을지로 (데모 위치)');
+        },
+        { timeout: 8000, enableHighAccuracy: true }
+    );
 }
 
 function initMarkingMap(lat, lng, fallbackName) {
-capturedLocation = { lat, lng };
+    capturedLocation = { lat, lng };
 
 // 지도 초기화
-markingMap = L.map('markingMap', { zoomControl: true, attributionControl: false })
-.setView([lat, lng], 16);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 })
-.addTo(markingMap);
+    markingMap = L.map('markingMap', { zoomControl: true, attributionControl: false })
+        .setView([lat, lng], 16);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 })
+        .addTo(markingMap);
 
 // 커스텀 마커
-const icon = L.divIcon({
-html: '<div style="background:#ff6b35;width:28px;height:28px;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 10px rgba(255,107,53,0.55);display:flex;align-items:center;justify-content:center;font-size:14px;">📍</div>',
-iconSize: [28, 28],
-iconAnchor: [14, 14],
-className: ''
-});
-L.marker([lat, lng], { icon }).addTo(markingMap);
+    const icon = L.divIcon({
+        html: '<div style="background:#ff6b35;width:28px;height:28px;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 10px rgba(255,107,53,0.55);display:flex;align-items:center;justify-content:center;font-size:14px;">📍</div>',
+        iconSize: [28, 28],
+        iconAnchor: [14, 14],
+        className: ''
+    });
+    L.marker([lat, lng], { icon }).addTo(markingMap);
 
 // 로딩 오버레이 숨기기
-const loadingEl = document.getElementById('mapLoadingOverlay');
-if (loadingEl) loadingEl.style.display = 'none';
+    const loadingEl = document.getElementById('mapLoadingOverlay');
+    if (loadingEl) loadingEl.style.display = 'none';
 
 // 좌표 표시
-document.getElementById('locationInfoCoords').textContent =
-`${lat.toFixed(5)}, ${lng.toFixed(5)}`;
+    document.getElementById('locationInfoCoords').textContent =
+        `${lat.toFixed(5)}, ${lng.toFixed(5)}`;
 
-if (fallbackName) {
-document.getElementById('locationInfoName').textContent = fallbackName;
-} else {
+    if (fallbackName) {
+        document.getElementById('locationInfoName').textContent = fallbackName;
+    } else {
 // Nominatim 역지오코딩 (OpenStreetMap, 무료)
-fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json&accept-language=ko`,
-{ headers: { 'Accept-Language': 'ko' } })
-.then(r => r.json())
-.then(data => {
-const a = data.address || {};
-const name = a.road || a.neighbourhood || a.suburb ||
-a.city_district || a.city || '현재 위치';
-document.getElementById('locationInfoName').textContent = name;
-})
-.catch(() => {
-document.getElementById('locationInfoName').textContent = '현재 위치';
-});
-}
+        fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json&accept-language=ko`,
+            { headers: { 'Accept-Language': 'ko' } })
+            .then(r => r.json())
+            .then(data => {
+                const a = data.address || {};
+                const name = a.road || a.neighbourhood || a.suburb ||
+                    a.city_district || a.city || '현재 위치';
+                document.getElementById('locationInfoName').textContent = name;
+            })
+            .catch(() => {
+                document.getElementById('locationInfoName').textContent = '현재 위치';
+            });
+    }
 
 // 지도 크기 보정
-setTimeout(() => markingMap && markingMap.invalidateSize(), 150);
+    setTimeout(() => markingMap && markingMap.invalidateSize(), 150);
 }
 
 function skipLocation() {
-capturedLocation = null;
-finishMarking(false);
+    capturedLocation = null;
+    finishMarking(false);
 }
 
 function confirmLocation() {
-finishMarking(true);
+    finishMarking(true);
 }
 
 function finishMarking(withLocation) {
-const msg = withLocation
-? '✨ 기록 완료! 위치가 지도에 저장되었어요 📍'
-: '✨ 기록 완료! 당신의 미식 도감에 추가되었어요';
-showToast(msg);
-setTimeout(() => switchScreen('home'), 1500);
+    const msg = withLocation
+        ? '✨ 기록 완료! 위치가 지도에 저장되었어요 📍'
+        : '✨ 기록 완료! 당신의 미식 도감에 추가되었어요';
+    showToast(msg);
+    setTimeout(() => switchScreen('home'), 1500);
 }
 
 /* ===== 피드 카드 위치 지도 모달 ===== */
 function showFeedMap(name, lat, lng) {
-const modal = document.getElementById('mapModal');
-document.getElementById('mapModalTitle').textContent = `📍 ${name}`;
-document.getElementById('mapModalAddress').textContent = `${lat.toFixed(4)}, ${lng.toFixed(4)}`;
-modal.classList.add('show');
+    const modal = document.getElementById('mapModal');
+    document.getElementById('mapModalTitle').textContent = `📍 ${name}`;
+    document.getElementById('mapModalAddress').textContent = `${lat.toFixed(4)}, ${lng.toFixed(4)}`;
+    modal.classList.add('show');
 
-setTimeout(() => {
-if (feedMapInstance) { feedMapInstance.remove(); feedMapInstance = null; }
-feedMapInstance = L.map('feedMap', { zoomControl: false, attributionControl: false })
-.setView([lat, lng], 16);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 })
-.addTo(feedMapInstance);
+    setTimeout(() => {
+        if (feedMapInstance) { feedMapInstance.remove(); feedMapInstance = null; }
+        feedMapInstance = L.map('feedMap', { zoomControl: false, attributionControl: false })
+            .setView([lat, lng], 16);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 })
+            .addTo(feedMapInstance);
 
-const icon = L.divIcon({
-html: `<div style="background:#ff6b35;width:32px;height:32px;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 10px rgba(255,107,53,0.55);display:flex;align-items:center;justify-content:center;font-size:16px;">🍽️</div>`,
-iconSize: [32, 32],
-iconAnchor: [16, 16],
-className: ''
-});
-L.marker([lat, lng], { icon }).addTo(feedMapInstance);
-feedMapInstance.invalidateSize();
+        const icon = L.divIcon({
+            html: `<div style="background:#ff6b35;width:32px;height:32px;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 10px rgba(255,107,53,0.55);display:flex;align-items:center;justify-content:center;font-size:16px;">🍽️</div>`,
+            iconSize: [32, 32],
+            iconAnchor: [16, 16],
+            className: ''
+        });
+        L.marker([lat, lng], { icon }).addTo(feedMapInstance);
+        feedMapInstance.invalidateSize();
 
 // 역지오코딩으로 주소 표시
-fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json&accept-language=ko`)
-.then(r => r.json())
-.then(data => {
-const a = data.address || {};
-const addr = [a.city_district || a.suburb, a.road]
-.filter(Boolean).join(' ');
-if (addr) document.getElementById('mapModalAddress').textContent = addr;
-})
-.catch(() => {});
-}, 100);
+        fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json&accept-language=ko`)
+            .then(r => r.json())
+            .then(data => {
+                const a = data.address || {};
+                const addr = [a.city_district || a.suburb, a.road]
+                    .filter(Boolean).join(' ');
+                if (addr) document.getElementById('mapModalAddress').textContent = addr;
+            })
+            .catch(() => {});
+    }, 100);
 }
 
 function closeFeedMap(event) {
-if (event && event.target !== document.getElementById('mapModal')) return;
-document.getElementById('mapModal').classList.remove('show');
+    if (event && event.target !== document.getElementById('mapModal')) return;
+    document.getElementById('mapModal').classList.remove('show');
 }
 
 /* ===== 토스트 ===== */
 function showToast(msg) {
-const toast = document.getElementById('toast');
-toast.textContent = msg;
-toast.classList.add('show');
-setTimeout(() => toast.classList.remove('show'), 2500);
+    const toast = document.getElementById('toast');
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2500);
 }
 
