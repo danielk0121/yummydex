@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YummyDex Thumbnail Capture Tool</title>
+    <style>
+        /* 캡처를 위한 기본 스타일 */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            width: 400px;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #ff6b35, #ff3d71);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
+            overflow: hidden;
+            position: relative;
+            color: #fff;
+            /* 캡처 시 여백 방지 */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .english {
+            position: absolute;
+            top: 35%;
+            font-size: 26px;
+            font-weight: 800;
+            opacity: 0.9;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .korean {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 72px;
+            font-weight: 900;
+            letter-spacing: -3px;
+            white-space: nowrap;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            animation: popIn 0.6s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+        }
+
+        .tagline {
+            position: absolute;
+            bottom: 25%;
+            font-size: 15px;
+            font-weight: 600;
+            opacity: 0.8;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 0.9; transform: translateY(0); }
+        }
+
+        @keyframes popIn {
+            from { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+            to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        }
+
+        /* 캡처 가이드 (브라우저 확인용) */
+        .capture-guide {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            font-size: 10px;
+            opacity: 0.3;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="english">YummyDex</div>
+    <div class="korean">야미덱스</div>
+    <div class="tagline">미식가들의 맛 표현 인덱스</div>
+    <div class="capture-guide">400x400 px</div>
+</body>
+</html>
