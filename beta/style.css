@@ -30,7 +30,7 @@
 
 /* ===== AI 분석 스펙트럼 (대중 데이터 기반) ===== */
 .ai-spectrum {
-    margin: 8px 16px 0;
+    margin: 12px 0 0;
     padding: 14px;
     background: #f8f9fa;
     border-radius: 14px;
@@ -1053,7 +1053,41 @@ body {
     cursor: pointer;
 }
 
-/* ===== 피드 카드 위치 정보 (하단 배치용) ===== */
+/* ===== 피드 이미지 위 지도 정보 오버레이 ===== */
+.feed-location-overlay {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 6px 10px;
+    border-radius: 10px;
+    z-index: 5;
+}
+.feed-location-overlay-text {
+    font-size: 11px;
+    font-weight: 600;
+    color: #fff;
+}
+.feed-location-overlay-btn {
+    font-size: 10px;
+    font-weight: 700;
+    color: #fff;
+    background: rgba(255, 107, 53, 0.85);
+    border: none;
+    padding: 4px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.feed-location-overlay-btn:active {
+    opacity: 0.8;
+}
+
+/* ===== 피드 카드 위치 정보 (하단 배치용 - 레거시) ===== */
 .feed-location {
     margin-top: 12px;
     padding-top: 10px;
