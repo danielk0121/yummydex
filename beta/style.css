@@ -187,7 +187,7 @@ body {
 
 /* ===== 상단 내비게이션 (최상단 탭으로 이동) ===== */
 .top-nav {
-    height: calc(64px + env(safe-area-inset-top));
+    height: calc(36px + env(safe-area-inset-top));
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -205,16 +205,15 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* 중앙 정렬 강화 */
-    gap: 6px; /* 아이콘과 라벨 간격 확보 */
+    justify-content: center;
     font-size: 10px;
     color: #636366;
     cursor: pointer;
     transition: color 0.2s;
     border: none;
     background: none;
-    padding: 8px 0; /* 상하 패딩 확대로 터치 영역 확보 */
-    min-height: 60px; /* 최소 높이 보장 */
+    padding: 4px 0;
+    min-height: 32px;
 }
 .nav-item.active { color: #ff6b35; }
 .nav-item .nav-icon { font-size: 24px; line-height: 1; }
@@ -230,16 +229,16 @@ body {
     top: 0; /* 중앙 정렬을 위해 top 제거 */
 }
 .mark-btn {
-    width: 48px;
-    height: 48px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     background: linear-gradient(135deg, #ff6b35, #ff3d71);
-    border: 3px solid #fff;
-    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+    border: 2px solid #fff;
+    box-shadow: 0 3px 10px rgba(255, 107, 53, 0.4);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 22px;
+    font-size: 18px;
     color: #fff;
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
