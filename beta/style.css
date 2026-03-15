@@ -397,26 +397,39 @@ body {
 }
 .reaction-btns {
     display: flex;
-    gap: 6px;
+    gap: 8px;
     flex-wrap: wrap;
 }
 .reaction-btn {
     display: inline-flex;
     align-items: center;
-    gap: 4px;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 12px;
-    border: 1px solid #e5e5e5;
-    background: #fff;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    border: 1px solid #f0f0f0;
+    background: #fcfcfc;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     color: #636366;
 }
-.reaction-btn:hover { background: #fff3ed; border-color: #ff6b35; color: #ff6b35; }
-.reaction-btn.reacted { background: #ff6b35; color: #fff; border-color: #ff6b35; }
-.reaction-btn .r-icon { font-size: 14px; }
-.reaction-btn .r-count { font-weight: 600; }
+.reaction-btn:active {
+    transform: scale(0.95);
+}
+.reaction-btn:hover { 
+    background: #fff3ed; 
+    border-color: #ff6b35; 
+    color: #ff6b35; 
+}
+.reaction-btn.reacted { 
+    background: #ff6b35; 
+    color: #fff; 
+    border-color: #ff6b35;
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+}
+.reaction-btn .r-icon { font-size: 16px; }
+.reaction-btn .r-count { font-weight: 700; margin-left: 2px; }
 
 /* 맛 태그 통계 섹션 */
 .taste-tag-stats {
